@@ -25,6 +25,7 @@ class auth extends CI_Controller
                     // cek password yang sudah di hash
                     if (password_verify($sandi, $user['sandi'])) {
                         $data = [
+                            'id' => $user['id'],
                             'nama' => $user['nama'],
                             'level_id' => $user['level_id']
                         ];

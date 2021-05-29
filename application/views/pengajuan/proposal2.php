@@ -4,13 +4,20 @@
 <div class="card">
     <div class="card-body">
         <h3 class="mb-4"><?= $judul; ?></h3>
-        <form>
-            <div class="row">
+        <form action="<?= base_url('pengajuan/proposal2/') ?><?= $rak['id'] ?>" method="post">
+            <?= $this->session->flashdata('message'); ?>
+            <div class="row mt-3">
                 <div class="col">
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-4 col-form-label">Nama </label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="jenis_kegiatan">
+                            <input type="text" class="form-control" name="nama_panitia">
+                            <?= form_error('nama_panitia', '<small class="text-danger pl-3">', ' </small>') ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="id_rak" value="<?= $rak["id"] ?>" hidden>
                         </div>
                     </div>
                 </div>
@@ -18,7 +25,15 @@
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-4 col-form-label">Jabatan</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputPassword" name="waktu">
+                            <input type="text" class="form-control" id="inputPassword" name="jabatan">
+                            <?= form_error('jabatan', '<small class="text-danger pl-3">', ' </small>') ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputPassword" name="pengajuan" value="proposal" hidden>
+                            <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?>
                         </div>
                     </div>
                 </div>
@@ -42,14 +57,15 @@
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
-
-                    <tr>
-                        <th scope="row" class="text-center"><?= $i; ?></th>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <?php foreach ($panitia as $p) : ?>
+                        <tr>
+                            <th scope="row" class="text-center"><?= $i; ?></th>
+                            <td><?= $p['nama_panitia']; ?></td>
+                            <td><?= $p['jabatan'] ?></td>
+                        </tr>
                 </tbody>
                 <?php $i++; ?>
+            <?php endforeach; ?>
             </table>
             <div class="text-right">
                 <a href="<?= base_url('pengajuan/proposal1/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Kembali</a>

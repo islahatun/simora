@@ -161,14 +161,15 @@
                         </thead>
                         <tbody>
                             <?php $i = 1; ?>
-
-                            <tr>
-                                <th scope="row" class="text-center"><?= $i; ?></th>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            <?php foreach ($kepanitiaan as $p) : ?>
+                                <tr>
+                                    <th scope="row" class="text-center"><?= $i; ?></th>
+                                    <td><?= $p['nama_panitia']; ?></td>
+                                    <td><?= $p['jabatan']; ?></td>
+                                </tr>
                         </tbody>
                         <?php $i++; ?>
+                    <?php endforeach ?>
                     </table>
             </div>
 

@@ -37,7 +37,7 @@ class pengajuan extends CI_Controller
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button></div>');
-            redirect('pengajuan/rak');
+            redirect('pengajuan');
         }
     }
     public function kirimRAK()
@@ -113,12 +113,12 @@ class pengajuan extends CI_Controller
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar', $data);
             $this->load->view('template/topbar');
-            $this->load->view('ormawa/pengajuan', $data);
+            $this->load->view('pengajuan/proposal1', $data);
             $this->load->view('template/footer');
         } else {
             $this->data_model->insertPendahuluan();
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>RAK berhasil Terkirim</strong> 
+            <strong>Pendahuluan berhasil ditambahkan</strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button></div>');
@@ -132,6 +132,7 @@ class pengajuan extends CI_Controller
         $data['menu'] = $this->data_model->menu();
         $data['title'] = "Pengajuan Poposal";
         $data['judul'] = "Lembar Kepanitiaan";
+        $data['panitia'] = $this->data_model->selectPanitia($id);
 
         $this->form_validation->set_rules('nama_panitia', 'Nama Panitia', 'required|trim');
         $this->form_validation->set_rules('jabatan', 'Jabatan', 'required|trim');
@@ -142,13 +143,13 @@ class pengajuan extends CI_Controller
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar', $data);
             $this->load->view('template/topbar');
-            $this->load->view('ormawa/pengajuan', $data);
+            $this->load->view('pengajuan/proposal2', $data);
             $this->load->view('template/footer');
         } else {
             $this->data_model->insertPanitia();
 
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>RAK berhasil Terkirim</strong> 
+            <strong>Kepanitiaan berhasil ditambahkan</strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button></div>');

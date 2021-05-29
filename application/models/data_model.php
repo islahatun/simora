@@ -2,6 +2,17 @@
 
 class data_model extends CI_Model
 {
+    public function sessionpengguna()
+    {
+        return $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+    }
+    public function menu()
+    {
+        $level =  $this->session->userdata('level_id');
+        $menu = "SELECT user_menu.* FROM user_menu JOIN user_access_menu ON user_menu.id = user_access_menu.menu_id WHERE user_access_menu.level_id = $level ORDER BY  user_access_menu.menu_id";
+
+        return $this->db->query($menu)->result_array();
+    }
     public function get_level()
     {
         $level = "SELECT `pengguna`.*, `level`.`level` 
@@ -45,12 +56,22 @@ class data_model extends CI_Model
     }
     public function getallrak()
     {
-        return $this->db->get('p_rak')->result_array();
+        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+
+        $id = $pengguna['id'];
+
+
+        $rak = "SELECT `p_rak`.*, `pengguna`.`id` 
+                  FROM `p_rak` JOIN `pengguna` 
+                  ON `p_rak`.`id_pengguna` = `pengguna`.`id`
+                  where `p_rak`.`id_pengguna`= $id";
+
+        return  $this->db->query($rak)->result_array();
     }
     public function insertRAK()
     {
         $data = [
-            'id_pengguna' => 3,
+            'id_pengguna' => $this->input->post('id_pengguna'),
             'periode' => $this->input->post('periode'),
             'jenis_kegiatan' => $this->input->post('jenis_kegiatan'),
             'tujuan' => $this->input->post('tujuan'),
@@ -65,17 +86,7 @@ class data_model extends CI_Model
     {
         return $this->db->get_where('p_rak', ['id' => $id])->row_array();
     }
-    public function sessionpengguna()
-    {
-        return $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
-    }
-    public function menu()
-    {
-        $level =  $this->session->userdata('level_id');
-        $menu = "SELECT user_menu.* FROM user_menu JOIN user_access_menu ON user_menu.id = user_access_menu.menu_id WHERE user_access_menu.level_id = $level ORDER BY  user_access_menu.menu_id";
 
-        return $this->db->query($menu)->result_array();
-    }
     public function insertprofil()
     {
         $data = [
@@ -141,5 +152,15 @@ class data_model extends CI_Model
         ];
 
         $this->db->insert('p_panitia', $data);
+    }
+    public function selectPanitia()
+    {
+
+        $panitia = "SELECT `p_panitia`.*, `p_rak`.`id` 
+                  FROM `p_panitia` JOIN `p_rak` 
+                  ON `p_panitia`.`id_rak` = `p_rak`.`id`
+                  where `p_panitia`.`id_rak`";
+
+        return  $this->db->query($panitia)->result_array();
     }
 }
