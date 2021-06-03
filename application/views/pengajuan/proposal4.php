@@ -34,6 +34,13 @@
                         <?= form_error('kegiatan', '<small class="text-danger pl-3">', ' </small>') ?>
                     </div>
                 </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">keterangan</label>
+                        <input type="text" class=" form-control" id="exampleInputPassword1" name="keterangan">
+                        <?= form_error('keterangan', '<small class="text-danger pl-3">', ' </small>') ?>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col">
@@ -48,6 +55,12 @@
                         <?= form_error('id_rak', '<small class="text-danger pl-3">', ' </small>') ?>
                     </div>
                 </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input type="text" class=" form-control" id="exampleInputPassword1" name="pengajuan" value="proposal" hidden>
+                        <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?>
+                    </div>
+                </div>
             </div>
             <div class="text-right">
                 <button type="submit" class="btn btn-dark">Submit</button>
@@ -58,30 +71,34 @@
         <div class="col-4">
 
         </div>
-        <form action="">
-            <table class="table table-bordered">
-                <thead class="thead-dark">
-                    <tr class="text-center">
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Waktu</th>
-                        <th scope="col">Nama Kegiatan</th>
-                        <th scope="col">Keterangan</th>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr class="text-center">
+                    <th scope="col">Tanggal</th>
+                    <th scope="col">Waktu</th>
+                    <th scope="col">Nama Kegiatan</th>
+                    <th scope="col">Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($jadwal as $j) : ?>
+                    <tr>
                     </tr>
-                </thead>
-                <tbody>
-
-                    <tr colspan=3>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr>
+                        <td rowspan=3>
+                            <?php $tanggal = $j['tanggal'];
+                            echo date("d F Y", strtotime($tanggal)); ?>
+                        </td>
+                        <td><?= $j['mulai']; ?> - <?= $j['selesai']; ?></td>
+                        <td><?= $j['kegiatan']; ?></td>
+                        <td><?= $j['keterangan']; ?></td>
                     </tr>
-                </tbody>
-            </table>
-            <div class="text-right">
-                <a href="<?= base_url('pengajuan/proposal3/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Kirim</a>
-            </div>
-        </form>
+            </tbody>
+        <?php endforeach; ?>
+        </table>
+        <div class="text-right">
+            <a href="<?= base_url('pengajuan/proposal3/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Kirim</a>
+        </div>
 
 
     </div>

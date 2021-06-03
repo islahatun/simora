@@ -159,4 +159,26 @@ class data_model extends CI_Model
         $panitia = "SELECT * FROM `p_panitia` where `p_panitia`.`id_pengguna` =$pengguna ";
         return  $this->db->query($panitia)->result_array();
     }
+    public function insertjadwal()
+    {
+        $data = [
+            'tanggal' => $this->input->post('tanggal'),
+            'id_pengguna' => $this->input->post('id_pengguna'),
+            'id_rak' => $this->input->post('id_rak'),
+            'mulai' => $this->input->post('mulai'),
+            'selesai' => $this->input->post('selesai'),
+            'kegiatan' => $this->input->post('kegiatan'),
+            'keterangan' => $this->input->post('keterangan'),
+            'pengajuan' => $this->input->post('pengajuan')
+        ];
+        $this->db->insert('p_jadwal', $data);
+    }
+    public function selectjadwal()
+    {
+        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+        $pengguna = $pengguna['id'];
+
+        $jadwal = "SELECT * FROM `p_jadwal` where `p_jadwal`.`id_pengguna` =$pengguna ";
+        return  $this->db->query($jadwal)->result_array();
+    }
 }

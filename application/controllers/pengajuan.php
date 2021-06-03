@@ -180,6 +180,7 @@ class pengajuan extends CI_Controller
         $data['rak'] = $this->data_model->getrakId($id);
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
+        $data['jadwal'] = $this->data_model->selectjadwal();
 
         $this->form_validation->set_rules('id_pengguna', 'id pengguna', 'trim|required');
         $this->form_validation->set_rules('id_rak', 'id rak', 'trim|required');
@@ -187,6 +188,8 @@ class pengajuan extends CI_Controller
         $this->form_validation->set_rules('mulai', 'mulai', 'trim|required');
         $this->form_validation->set_rules('selesai', 'selesai', 'trim|required');
         $this->form_validation->set_rules('kegiatan', 'kegiatan', 'trim|required');
+        $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
+        $this->form_validation->set_rules('pengajuan', 'pengajuan', 'trim|required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
@@ -194,6 +197,9 @@ class pengajuan extends CI_Controller
             $this->load->view('template/topbar');
             $this->load->view('pengajuan/proposal4', $data);
             $this->load->view('template/footer');
+        } else {
+            $this->data_model->insertjadwal();
+            redirect('pengajuan/proposal4/' . $id);
         }
     }
     public function lpj1()
