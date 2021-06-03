@@ -20,6 +20,11 @@
                             <input type="text" class="form-control" name="id_rak" value="<?= $rak["id"] ?>" hidden>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="id_pengguna" value="<?= $pengguna["id"] ?>" hidden>
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
                     <div class="form-group row">
@@ -68,8 +73,7 @@
             <?php endforeach; ?>
             </table>
             <div class="text-right">
-                <a href="<?= base_url('pengajuan/proposal1/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Kembali</a>
-                <a href="<?= base_url('pengajuan/proposal3/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Kirim</a>
+                <a href="<?= base_url('pengajuan/proposal4/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Kirim</a>
             </div>
         </form>
 

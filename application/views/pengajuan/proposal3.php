@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-body">
         <h3 class="mb-4"><?= $judul; ?></h3>
-        <form>
+        <form action="<?= base_url('pengajuan/proposal3/') ?><?= $rak['id'] ?>" method="post">
             <div class="row">
                 <div class="col">
                     <div class="form-group">

@@ -132,12 +132,13 @@ class pengajuan extends CI_Controller
         $data['menu'] = $this->data_model->menu();
         $data['title'] = "Pengajuan Poposal";
         $data['judul'] = "Lembar Kepanitiaan";
-        $data['panitia'] = $this->data_model->selectPanitia($id);
+        $data['panitia'] = $this->data_model->selectPanitia();
 
         $this->form_validation->set_rules('nama_panitia', 'Nama Panitia', 'required|trim');
         $this->form_validation->set_rules('jabatan', 'Jabatan', 'required|trim');
         $this->form_validation->set_rules('pengajuan', 'pengajuan', 'required|trim');
         $this->form_validation->set_rules('id_rak', 'id rak', 'required|trim');
+        $this->form_validation->set_rules('id_pengguna', 'id penggun', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
@@ -170,6 +171,30 @@ class pengajuan extends CI_Controller
         $this->load->view('template/topbar');
         $this->load->view('pengajuan/proposal3', $data);
         $this->load->view('template/footer');
+    }
+    public function proposal4($id)
+    {
+
+        $data['title'] = "Pengajuan Poposal";
+        $data['judul'] = "Lembar Anggaran";
+        $data['rak'] = $this->data_model->getrakId($id);
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['menu'] = $this->data_model->menu();
+
+        $this->form_validation->set_rules('id_pengguna', 'id pengguna', 'trim|required');
+        $this->form_validation->set_rules('id_rak', 'id rak', 'trim|required');
+        $this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
+        $this->form_validation->set_rules('mulai', 'mulai', 'trim|required');
+        $this->form_validation->set_rules('selesai', 'selesai', 'trim|required');
+        $this->form_validation->set_rules('kegiatan', 'kegiatan', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar');
+            $this->load->view('pengajuan/proposal4', $data);
+            $this->load->view('template/footer');
+        }
     }
     public function lpj1()
     {

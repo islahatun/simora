@@ -58,13 +58,10 @@ class data_model extends CI_Model
     {
         $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
 
-        $id = $pengguna['id'];
+        $pengguna = $pengguna['id'];
 
 
-        $rak = "SELECT `p_rak`.*, `pengguna`.`id` 
-                  FROM `p_rak` JOIN `pengguna` 
-                  ON `p_rak`.`id_pengguna` = `pengguna`.`id`
-                  where `p_rak`.`id_pengguna`= $id";
+        $rak = "SELECT * FROM `p_rak` where `p_rak`.`id_pengguna`= $pengguna";
 
         return  $this->db->query($rak)->result_array();
     }
@@ -100,32 +97,32 @@ class data_model extends CI_Model
         ];
         $this->db->insert('profil', $data);
     }
-    public function insertArtikel()
-    {
+    // public function insertArtikel()
+    // {
 
-        die;
-        $data = [
-            'nama' => $this->input->post('nama'),
-            'judul' => $this->input->post('judul'),
-            'author' => $this->input->post('author'),
-            'foto' => $this->input->post('foto')
-        ];
+    //     die;
+    //     $data = [
+    //         'nama' => $this->input->post('nama'),
+    //         'judul' => $this->input->post('judul'),
+    //         'author' => $this->input->post('author'),
+    //         'foto' => $this->input->post('foto')
+    //     ];
 
-        $config['upload_path'] = './assets/img/artikel/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size']     = '2048';
+    //     $config['upload_path'] = './assets/img/artikel/';
+    //     $config['allowed_types'] = 'gif|jpg|png';
+    //     $config['max_size']     = '2048';
 
-        $this->load->library('upload', $config);
+    //     $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('foto')) {
-            $error = array('error' => $this->upload->display_errors());
+    //     if (!$this->upload->do_upload('foto')) {
+    //         $error = array('error' => $this->upload->display_errors());
 
-            $this->load->view('ormawa/artikel', $error);
-        } else {
-            $data = array('upload_data' => $this->upload->data());
-            $this->db->insert('artikel', $data);
-        }
-    }
+    //         $this->load->view('ormawa/artikel', $error);
+    //     } else {
+    //         $data = array('upload_data' => $this->upload->data());
+    //         $this->db->insert('artikel', $data);
+    //     }
+    // }
     public function insertPendahuluan()
     {
         $data = [
@@ -148,19 +145,18 @@ class data_model extends CI_Model
             'nama_panitia' => $this->input->post('nama_panitia'),
             'jabatan' => $this->input->post('jabatan'),
             'pengajuan' => $this->input->post('pengajuan'),
-            'id_rak' => $this->input->post('id_rak')
+            'id_rak' => $this->input->post('id_rak'),
+            'id_pengguna' => $this->input->post('id_pengguna')
         ];
 
         $this->db->insert('p_panitia', $data);
     }
     public function selectPanitia()
     {
+        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+        $pengguna = $pengguna['id'];
 
-        $panitia = "SELECT `p_panitia`.*, `p_rak`.`id` 
-                  FROM `p_panitia` JOIN `p_rak` 
-                  ON `p_panitia`.`id_rak` = `p_rak`.`id`
-                  where `p_panitia`.`id_rak`";
-
+        $panitia = "SELECT * FROM `p_panitia` where `p_panitia`.`id_pengguna` =$pengguna ";
         return  $this->db->query($panitia)->result_array();
     }
 }
