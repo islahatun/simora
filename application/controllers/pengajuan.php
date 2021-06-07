@@ -165,18 +165,38 @@ class pengajuan extends CI_Controller
         $data['rak'] = $this->data_model->getrakId($id);
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
+        $data['anggaran'] = $this->data_model->selectAnggaran();
 
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar', $data);
-        $this->load->view('template/topbar');
-        $this->load->view('pengajuan/proposal3', $data);
-        $this->load->view('template/footer');
+        $this->form_validation->set_rules('id_rak', 'id_rak', 'trim|required');
+        $this->form_validation->set_rules('id_pengguna', 'id_pengguna', 'trim|required');
+        $this->form_validation->set_rules('bagian', 'bagian', 'trim|required');
+        $this->form_validation->set_rules('barang', 'barang', 'trim|required');
+        $this->form_validation->set_rules('harga', 'harga', 'trim|required');
+        $this->form_validation->set_rules('quality', 'quality', 'trim|required');
+        $this->form_validation->set_rules('pengajuan', 'pengajuan', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar');
+            $this->load->view('pengajuan/proposal3', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->data_model->insertAnggaran();
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>anggaran berhasil ditambahkan</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button></div>');
+            redirect('pengajuan/proposal3/' . $id);
+        }
     }
     public function proposal4($id)
     {
 
         $data['title'] = "Pengajuan Poposal";
-        $data['judul'] = "Lembar Anggaran";
+        $data['judul'] = "Lembar Jadwal Kegiatan";
         $data['rak'] = $this->data_model->getrakId($id);
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();

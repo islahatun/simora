@@ -26,8 +26,8 @@ class ormawa extends CI_Controller
         $data['title'] = "Data Organisasi";
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
-        // $data['profil'] = $this->data_model->insertprofil();
-        // $data['data_ormawa'] = $this->data_model->insert_data_ormawa();
+        $data['profil'] = $this->data_model->insertprofil();
+        $data['data_ormawa'] = $this->data_model->insert_data_ormawa();
 
         $this->form_validation->set_rules('peiode', 'periode Organisasi', 'required|trim');
         $this->form_validation->set_rules('nama', 'nama Organisasi', 'required|trim');

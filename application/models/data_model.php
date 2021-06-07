@@ -181,4 +181,26 @@ class data_model extends CI_Model
         $jadwal = "SELECT * FROM `p_jadwal` where `p_jadwal`.`id_pengguna` =$pengguna ";
         return  $this->db->query($jadwal)->result_array();
     }
+    public function insertAnggaran()
+    {
+        $data = [
+            "id_rak" => $this->input->post('id_rak'),
+            "id_pengguna" => $this->input->post('id_pengguna'),
+            "pengajuan" => $this->input->post('pengajuan'),
+            "bagian" => $this->input->post('bagian'),
+            "barang" => $this->input->post('barang'),
+            "harga" => $this->input->post('harga'),
+            "quality" => $this->input->post('quality')
+        ];
+        $this->db->insert('p_anggaran', $data);
+    }
+    public function selectAnggaran()
+    {
+
+        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+        $p = $pengguna['id'];
+
+        $anggaran = "SELECT * FROM `p_anggaran` where `p_anggaran`.`id_pengguna` =$p";
+        return  $this->db->query($anggaran)->result_array();
+    }
 }

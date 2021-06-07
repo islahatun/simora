@@ -15,7 +15,7 @@
      <?php foreach ($menu as $m) : ?>
          <!-- Nav Item - Dashboard -->
          <li class="nav-item">
-             <a class="nav-link" href="<?= $m['url'] ?>">
+             <a class="nav-link" href="<?= base_url($m['url'])  ?>">
                  <i class="fas fa-fw fa-tachometer-alt"></i>
                  <span><?= $m['menu']; ?></span></a>
          </li>
