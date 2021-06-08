@@ -27,7 +27,7 @@
             <div class="col">
                 <div class="form-group row">
                     <div class="col">
-                        <input type="text" class="form-control" id="staticEmail" name="author" placeholder="Masukkan Penulis">
+                        <input type="text" class="form-control" id="staticEmail" name="author" value="<?= $pengguna['nama'] ?>">
                         <?= form_error('author', '<small class="text-danger pl-3">', ' </small>') ?>
                     </div>
                 </div>
@@ -41,10 +41,11 @@
         </div>
         <div class="form-group row">
             <div class="col-4">
-                <div class="custom-file ">
-                    <input type="file" class="custom-file-input" name="foto" id="customFile">
-                    <?= form_error('foto', '<small class="text-danger pl-3">', ' </small>') ?>
-                    <label class="custom-file-label" for="customFile">Masukkan Foto</label>
+                <div class="col">
+                    <div class="custom-file ">
+                        <input type="file" class="custom-file-input" name="foto" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
                 </div>
             </div>
         </div>

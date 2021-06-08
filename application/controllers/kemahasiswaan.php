@@ -26,7 +26,7 @@ class kemahasiswaan extends CI_Controller
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
 
-        $this->form_validation->set_rules('nama', 'Nama Pengguna', 'required|trim');
+        $this->form_validation->set_rules('nama', 'Nama Pengguna', 'required|trim|is_unique[pengguna.nama]');
         $this->form_validation->set_rules('sandi', 'Password', 'required|trim|min_length[6]|matches[sandi2]', [
             'matches' => 'Password Tidak Cocok',
             'min_length' => 'Password Harus minimal 6 Karakter'

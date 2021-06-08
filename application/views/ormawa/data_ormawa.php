@@ -64,6 +64,7 @@
                     <label for="inputidpengguna" class="col-sm-4 col-form-label">id Organisasi</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="inputidpengguna" value="<?= $pengguna['id'] ?>" name="id_pengguna">
+                        <?= form_error('id_pengguna', '<small class="text-danger pl-3">', ' </small>') ?>
                     </div>
                 </div>
             </div>

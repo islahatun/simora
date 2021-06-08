@@ -95,34 +95,45 @@ class data_model extends CI_Model
             'email' => htmlspecialchars($this->input->post('email', true)),
             'logo' => $this->input->post('logo')
         ];
-        $this->db->insert('profil', $data);
+        $this->db->insert('profile', $data);
     }
-    // public function insertArtikel()
-    // {
+    public function getprofil()
+    {
+        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
 
-    //     die;
-    //     $data = [
-    //         'nama' => $this->input->post('nama'),
-    //         'judul' => $this->input->post('judul'),
-    //         'author' => $this->input->post('author'),
-    //         'foto' => $this->input->post('foto')
-    //     ];
+        $pengguna = $pengguna['id'];
 
-    //     $config['upload_path'] = './assets/img/artikel/';
-    //     $config['allowed_types'] = 'gif|jpg|png';
-    //     $config['max_size']     = '2048';
 
-    //     $this->load->library('upload', $config);
+        $profile = "SELECT * FROM `profile` where `profile`.`id_pengguna`= $pengguna";
 
-    //     if (!$this->upload->do_upload('foto')) {
-    //         $error = array('error' => $this->upload->display_errors());
+        return  $this->db->query($profile)->result_array();
+    }
+    public function insertArtikel()
+    {
 
-    //         $this->load->view('ormawa/artikel', $error);
-    //     } else {
-    //         $data = array('upload_data' => $this->upload->data());
-    //         $this->db->insert('artikel', $data);
-    //     }
-    // }
+        die;
+        $data = [
+            'nama' => $this->input->post('nama'),
+            'judul' => $this->input->post('judul'),
+            'author' => $this->input->post('author'),
+            'foto' => $_FILES['foto']
+        ];
+
+        $config['upload_path'] = './assets/img/artikel/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size']     = '2048';
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('foto')) {
+            $error = array('error' => $this->upload->display_errors());
+
+            $this->load->view('ormawa/artikel', $error);
+        } else {
+            $data = array('upload_data' => $this->upload->data());
+            $this->db->insert('artikel', $data);
+        }
+    }
     public function insertPendahuluan()
     {
         $data = [
