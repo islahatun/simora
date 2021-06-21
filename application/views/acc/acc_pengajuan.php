@@ -22,9 +22,10 @@
                             <?php foreach ($pengajuan as $p) : ?>
                                 <tr>
                                     <th scope="row" class="text-center"><?= $i; ?></th>
-                                    <td><?= $p['ormawa']; ?></td>
+                                    <td><?= $p['id_ormawa']; ?></td>
                                     <td><?= $p['pengajuan']; ?></td>
-                                    <td class="text-center"><button class="btn btn-primary " type="submit">Cek</button></td>
+                                    <td class="text-center"><a href="<?= base_url(); ?>acc/detail_pengajuan/<?= $p['id']; ?>" class="badge badge-primary">Ubah</a>
+                                    </td>
                                     <td class="text-center">
                                         <button class="btn btn-primary" type="submit">Acc</button> |
                                         <button class="btn btn-primary" type="submit">Revisi</button>

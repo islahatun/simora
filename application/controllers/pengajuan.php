@@ -59,7 +59,7 @@ class pengajuan extends CI_Controller
         } else {
             $data = [
                 'pengajuan' => $this->input->post('pengajuan'),
-                'ormawa' => $this->input->post('ormawa'),
+                'id_ormawa' => $this->input->post('id_ormawa'),
                 'periode' => $this->input->post('periode'),
             ];
             $this->db->insert('acc', $data);

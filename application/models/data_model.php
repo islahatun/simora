@@ -258,4 +258,8 @@ class data_model extends CI_Model
     {
         return $this->db->get('acc')->result_array();
     }
+    public function getrakbyormawa()
+    {
+        $join = "SELECT pengguna.nama,pengguna.id FROM pengguna JOIN p_rak ON pengguna.id = p_rak.id_pengguna ";
+    }
 }
