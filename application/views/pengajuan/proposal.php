@@ -28,7 +28,7 @@
                                     <td><?= $r['jenis_kegiatan']; ?></td>
                                     <td><?= $r['tujuan']; ?></td>
                                     <td><?= $r['sasaran']; ?></td>
-                                    <td><?= $r['waktu']; ?></td>
+                                    <td><?= date('d F Y', strtotime($r['waktu'])); ?></td>
                                     <td><?= $r['anggaran']; ?></td>
                                     <td>
                                         <a href="<?= base_url(); ?>pengajuan/proposal1/<?= $r['id'] ?>" class="badge badge-primary">Ajukan</a>
@@ -46,7 +46,7 @@
                         <thead class="thead-dark">
                             <tr class="text-center">
                                 <th scope="col">#</th>
-                                <th scope="col">RAK</th>
+                                <th scope="col">Jenis Pengajuan</th>
                                 <th scope="col">Periode</th>
                                 <th scope="col">Cetak</th>
                             </tr>

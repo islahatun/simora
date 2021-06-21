@@ -16,6 +16,9 @@ class ormawa extends CI_Controller
         $data['title'] = "Dashboard";
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
+        $data['berita'] = $this->data_model->tampilberita();
+        $data['rak'] = $this->data_model->getallrak();
+
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/topbar', $data);
@@ -27,15 +30,10 @@ class ormawa extends CI_Controller
         $data['title'] = "Data Organisasi";
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
-        $data['ormawa'] = $this->data_model->getprofil();
 
-        $this->form_validation->set_rules('peiode', 'periode Organisasi', 'required|trim');
-        $this->form_validation->set_rules('id_pengguna', 'pengguna', 'required|trim');
-        $this->form_validation->set_rules('nama', 'nama Organisasi', 'required|trim');
         $this->form_validation->set_rules('visi', 'Visi Organisasi', 'required|trim');
         $this->form_validation->set_rules('misi', 'Misi Organisasi', 'required|trim');
-        $this->form_validation->set_rules('logo', 'logo Organisasi', 'required|trim');
-        $this->form_validation->set_rules('emial', 'E-mail Organisasi', 'required|trim');
+        $this->form_validation->set_rules('email', 'E-mail Organisasi', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
@@ -44,7 +42,16 @@ class ormawa extends CI_Controller
             $this->load->view('ormawa/data_ormawa', $data);
             $this->load->view('template/footer');
         } else {
-            $this->data_model->insertprofil();
+            $this->data_model->editprofil();
+            $this->session->set_flashdata('message', '
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Artikerl berhasil di Publish</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>');
+
+            redirect('ormawa/data_ormawa');
         }
     }
     public function artikel()

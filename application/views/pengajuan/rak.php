@@ -82,7 +82,7 @@
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-4 col-form-label"></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputPassword" name="ormawa" hidden value="">
+                            <input type="text" class="form-control" id="inputPassword" name="ormawa" hidden value="<?= $pengguna['nama'] ?>">
                             <?= form_error('ormawa', '<small class="text-danger pl-3">', ' </small>') ?>
                         </div>
                     </div>

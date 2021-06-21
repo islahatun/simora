@@ -22,7 +22,7 @@
                             <?php foreach ($pengajuan as $p) : ?>
                                 <tr>
                                     <th scope="row" class="text-center"><?= $i; ?></th>
-                                    <td><?= $p['id']; ?></td>
+                                    <td><?= $p['ormawa']; ?></td>
                                     <td><?= $p['pengajuan']; ?></td>
                                     <td class="text-center"><button class="btn btn-primary " type="submit">Cek</button></td>
                                     <td class="text-center">

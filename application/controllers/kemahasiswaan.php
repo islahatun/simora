@@ -14,10 +14,11 @@ class kemahasiswaan extends CI_Controller
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
         $data['title'] = "Dashboard";
+        $data['berita'] = $this->data_model->tampilberita();
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/topbar');
-        $this->load->view('kemahasiswaan/dashboard');
+        $this->load->view('kemahasiswaan/dashboard', $data);
         $this->load->view('template/footer');
     }
     public function pengguna()
@@ -32,11 +33,9 @@ class kemahasiswaan extends CI_Controller
             'min_length' => 'Password Harus minimal 6 Karakter'
         ]);
         $this->form_validation->set_rules('sandi2', 'Konfirmasi Password', 'required|trim|matches[sandi]');
-        // mengambil data level melalui model
+        // mengambil data level
         $data['query'] = $this->data_model->get_level();
-        if ($this->input->post('keyword')) {
-            $data['query'] = $this->data_model->caripengguna();
-        }
+
         //pengambilan data untuk combobox level pengguna
         $data['level'] = $this->db->get('level')->result_array();
 
@@ -51,7 +50,8 @@ class kemahasiswaan extends CI_Controller
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
                 'sandi' => password_hash($this->input->post('sandi'), PASSWORD_DEFAULT),
                 'level_id' => $this->input->post('level_id'),
-                'aktif' => 1
+                'aktif' => 1,
+                'logo' => 'default.jpg'
             ];
             $this->db->insert('pengguna', $data);
 
@@ -87,7 +87,7 @@ class kemahasiswaan extends CI_Controller
         $data['menu'] = $this->data_model->menu();
         $data['title'] = "Ubah Data Pengguna";
         // mengambil data level melalui model
-        $data['query'] = $this->data_model->get_level();
+        // $data['query'] = $this->data_model->get_level();
         $data['ubah'] = $this->data_model->getpenggunabyid($id);
 
         $this->form_validation->set_rules('nama', 'Nama Pengguna', 'required|trim');
@@ -109,6 +109,35 @@ class kemahasiswaan extends CI_Controller
             </div>');
 
             redirect('kemahasiswaan/pengguna');
+        }
+    }
+    public function pengumuman()
+    {
+        $data['title'] = "Pengumuman";
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['menu'] = $this->data_model->menu();
+
+        $this->form_validation->set_rules('author', 'author', 'trim|required');
+        $this->form_validation->set_rules('judul', 'judul', 'trim|required');
+        $this->form_validation->set_rules('isi', 'isi', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar');
+            $this->load->view('template/topbar');
+            $this->load->view('kemahasiswaan/berita', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->data_model->berita();
+            $this->session->set_flashdata('message', '
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Data Pengguna Berhasi diubah</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>');
+
+            redirect('kemahasiswaan');
         }
     }
 }

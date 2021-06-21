@@ -13,7 +13,8 @@ class acc extends CI_Controller
     {
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
-        $data['pengajuan'] = $this->acc_model->getPengajuan();
+        $data['pengajuan'] = $this->data_model->pengajuan();
+
         $data['title'] = "Acc Pengajuan";
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);

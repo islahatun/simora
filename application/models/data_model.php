@@ -15,15 +15,21 @@ class data_model extends CI_Model
     }
     public function get_level()
     {
-        $level = "SELECT `pengguna`.*, `level`.`level` 
-                  FROM `pengguna` JOIN `level` 
-                  ON `pengguna`.`level_id` = `level`.`id`";
-
-        return  $this->db->query($level)->result_array();
+        $level = "SELECT * FROM pengguna JOIN `level` ON pengguna.level_id = `level`.`id`";
+        return $this->db->query($level)->result_array();
     }
     public function getAllpengguna()
     {
         return $this->db->get('pengguna')->result_array();
+    }
+    public function getpengguna()
+    {
+        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+
+        $id = $pengguna['id'];
+
+
+        return $this->db->get_where('pengguna', ['id' => $id])->row_array();
     }
     public function deletepengguna($id)
     {
@@ -84,18 +90,39 @@ class data_model extends CI_Model
         return $this->db->get_where('p_rak', ['id' => $id])->row_array();
     }
 
-    public function insertprofil()
+    public function editprofil()
     {
-        $data = [
-            'id_pengguna' => $this->input->post('id_pengguna'),
-            'nama' => $this->input->post('nama'),
-            'periode' => $this->input->post('periode'),
-            'visi' => $this->input->post('visi'),
-            'misi' => $this->input->post('misi'),
-            'email' => htmlspecialchars($this->input->post('email', true)),
-            'logo' => $this->input->post('logo')
-        ];
-        $this->db->insert('profile', $data);
+        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+        $id = $pengguna['id'];
+
+        $nama = $this->input->post('nama');
+        $visi = $this->input->post('visi');
+        $misi = $this->input->post('misi');
+        $email = htmlspecialchars($this->input->post('email', true));
+        $logo = $_FILES['logo']['name'];
+        if ($logo) {
+            $config['upload_path']          = './assets/img/profil/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 2048;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('logo')) {
+                $error = array('error' => $this->upload->display_errors());
+
+                $this->load->view('upload_form', $error);
+            } else {
+
+                $new_logo = $this->upload->data('_file_name');
+                $this->db->set('logo', $new_logo);
+
+                redirect('ormawa/data_ormawa');
+            }
+        }
+        $this->db->set('nama', $nama);
+        $this->db->set('visi', $visi);
+        $this->db->set('misi', $misi);
+        $this->db->set('email', $email);
+        $this->db->where('id', $id);
+        $this->db->update('pengguna');
     }
     public function getprofil()
     {
@@ -213,5 +240,22 @@ class data_model extends CI_Model
 
         $anggaran = "SELECT * FROM `p_anggaran` where `p_anggaran`.`id_pengguna` =$p";
         return  $this->db->query($anggaran)->result_array();
+    }
+    public function berita()
+    {
+        $data = [
+            'author' => $this->input->post('author'),
+            'judul' => $this->input->post('judul'),
+            'isi' => $this->input->post('isi')
+        ];
+        $this->db->update('artikel', $data);
+    }
+    public function tampilberita()
+    {
+        return $this->db->get_where('artikel', ['author' => 'kemahasiswaan'])->row_array();
+    }
+    public function pengajuan()
+    {
+        return $this->db->get('acc')->result_array();
     }
 }
