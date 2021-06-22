@@ -12,72 +12,60 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <table class="table table-bordered">
-                        <thead class="thead-dark">
-                            <tr class="text-center">
-                                <th scope="col">#</th>
-                                <th scope="col">Jenis Kegiatan</th>
-                                <th scope="col">Tujuan</th>
-                                <th scope="col">Sasaran</th>
-                                <th scope="col">Waktu Kegiatan</th>
-                                <th scope="col">Anggaran</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $i = 1; ?>
-                            <?php $t = 0 ?>
-                            <?php foreach ($detail_rak as $r) : ?>
-                                <tr>
-                                    <th scope="row" class="text-center"><?= $i; ?></th>
-                                    <td><?= $r['jenis_kegiatan']; ?></td>
-                                    <td><?= $r['tujuan']; ?></td>
-                                    <td><?= $r['sasaran']; ?></td>
-                                    <td><?= $r['waktu']; ?></td>
-                                    <td><?= $r['anggaran']; ?></td>
+                    <form action="">
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Jenis Kegiatan</th>
+                                    <th scope="col">Tujuan</th>
+                                    <th scope="col">Sasaran</th>
+                                    <th scope="col">Waktu Kegiatan</th>
+                                    <th scope="col">Anggaran</th>
                                 </tr>
-                        </tbody>
-                        <?php $i++; ?>
-                        <?php
-                                $t += $r['anggaran'];
+                            </thead>
+                            <tbody>
+                                <?php $i = 1; ?>
+                                <?php $t = 0 ?>
+                                <?php foreach ($detail_rak as $r) : ?>
+                                    <tr>
+                                        <th scope="row" class="text-center"><?= $i; ?></th>
+                                        <td><?= $r['jenis_kegiatan']; ?></td>
+                                        <td><?= $r['tujuan']; ?></td>
+                                        <td><?= $r['sasaran']; ?></td>
+                                        <td><?= date("d F Y", strtotime($r['waktu']));; ?></td>
+                                        <td><?= $r['anggaran']; ?></td>
+                                    </tr>
+                            </tbody>
+                            <?php $i++; ?>
+                            <?php
+                                    $t += $r['anggaran'];
 
-                        ?>
-                    <?php endforeach; ?>
-                    <tr>
-                        <th scope="row" class="text-center" colspan="5">Total</th>
-                        <td><?= $t; ?></td>
-                    </tr>
-                    </table>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-dark mb-2 ">Kirim</button>
-                    </div>
-        </form>
+                            ?>
+                        <?php endforeach; ?>
+                        <tr>
+                            <th scope="row" class="text-center" colspan="5">Total</th>
+                            <td><?= $t; ?></td>
+                        </tr>
+                        </table>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="persetujuan" value="<? $pengguna['level_id'] ?>">
+                                    <?= form_error('persetujuan', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-right">
+                            <button type="submit" class="btn btn-danger mb-2" name="status" value="Revisi">Revisi</button>
+                        </span>
+                        <span>
+                            <button type="submit" class="btn btn-success mb-2" name="status" value="Acc">Acc</button>
+                        </span>
+                    </form>
 
-        <hr>
-        <form action="">
-        </form>
-        <table class="table table-bordered col-5">
-            <thead class="thead-dark">
-                <tr class="text-center">
-                    <th scope="col">#</th>
-                    <th scope="col">RAK</th>
-                    <th scope="col">Periode</th>
-                    <th scope="col">Cetak</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $i = 1; ?>
-
-                <tr>
-                    <th scope="row" class="text-center"><?= $i; ?></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-            <?php $i++; ?>
-        </table>
+                </div>
+            </div>
     </div>
-</div>
-</div>
 
-<!-- End of Main Content -->
+    <!-- End of Main Content -->

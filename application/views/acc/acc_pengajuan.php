@@ -3,7 +3,7 @@
 <!-- Page Heading -->
 <div class="card">
     <div class="card-body">
-        <h1>Pengajuan Proposal</h1>
+        <h1>Pengajuan RAK</h1>
         <form action="<?= base_url('acc/pengajuan') ?>" method="post">
             <div class="row">
                 <div class="col">
@@ -19,12 +19,12 @@
                         </thead>
                         <tbody>
                             <?php $i = 1; ?>
-                            <?php foreach ($pengajuan as $p) : ?>
+                            <?php foreach ($acc as $a) : ?>
                                 <tr>
                                     <th scope="row" class="text-center"><?= $i; ?></th>
-                                    <td><?= $p['id_ormawa']; ?></td>
-                                    <td><?= $p['pengajuan']; ?></td>
-                                    <td class="text-center"><a href="<?= base_url(); ?>acc/detail_pengajuan/<?= $p['id']; ?>" class="badge badge-primary">Ubah</a>
+                                    <td><?= $a['nama']; ?></td>
+                                    <td><?= $a['pengajuan']; ?></td>
+                                    <td class="text-center"><a href="<?= base_url(); ?>acc/detail_pengajuan/<?= $a['id']; ?>" class="badge badge-primary">Detail</a>
                                     </td>
                                     <td class="text-center">
                                         <button class="btn btn-primary" type="submit">Acc</button> |
@@ -34,31 +34,6 @@
                         </tbody>
                         <?php $i++; ?>
                     <?php endforeach; ?>
-                    </table>
-
-                    <hr>
-                    <form action="">
-                    </form>
-                    <table class="table table-bordered col-5">
-                        <thead class="thead-dark">
-                            <tr class="text-center">
-                                <th scope="col">#</th>
-                                <th scope="col">RAK</th>
-                                <th scope="col">Periode</th>
-                                <th scope="col">Cetak</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $i = 1; ?>
-
-                            <tr>
-                                <th scope="row" class="text-center"><?= $i; ?></th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <?php $i++; ?>
                     </table>
                 </div>
             </div>
