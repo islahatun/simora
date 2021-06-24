@@ -5,10 +5,11 @@
     <div class="card-body">
         <hr>
 
-        <form action="<?= base_url('pengajuan/kirimRAK') ?>" method="post">
+        <form action="<?= base_url('acc/detail_pengajuan/') ?><?= $id['id'] ?>" method="post">
             <div class="text-center">
-                <h3>Rancangan Anggaran Kegiatan </h3>
+                <h3>Rancangan Anggaran Kegiatan <?= $nama['nama'] ?> </h3>
                 <h3><?= date('Y') ?></h3>
+                <?= $this->session->flashdata('message') ?>
             </div>
             <div class="row">
                 <div class="col">
@@ -51,17 +52,22 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="persetujuan" value="<? $pengguna['level_id'] ?>">
-                                    <?= form_error('persetujuan', '<small class="text-danger pl-3">', ' </small>') ?>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_id'] ?>">
+                                    <?= form_error('acc', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="id" value="<?= $id['id'] ?>">
+                                        <?= form_error('id', '<small class="text-danger pl-3">', ' </small>') ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <span class="text-right">
-                            <button type="submit" class="btn btn-danger mb-2" name="status" value="Revisi">Revisi</button>
-                        </span>
-                        <span>
-                            <button type="submit" class="btn btn-success mb-2" name="status" value="Acc">Acc</button>
-                        </span>
+                            <span class="text-right">
+                                <button type="submit" class="btn btn-danger mb-2" name="status" value="Revisi">Revisi</button>
+                            </span>
+                            <span>
+                                <button type="submit" class="btn btn-success mb-2" name="status" value="Acc">Acc</button>
+                            </span>
                     </form>
 
                 </div>

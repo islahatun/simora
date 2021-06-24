@@ -58,7 +58,161 @@
             <button type="submit" class="btn btn-dark">Simpan</button>
         </div>
         </form>
+        <hr>
+        <form action="<?= base_url('ormawa/anggota_ormawa') ?>" method="post">
 
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">NPM</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="npm">
+                        <?= form_error('npm', '<small class="text-danger pl-3">', ' </small>') ?>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nama</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nama_anggota">
+                        <?= form_error('nama_anggota', '<small class="text-danger pl-3">', ' </small>') ?>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Jurusan</label>
+                        <input type="text" class=" form-control" id="exampleInputPassword1" name="jurusan">
+                        <?= form_error('jurusan', '<small class="text-danger pl-3">', ' </small>') ?>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Jabatan</label>
+                        <input type="text" class=" form-control" name="jabatan" id="exampleInputPassword1">
+                        <?= form_error('jabatan', '<small class="text-danger pl-3">', ' </small>') ?>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Periode</label>
+                        <input type="text" class=" form-control" name="periode" id="exampleInputPassword1">
+                        <?= form_error('periode', '<small class="text-danger pl-3">', ' </small>') ?>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <input type="text" class=" form-control" name="id_pengguna" id="exampleInputPassword1" value="<?= $pengguna['id'] ?>" hidden>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input type="text" class=" form-control" name="status" id="exampleInputPassword1" value="Aktif" hidden>
+                        <?= form_error('status', '<small class="text-danger pl-3">', ' </small>') ?>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <button type="submit" class="btn btn-dark mb-3">Simpan</button>
+            </div>
+        </form>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr class="text-center">
+                    <th scope="col">#</th>
+                    <th scope="col">NPM</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Jurusan</th>
+                    <th scope="col">Jabatan</th>
+                    <th scope="col">Periode</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $i = 1; ?>
+                <?php foreach ($anggota as $a) : ?>
+                    <tr>
+                        <th scope="row" class="text-center"><?= $i; ?></th>
+                        <td><?= $a['npm']; ?></td>
+                        <td><?= $a['nama_anggota']; ?></td>
+                        <td><?= $a['jurusan']; ?></td>
+                        <td><?= $a['jabatan'] ?></td>
+                        <td><?= $a['periode']; ?></td>
+                        <td><?= $a['status']; ?></td>
+                        <td class="text-center">
+                            <a href="<?= base_url('ormawa/edit_anggota/') ?><?= $a['id'] ?>" class="btn btn-dark" data-toggle="modal" data-target="#tambahpengguna">Ubah</a>
+                        </td>
+                    </tr>
+            </tbody>
+            <?php $i++; ?>
+        <?php endforeach; ?>
+        </table>
 
+    </div>
+</div>
+<!-- Modal tambah -->
+<div class="modal fade" id="tambahpengguna" tabindex="-1" role="dialog" aria-labelledby="tambahpenggunaLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tambahpenggunaLabel">Ubah data Anggota</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?= base_url('ormawa/edit_anggota/'); ?><?= $id_anggota['id'] ?>" method="post">
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="inputnama" class="col-sm-4 col-form-label">Nama Anggota</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputnama" name="nama_anggota" value="<?= $id_anggota['nama_anggota'] ?>">
+                            <?= form_error('nama_anggota', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputnama" class="col-sm-4 col-form-label">NPM</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputnama" name="npm" value="<?= $id_anggota['npm'] ?>">
+                            <?= form_error('npm', '<small class="text-danger pl-3">', ' </small>') ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputnama" class="col-sm-4 col-form-label">Jurusan</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputnama" name="jurusan" value="<?= $id_anggota['jurusan'] ?>">
+                            <?= form_error('jurusan', '<small class="text-danger pl-3">', ' </small>') ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputnama" class="col-sm-4 col-form-label">Jabatan</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputnama" name="jabatan" value="<?= $id_anggota['jabatan'] ?>">
+                            <?= form_error('jabatan', '<small class="text-danger pl-3">', ' </small>') ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputnama" class="col-sm-4 col-form-label">Status</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1" name="status" value="<?= $id_anggota['status'] ?>">
+                                <option>Aktif</option>
+                                <option>Alumni</option>
+                                <option>Tidak Aktif</option>
+                            </select>
+                            <?= form_error('status', '<small class="text-danger pl-3">', ' </small>') ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-7">
+                            <input class="form-check-input" id="inputnama" name="id" value="<?= $id_anggota['id'] ?>">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-dark">Tambah</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

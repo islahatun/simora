@@ -135,6 +135,41 @@ class data_model extends CI_Model
 
         return  $this->db->query($profile)->result_array();
     }
+    public function anggota()
+    {
+        $data = [
+            'nama_anggota' => $this->input->post('nama_anggota'),
+            'id_pengguna' => $this->input->post('id_pengguna'),
+            'npm' => $this->input->post('npm'),
+            'jurusan' => $this->input->post('jurusan'),
+            'jabatan' => $this->input->post('jabatan'),
+            'status' => $this->input->post('status'),
+            'periode' => $this->input->post('periode')
+        ];
+        $this->db->insert('anggota_ormawa', $data);
+    }
+    public function get_anggota()
+    {
+        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+        $id = $pengguna['id'];
+        return $this->db->get_where('anggota_ormawa', ['id_pengguna' => $id])->result_array();
+    }
+    public function getanggotabyid($id)
+    {
+        return $this->db->get_where('anggota_ormawa', ['id' => $id])->result_array();
+    }
+    public function edit_anggota($id)
+    {
+        $data = [
+            'nama_anggota' => $this->input->post('nama_anggota'),
+            'npm' => $this->input->post('npm'),
+            'jurusan' => $this->input->post('jurusan'),
+            'jabatan' => $this->input->post('jabatan'),
+            'status' => $this->input->post('status'),
+            'periode' => $this->input->post('periode')
+        ];
+        $this->db->update('anggota_ormawa', $data);
+    }
     public function insertArtikel()
     {
 

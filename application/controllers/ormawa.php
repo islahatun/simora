@@ -30,6 +30,8 @@ class ormawa extends CI_Controller
         $data['title'] = "Data Organisasi";
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
+        $data['anggota'] = $this->data_model->get_anggota();
+
 
         $this->form_validation->set_rules('visi', 'Visi Organisasi', 'required|trim');
         $this->form_validation->set_rules('misi', 'Misi Organisasi', 'required|trim');
@@ -50,6 +52,60 @@ class ormawa extends CI_Controller
             <span aria-hidden="true">&times;</span>
             </button>
             </div>');
+
+            redirect('ormawa/data_ormawa');
+        }
+    }
+    public function anggota_ormawa()
+    {
+        $data['title'] = "Data Organisasi";
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['menu'] = $this->data_model->menu();
+        $data['anggota'] = $this->data_model->get_anggota();
+
+        $this->form_validation->set_rules('npm', 'npm', 'required|trim|is_unique[anggota_ormawa.npm]');
+        $this->form_validation->set_rules('nama_anggota', 'nama_anggota', 'required|trim');
+        $this->form_validation->set_rules('jurusan', 'jurusan', 'required|trim');
+        $this->form_validation->set_rules('jabatan', 'jabatan', 'required|trim');
+        $this->form_validation->set_rules('periode', 'periode', 'required|trim');
+        $this->form_validation->set_rules('status', 'status', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar', $data);
+            $this->load->view('ormawa/data_ormawa', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->data_model->anggota();
+
+            redirect('ormawa/data_ormawa');
+        }
+    }
+
+    public function edit_anggota($id)
+    {
+        $data['title'] = "Data Organisasi";
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['menu'] = $this->data_model->menu();
+        $data['anggota'] = $this->data_model->get_anggota();
+        $data['id_anggota'] = $this->data_model->getanggotabyid($id);
+
+        $this->form_validation->set_rules('npm', 'npm', 'required|trim|is_unique[anggota_ormawa.npm]');
+        $this->form_validation->set_rules('nama_anggota', 'nama_anggota', 'required|trim');
+        $this->form_validation->set_rules('jurusan', 'jurusan', 'required|trim');
+        $this->form_validation->set_rules('jabatan', 'jabatan', 'required|trim');
+        $this->form_validation->set_rules('periode', 'periode', 'required|trim');
+        $this->form_validation->set_rules('status', 'status', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar', $data);
+            $this->load->view('ormawa/data_ormawa', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->data_model->anggota();
 
             redirect('ormawa/data_ormawa');
         }

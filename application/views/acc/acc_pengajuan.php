@@ -26,10 +26,7 @@
                                     <td><?= $a['pengajuan']; ?></td>
                                     <td class="text-center"><a href="<?= base_url(); ?>acc/detail_pengajuan/<?= $a['id']; ?>" class="badge badge-primary">Detail</a>
                                     </td>
-                                    <td class="text-center">
-                                        <button class="btn btn-primary" type="submit">Acc</button> |
-                                        <button class="btn btn-primary" type="submit">Revisi</button>
-                                    </td>
+                                    <td><?= $a['status']; ?></td>
                                 </tr>
                         </tbody>
                         <?php $i++; ?>
