@@ -11,6 +11,7 @@ class acc extends CI_Controller
     }
     public function acc_pengajuan()
     {
+        $data['title'] = "Acc Pengajuan";
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
         $user =  $this->data_model->sessionpengguna();
@@ -36,8 +37,6 @@ class acc extends CI_Controller
                 }
                 break;
         }
-
-        $data['title'] = "Acc Pengajuan";
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/topbar');
@@ -102,5 +101,33 @@ class acc extends CI_Controller
 
             redirect('acc/acc_pengajuan');
         }
+    }
+    public function artikel()
+    {
+        $data['title'] = "Artikel";
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['menu'] = $this->data_model->menu();
+        $data['artikel'] = $this->acc_model->artikel();
+
+        $data['title'] = "Acc Pengajuan";
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('template/topbar');
+        $this->load->view('acc/artikel');
+        $this->load->view('template/footer');
+    }
+    public function detail_artikel($id)
+    {
+        $data['title'] = "Detail Artikel";
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['menu'] = $this->data_model->menu();
+        $data['artikel'] = $this->acc_model->artikel();
+        $data['detail'] = $this->acc_model->artikelById($id);
+        $data['title'] = "Acc Pengajuan";
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('template/topbar');
+        $this->load->view('acc/detail_acc');
+        $this->load->view('template/footer');
     }
 }

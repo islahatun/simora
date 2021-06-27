@@ -31,7 +31,7 @@
                                     <td><?= date('d F Y', strtotime($r['waktu'])); ?></td>
                                     <td><?= $r['anggaran']; ?></td>
                                     <td>
-                                        <a href="<?= base_url(); ?>pengajuan/proposal1/<?= $r['id'] ?>" class="badge badge-primary">Ajukan</a>
+                                        <a href="<?= base_url(); ?>pengajuan/proposal1/<?= $r['id'] ?>" class="badge badge-primary">Proposal</a>
                                     </td>
                                 </tr>
                         </tbody>

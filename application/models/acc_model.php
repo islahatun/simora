@@ -34,6 +34,7 @@ class acc_model extends CI_Model
 
         return $this->db->query($query)->result_array();
     }
+
     public function tampilnama($id)
     {
         $join = "SELECT *,pengguna.nama FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.id=$id";
@@ -55,5 +56,13 @@ class acc_model extends CI_Model
     public function getidacc($id)
     {
         return $this->db->get('acc', ['id' => $id])->row_array();;
+    }
+    public function artikel()
+    {
+        return $this->db->get('artikel')->result_array();
+    }
+    public function artikelById($id)
+    {
+        return $this->db->get_where('artikel', ['id' => $id])->row_array();
     }
 }

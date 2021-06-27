@@ -111,18 +111,18 @@ class data_model extends CI_Model
                 $this->load->view('upload_form', $error);
             } else {
 
-                $new_logo = $this->upload->data('_file_name');
+                $new_logo = $this->upload->data('file_name');
                 $this->db->set('logo', $new_logo);
+                $this->db->set('nama', $nama);
+                $this->db->set('visi', $visi);
+                $this->db->set('misi', $misi);
+                $this->db->set('email', $email);
+                $this->db->where('id', $id);
+                $this->db->update('pengguna');
 
                 redirect('ormawa/data_ormawa');
             }
         }
-        $this->db->set('nama', $nama);
-        $this->db->set('visi', $visi);
-        $this->db->set('misi', $misi);
-        $this->db->set('email', $email);
-        $this->db->where('id', $id);
-        $this->db->update('pengguna');
     }
     public function getprofil()
     {
@@ -173,26 +173,27 @@ class data_model extends CI_Model
     public function insertArtikel()
     {
 
-        die;
-        $data = [
-            'nama' => $this->input->post('nama'),
-            'judul' => $this->input->post('judul'),
-            'author' => $this->input->post('author'),
-            'foto' => $_FILES['foto']
-        ];
+        $logo = $_FILES['foto']['name'];
+        if ($logo) {
+            $config['upload_path']          = './assets/img/artikel/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 2048;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('foto')) {
+                $error = array('error' => $this->upload->display_errors());
 
-        $config['upload_path'] = './assets/img/artikel/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size']     = '2048';
+                $this->load->view('upload_form', $error);
+            } else {
 
-        $this->load->library('upload', $config);
+                $new_logo = $this->upload->data('file_name');
+            }
+            $data = [
+                'judul' => $this->input->post('judul'),
+                'author' => $this->input->post('author'),
+                'isi' => $this->input->post('isi'),
+                'foto' => $new_logo
+            ];
 
-        if (!$this->upload->do_upload('foto')) {
-            $error = array('error' => $this->upload->display_errors());
-
-            $this->load->view('ormawa/artikel', $error);
-        } else {
-            $data = array('upload_data' => $this->upload->data());
             $this->db->insert('artikel', $data);
         }
     }

@@ -35,7 +35,7 @@ class auth extends CI_Controller
                                 redirect('kemahasiswaan');
                                 break;
                             case 2;
-                                redirect('warek');
+                                redirect('biro_akademik');
                                 break;
                             case 6;
                                 redirect('prodi');
