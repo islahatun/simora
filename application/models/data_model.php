@@ -290,4 +290,17 @@ class data_model extends CI_Model
     {
         return $this->db->get_where('artikel', ['author' => 'kemahasiswaan'])->row_array();
     }
+    public function tampil_revisi()
+    {
+        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+        $p = $pengguna['nama'];
+
+        $r = "SELECT * FROM artikel JOIN pengguna ON author = '$p' where `status`='Revisi'";
+        return $this->db->query($r)->row_array();
+
+        // var_dump($r);
+        // die;
+        // return $this->db->get_where('artikel', ['status' => 'Revisi'])->row_array();
+        // return $this->db->get_where('artikel', ['author' => $p])->row_array();
+    }
 }

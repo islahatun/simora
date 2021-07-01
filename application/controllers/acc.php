@@ -124,10 +124,28 @@ class acc extends CI_Controller
         $data['artikel'] = $this->acc_model->artikel();
         $data['detail'] = $this->acc_model->artikelById($id);
         $data['title'] = "Acc Pengajuan";
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar', $data);
-        $this->load->view('template/topbar');
-        $this->load->view('acc/detail_acc');
-        $this->load->view('template/footer');
+
+        // $this->form_validation->set_rules('status', 'status', 'trim|required');
+        $this->form_validation->set_rules('komentar', 'komentar', 'trim|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar');
+            $this->load->view('acc/detail_acc');
+            $this->load->view('template/footer');
+        } else {
+            $this->acc_model->accartikel($id);
+
+            $this->session->set_flashdata('message', '
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Berhasil Terkirim</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>');
+
+            redirect('acc/detail_artikel/' . $id);
+        }
     }
 }

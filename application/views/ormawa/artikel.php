@@ -9,17 +9,13 @@
                 ?>
             </div>
         </div>
+        <?php $r =  $this->data_model->tampil_revisi(); ?>
         <?= form_open_multipart('ormawa/artikel'); ?>
-        <div class="form-group row">
-            <div class="col">
-                <input type="text" class="form-control" id="staticEmail" name="id" value="<?= $pengguna['nama'] ?>" readonly hidden>
-            </div>
-        </div>
         <div class="row">
             <div class="col">
                 <div class="form-group row">
                     <div class="col">
-                        <input type="text" class="form-control" id="staticEmail" name="judul" placeholder="Masukkan Judul">
+                        <input type="text" class="form-control" id="staticEmail" name="judul" placeholder="Masukkan Judul" value="<?= $r['judul'] ?>">
                         <?= form_error('judul', '<small class="text-danger pl-3">', ' </small>') ?>
                     </div>
                 </div>
@@ -49,10 +45,18 @@
                 </div>
             </div>
         </div>
-
-        <div class="text-right">
-            <button type="submit" class="btn btn-dark">Publish</button>
-        </div>
+        <?php
+        $revisi =  $this->data_model->tampil_revisi();
+        if ($revisi['status'] == 'Revisi') { ?>
+            <input type="text" class="form-control" id="staticEmail" name="author" value="<?= $revisi['id'] ?>">
+            <div class="text-right">
+                <button type="submit" class="btn btn-dark">Kirim</button>
+            </div>
+        <?php } else { ?>
+            <div class="text-right">
+                <button type="submit" class="btn btn-dark">Publish</button>
+            </div>
+        <?php } ?>
 
 
         </form>

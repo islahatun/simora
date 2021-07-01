@@ -4,27 +4,27 @@ class acc_model extends CI_Model
 {
     public function accKemahasiswaan()
     {
-        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =3"; // 3 = berdasarkan level dpm
+        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =3 ORDER BY acc.id desc"; // 3 = berdasarkan level dpm
         return $this->db->query($join)->result_array();
     }
     public function accbiro()
     {
-        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =1"; // 1 = berdasarkan level kemahasiswaan
+        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =1 ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
         return $this->db->query($join)->result_array();
     }
     public function accdpm()
     {
-        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc='RAK'";
+        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc='RAK' ORDER BY acc.id desc";
         return $this->db->query($join)->result_array();
     }
     public function accbem()
     {
-        $join = "SELECT *,pengguna.nama FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa";
+        $join = "SELECT *,pengguna.nama FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa ORDER BY acc.id desc";
         return $this->db->query($join)->result_array();
     }
     public function accbemHMJ()
     {
-        $join = "SELECT *,pengguna.nama FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =6"; // 6 = berdasarkan level kaprodi
+        $join = "SELECT *,pengguna.nama FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =6 ORDER BY acc.id desc"; // 6 = berdasarkan level kaprodi
         return $this->db->query($join)->result_array();
     }
     public function getaccbyid($id)
@@ -59,10 +59,24 @@ class acc_model extends CI_Model
     }
     public function artikel()
     {
-        return $this->db->get('artikel')->result_array();
+        $this->db->order_by('author', 'desc');
+        $query = $this->db->get('artikel');
+        return $query->result_array();
+        // return $this->db->get('artikel')->result_array();
     }
     public function artikelById($id)
     {
         return $this->db->get_where('artikel', ['id' => $id])->row_array();
+    }
+    public function accartikel($id)
+    {
+        $data = [
+            'komentar' => $this->input->post('komentar'),
+            'status' => $this->input->post('status')
+        ];
+        //    $komentar = $this->input->post('komentar');
+        //    $this->db->set('komentar',$komentar);
+        $this->db->where('id', $id);
+        $this->db->update('artikel', $data);
     }
 }
