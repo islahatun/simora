@@ -151,6 +151,7 @@
     </div>
 </div>
 <!-- Modal tambah -->
+<?php $r = $this->data_model->get_anggota(); ?>
 <div class="modal fade" id="tambahpengguna" tabindex="-1" role="dialog" aria-labelledby="tambahpenggunaLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -160,12 +161,12 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('ormawa/edit_anggota/'); ?><?= $id_anggota['id'] ?>" method="post">
+            <form action="<?= base_url('ormawa/edit_anggota/'); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group row">
                         <label for="inputnama" class="col-sm-4 col-form-label">Nama Anggota</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputnama" name="nama_anggota" value="<?= $id_anggota['nama_anggota'] ?>">
+                            <input type="text" class="form-control" id="inputnama" name="nama_anggota" value="<?= $r['nama_anggota'] ?>">
                             <?= form_error('nama_anggota', '<small class="text-danger pl-3">', ' </small>') ?>
 
                         </div>
@@ -173,28 +174,28 @@
                     <div class="form-group row">
                         <label for="inputnama" class="col-sm-4 col-form-label">NPM</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputnama" name="npm" value="<?= $id_anggota['npm'] ?>">
+                            <input type="text" class="form-control" id="inputnama" name="npm" value="">
                             <?= form_error('npm', '<small class="text-danger pl-3">', ' </small>') ?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputnama" class="col-sm-4 col-form-label">Jurusan</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputnama" name="jurusan" value="<?= $id_anggota['jurusan'] ?>">
+                            <input type="text" class="form-control" id="inputnama" name="jurusan" value="">
                             <?= form_error('jurusan', '<small class="text-danger pl-3">', ' </small>') ?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputnama" class="col-sm-4 col-form-label">Jabatan</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputnama" name="jabatan" value="<?= $id_anggota['jabatan'] ?>">
+                            <input type="text" class="form-control" id="inputnama" name="jabatan" value="">
                             <?= form_error('jabatan', '<small class="text-danger pl-3">', ' </small>') ?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputnama" class="col-sm-4 col-form-label">Status</label>
                         <div class="col-sm-8">
-                            <select class="form-control" id="exampleFormControlSelect1" name="status" value="<?= $id_anggota['status'] ?>">
+                            <select class="form-control" id="exampleFormControlSelect1" name="status" value="">
                                 <option>Aktif</option>
                                 <option>Alumni</option>
                                 <option>Tidak Aktif</option>
@@ -204,13 +205,13 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-7">
-                            <input class="form-check-input" id="inputnama" name="id" value="<?= $id_anggota['id'] ?>">
+                            <input class="form-check-input" id="inputnama" name="id" value="" hidden>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-dark">Tambah</button>
+                    <button type="submit" class="btn btn-dark">Ubah</button>
                 </div>
             </form>
         </div>

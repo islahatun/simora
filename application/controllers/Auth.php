@@ -3,6 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class auth extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('acc_model');
+    }
 
     public function index()
     {
@@ -63,5 +68,11 @@ class auth extends CI_Controller
                 redirect('auth');
             }
         }
+    }
+    public function artikel()
+    {
+        $data['title'] = "Login";
+        $data['artikel'] = $this->acc_model->tampilartikel();
+        $this->load->view('auth/login', $data);
     }
 }

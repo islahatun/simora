@@ -303,4 +303,8 @@ class data_model extends CI_Model
         // return $this->db->get_where('artikel', ['status' => 'Revisi'])->row_array();
         // return $this->db->get_where('artikel', ['author' => $p])->row_array();
     }
+    public function tampil_artikel_komentar($komentar)
+    {
+        return $this->db->get_where('artikel', ['komentar' => $komentar])->row_array();
+    }
 }

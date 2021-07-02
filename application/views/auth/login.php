@@ -69,45 +69,26 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
         <hr>
-        <h1 class="h4 text-gray-900 mb-4 text-xl-center">ARTIKEL</h1>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <?php
+        $artikel =  $this->acc_model->tampilartikel();
+        foreach ($artikel as $a) : ?>
+            <h1 class="h4 text-gray-900 mb-4 text-xl-center">ARTIKEL</h1>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card" style="width: 25rem;">
+                        <img class="card-img-top" src="<?= base_url('assets/img/artikel/') . $a['foto']; ?>" alt="Card image cap" width="30">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $a['judul']; ?></h5>
+                            <p class="card-text"><?= $a['isi']; ?></p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <?php endforeach; ?>
     </div>
 
     <!-- Bootstrap core JavaScript-->

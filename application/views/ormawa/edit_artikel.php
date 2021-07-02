@@ -9,8 +9,7 @@
                 ?>
             </div>
         </div>
-        <?php $r =  $this->data_model->tampil_revisi(); ?>
-        <?= form_open_multipart('ormawa/artikel'); ?>
+        <?= form_open_multipart('ormawa/edit_artikel/') . $revisi['komentar']; ?>
         <div class="row">
             <div class="col">
                 <div class="form-group row">
@@ -46,8 +45,9 @@
             </div>
         </div>
         <div class="text-right">
-            <button type="submit" class="btn btn-dark">Kirim</button>
+            <button type="submit" class="btn btn-dark">kirim</button>
         </div>
+
         </form>
 
 

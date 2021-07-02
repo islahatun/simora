@@ -22,6 +22,10 @@
                     </span>
                     <span class="ml-3">
                         <button type="submit" value="Acc" name="status" class="btn btn-success">Acc</button>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="status" value="Acc" hidden>
+                        <?= form_error('status', '<small class="text-danger pl-3">', ' </small>') ?>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="komentar" value="Ok" hidden>
+                        <?= form_error('komentar', '<small class="text-danger pl-3">', ' </small>') ?>
                     </span>
                 </form>
             </div>
@@ -39,7 +43,6 @@
                         <div class="col-1">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="status" value="Revisi" name="status">
-
                             </div>
                         </div>
                     </div>

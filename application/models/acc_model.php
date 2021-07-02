@@ -79,4 +79,8 @@ class acc_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('artikel', $data);
     }
+    public function tampilartikel()
+    {
+        return $this->db->get_where('artikel', ['status' => 'Acc'])->result_array();
+    }
 }
