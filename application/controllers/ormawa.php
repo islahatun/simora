@@ -18,7 +18,7 @@ class ormawa extends CI_Controller
         $data['menu'] = $this->data_model->menu();
         $data['berita'] = $this->data_model->tampilberita();
         $data['rak'] = $this->data_model->getallrak();
-
+        $data['coba'] = "coba";
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/topbar', $data);
@@ -89,7 +89,7 @@ class ormawa extends CI_Controller
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
         $data['anggota'] = $this->data_model->get_anggota();
-        $data['edit_anggota'] = $this->data_model->getanggotabyid($id);
+        $data['coba'] = $this->data_model->getanggotabyid($id);
 
         $this->form_validation->set_rules('npm', 'npm', 'required|trim|is_unique[anggota_ormawa.npm]');
         $this->form_validation->set_rules('nama_anggota', 'nama_anggota', 'required|trim');
@@ -115,13 +115,13 @@ class ormawa extends CI_Controller
         $data['title'] = "Artikel";
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
-        $data['revisi '] = $this->data_model->tampil_revisi();
+        $data['revisi'] = $this->data_model->tampil_revisi();
         $r =  $this->data_model->tampil_revisi();
         $pengguna = $this->data_model->sessionpengguna();
         if ($r['status'] == 'Revisi' and $r['author'] == $pengguna['nama']) {
             $this->session->set_flashdata('message', '
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Revisi : ' . $r['komentar'] . ' <br> <a href="' . base_url('ormawa/edit_artikel/') . $r['komentar'] . '">klik Untuk memperbaiki</a></strong> 
+            <strong>Revisi : ' . $r['komentar'] . ' <br> <a href="' . base_url('ormawa/edit_artikel/') . $r['id'] . '">klik Untuk memperbaiki</a></strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -152,12 +152,13 @@ class ormawa extends CI_Controller
             redirect('ormawa/artikel');
         }
     }
-    public function edit_artikel($komentar)
+    public function edit_artikel($id)
     {
         $data['title'] = "Artikel";
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
-        $data['revisi '] = $this->data_model->tampil_revisi();
+        $data['revisi'] = $this->data_model->tampil_revisi();
+        $data['tampil'] = $this->data_model->tampil_artikel_komentar($id);
 
         $this->form_validation->set_rules('judul', 'Judul', 'trim|required');
         $this->form_validation->set_rules('author', 'author', 'trim|required');
@@ -171,7 +172,7 @@ class ormawa extends CI_Controller
             $this->load->view('template/footer');
         } else {
 
-            $this->data_model->insertArtikel();
+
 
             $this->session->set_flashdata('message', '
             <div class="alert alert-primary alert-dismissible fade show" role="alert">

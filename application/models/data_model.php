@@ -156,7 +156,9 @@ class data_model extends CI_Model
     }
     public function getanggotabyid($id)
     {
-        return $this->db->get_where('anggota_ormawa', ['id' => $id])->result_array();
+        return $this->db->get_where('anggota_ormawa', ['id' => $id])->result();
+        // var_dump($r);
+        // die;
     }
     public function edit_anggota($id)
     {
@@ -168,6 +170,7 @@ class data_model extends CI_Model
             'status' => $this->input->post('status'),
             'periode' => $this->input->post('periode')
         ];
+        $this->db->where('id', $id);
         $this->db->update('anggota_ormawa', $data);
     }
     public function insertArtikel()
@@ -303,8 +306,18 @@ class data_model extends CI_Model
         // return $this->db->get_where('artikel', ['status' => 'Revisi'])->row_array();
         // return $this->db->get_where('artikel', ['author' => $p])->row_array();
     }
-    public function tampil_artikel_komentar($komentar)
+    public function tampil_artikel_komentar($id)
     {
-        return $this->db->get_where('artikel', ['komentar' => $komentar])->row_array();
+        return $this->db->get_where('artikel', ['id' => $id])->row();
+
+        // var_dump($r);
+        // die;
+    }
+    public function tampil_artikleById($id)
+    {
+        $tampil = "SELECT * FROM artikel WHERE id = $id";
+        return $this->db->query($tampil)->row();
+        var_dump($tampil);
+        die;
     }
 }

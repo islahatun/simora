@@ -65,46 +65,67 @@
         <div class="col-4">
 
         </div>
-        <form action="">
-            <table class="table table-bordered">
-                <thead class="thead-dark">
-                    <tr class="text-center">
-                        <th scope="col">#</th>
-                        <th scope="col">Bagian</th>
-                        <th scope="col">Nama Barang</th>
-                        <th scope="col">Jumlah Barang</th>
-                        <th scope="col">Harga satuan</th>
-                        <th scope="col">Total Harga</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1; ?>
-                    <?php $t = 0 ?>
-                    <?php foreach ($anggaran as $a) : ?>
-                        <tr>
-                            <th scope="row" class="text-center"><?= $i; ?></th>
-                            <td><?= $a['bagian']; ?></td>
-                            <td><?= $a['barang']; ?></td>
-                            <td><?= $a['quality']; ?></td>
-                            <td>Rp.<?= $a['harga']; ?></td>
-                            <td>Rp. <?= $h = $a['quality']  * $a['harga']; ?> </td>
-                        </tr>
-                        <?php $i++; ?>
-                        <?php
-                        $t += $h;
-
-                        ?>
-                    <?php endforeach; ?>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr class="text-center">
+                    <th scope="col">#</th>
+                    <th scope="col">Bagian</th>
+                    <th scope="col">Nama Barang</th>
+                    <th scope="col">Jumlah Barang</th>
+                    <th scope="col">Harga satuan</th>
+                    <th scope="col">Total Harga</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $i = 1; ?>
+                <?php $t = 0 ?>
+                <?php foreach ($anggaran as $a) : ?>
                     <tr>
-                        <td colspan="5" class="text-center font-weight-bold">Total Keseluruhan</td>
-                        <td class="font-weight-bold">Rp.<?= $t; ?> </td>
+                        <th scope="row" class="text-center"><?= $i; ?></th>
+                        <td><?= $a['bagian']; ?></td>
+                        <td><?= $a['barang']; ?></td>
+                        <td><?= $a['quality']; ?></td>
+                        <td>Rp.<?= $a['harga']; ?></td>
+                        <td>Rp. <?= $h = $a['quality']  * $a['harga']; ?> </td>
                     </tr>
-                </tbody>
+                    <?php $i++; ?>
+                    <?php
+                    $t += $h;
 
-            </table>
-            <div class="text-right">
-                <button type="submit" class="btn btn-dark mb-2 ">Kirim</button>
-            </div>
+                    ?>
+                <?php endforeach; ?>
+                <tr>
+                    <td colspan="5" class="text-center font-weight-bold">Total Keseluruhan</td>
+                    <td class="font-weight-bold">Rp.<?= $t; ?> </td>
+                </tr>
+            </tbody>
+        </table>
+        <form action="">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group row">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputPassword" name="pengajuan" hidden value="proposal">
+                            <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputPassword" name="id_ormawa" hidden value="<?= $pengguna['id'] ?>">
+                            <?= form_error('id_ormawa', '<small class="text-danger pl-3">', ' </small>') ?>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group row">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputPassword" name="periode" value="<?= date('Y') ?>" hidden>
+                                <?= form_error('periode', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-dark mb-2 ">Kirim</button>
+                    </div>
         </form>
 
 

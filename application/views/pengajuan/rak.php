@@ -66,21 +66,16 @@
         <hr>
 
         <form action="<?= base_url('pengajuan/kirimRAK') ?>" method="post">
-            <div class="text-center">
-                <h3>Rancangan Anggaran Kegiatan Commputer Community</h3>
-                <h3><?= date('Y') ?></h3>
-            </div>
+
             <div class="row">
                 <div class="col">
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-4 col-form-label"></label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="inputPassword" name="pengajuan" hidden value="RAK">
                             <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-4 col-form-label"></label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="inputPassword" name="id_ormawa" hidden value="<?= $pengguna['id'] ?>">
                             <?= form_error('id_ormawa', '<small class="text-danger pl-3">', ' </small>') ?>
@@ -88,12 +83,15 @@
                     </div>
                     <div class="col">
                         <div class="form-group row">
-                            <label for="inputPassword" class="col-sm-4 col-form-label"></label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="inputPassword" name="periode" value="<?= date('Y') ?>" hidden>
                                 <?= form_error('periode', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                         </div>
+                    </div>
+                    <div class="text-center mb-3">
+                        <h3>Rancangan Anggaran Kegiatan Commputer Community</h3>
+                        <h3><?= date('Y') ?></h3>
                     </div>
                     <?= $this->session->flashdata('message'); ?>
                     <table class="table table-bordered">

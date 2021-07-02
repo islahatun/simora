@@ -71,7 +71,7 @@ class acc_model extends CI_Model
     public function accartikel($id)
     {
         $data = [
-            'komentar' => $this->input->post('komentar'),
+            'komentar' => htmlspecialchars($this->input->post('komentar')),
             'status' => $this->input->post('status')
         ];
         //    $komentar = $this->input->post('komentar');

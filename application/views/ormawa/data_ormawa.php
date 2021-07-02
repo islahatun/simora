@@ -4,7 +4,6 @@
 <div class="card">
     <div class="card-body">
         <div class="text-center mb-4">
-            <h3>Data Organisasi</h3>
         </div>
         <?= form_open_multipart('ormawa/data_ormawa'); ?>
         <?= $this->session->flashdata('message') ?>
@@ -140,7 +139,7 @@
                         <td><?= $a['periode']; ?></td>
                         <td><?= $a['status']; ?></td>
                         <td class="text-center">
-                            <a href="<?= base_url('ormawa/edit_anggota/') ?><?= $a['id'] ?>" class="btn btn-dark" data-toggle="modal" data-target="#tambahpengguna">Ubah</a>
+                            <a href="<?= base_url('ormawa/edit_anggota/') ?><?= $a['id'] ?>" class="btn btn-dark" data-toggle="modal" data-target="#tambahpengguna<?= $a['id'] ?>">Ubah</a>
                         </td>
                     </tr>
             </tbody>
@@ -150,70 +149,78 @@
 
     </div>
 </div>
-<!-- Modal tambah -->
-<?php $r = $this->data_model->get_anggota(); ?>
-<div class="modal fade" id="tambahpengguna" tabindex="-1" role="dialog" aria-labelledby="tambahpenggunaLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="tambahpenggunaLabel">Ubah data Anggota</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="<?= base_url('ormawa/edit_anggota/'); ?>" method="post">
-                <div class="modal-body">
-                    <div class="form-group row">
-                        <label for="inputnama" class="col-sm-4 col-form-label">Nama Anggota</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputnama" name="nama_anggota" value="<?= $r['nama_anggota'] ?>">
-                            <?= form_error('nama_anggota', '<small class="text-danger pl-3">', ' </small>') ?>
 
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputnama" class="col-sm-4 col-form-label">NPM</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputnama" name="npm" value="">
-                            <?= form_error('npm', '<small class="text-danger pl-3">', ' </small>') ?>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputnama" class="col-sm-4 col-form-label">Jurusan</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputnama" name="jurusan" value="">
-                            <?= form_error('jurusan', '<small class="text-danger pl-3">', ' </small>') ?>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputnama" class="col-sm-4 col-form-label">Jabatan</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputnama" name="jabatan" value="">
-                            <?= form_error('jabatan', '<small class="text-danger pl-3">', ' </small>') ?>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputnama" class="col-sm-4 col-form-label">Status</label>
-                        <div class="col-sm-8">
-                            <select class="form-control" id="exampleFormControlSelect1" name="status" value="">
-                                <option>Aktif</option>
-                                <option>Alumni</option>
-                                <option>Tidak Aktif</option>
-                            </select>
-                            <?= form_error('status', '<small class="text-danger pl-3">', ' </small>') ?>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-7">
-                            <input class="form-check-input" id="inputnama" name="id" value="" hidden>
-                        </div>
-                    </div>
+<!-- Modal edit -->
+<?php
+$coba = $this->db->get('anggota_ormawa')->result_array();
+foreach ($coba as $c) :
+?>
+
+
+    <div class="modal fade" id="tambahpengguna<?= $c['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="tambahpenggunaLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambahpenggunaLabel">Ubah data Anggota</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-dark">Ubah</button>
-                </div>
-            </form>
+                <form action="<?= base_url('ormawa/edit_anggota/'); ?>" method="post">
+                    <div class="modal-body">
+
+                        <div class="form-group row">
+                            <label for="inputnama" class="col-sm-4 col-form-label">Nama Anggota</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputnama" name="nama_anggota" value="<?= $c['nama_anggota'] ?>">
+                                <?= form_error('nama_anggota', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputnama" class="col-sm-4 col-form-label">NPM</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputnama" name="npm" value="">
+                                <?= form_error('npm', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputnama" class="col-sm-4 col-form-label">Jurusan</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputnama" name="jurusan" value="">
+                                <?= form_error('jurusan', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputnama" class="col-sm-4 col-form-label">Jabatan</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputnama" name="jabatan" value="">
+                                <?= form_error('jabatan', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputnama" class="col-sm-4 col-form-label">Status</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="exampleFormControlSelect1" name="status" value="">
+                                    <option>Aktif</option>
+                                    <option>Alumni</option>
+                                    <option>Tidak Aktif</option>
+                                </select>
+                                <?= form_error('status', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-7">
+                                <input class="form-check-input" id="inputnama" name="id" value="" hidden>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark">Ubah</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+<?php endforeach; ?>

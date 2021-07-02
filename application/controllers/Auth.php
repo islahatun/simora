@@ -7,6 +7,8 @@ class auth extends CI_Controller
     {
         parent::__construct();
         $this->load->model('acc_model');
+        $this->load->model('data_model');
+        $this->load->model('data_ormawa');
     }
 
     public function index()
@@ -72,7 +74,14 @@ class auth extends CI_Controller
     public function artikel()
     {
         $data['title'] = "Login";
-        $data['artikel'] = $this->acc_model->tampilartikel();
+        $data['tampil'] = $this->acc_model->tampilartikel();
+        $this->load->view('auth/login', $data);
+    }
+    public function dtail_artikel($id)
+    {
+        $data['title'] = "Login";
+        $data['detail'] = $this->data_model->tampil_artikleById($id);
+        $data['d'] = $this->data_ormawa->tampil_artikleById($id);
         $this->load->view('auth/login', $data);
     }
 }

@@ -14,7 +14,7 @@
             <div class="col">
                 <div class="form-group row">
                     <div class="col">
-                        <input type="text" class="form-control" id="staticEmail" name="judul" placeholder="Masukkan Judul" value="<?= $r['judul'] ?>">
+                        <input type="text" class="form-control" id="staticEmail" name="judul" placeholder="Masukkan Judul" value="<?= $tampil['judul'] ?>">
                         <?= form_error('judul', '<small class="text-danger pl-3">', ' </small>') ?>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
             <div class="col">
                 <div class="form-group row">
                     <div class="col">
-                        <input type="text" class="form-control" id="staticEmail" name="author" value="<?= $pengguna['nama'] ?>">
+                        <input type="text" class="form-control" id="staticEmail" name="author" value="<?= $tampil['nama'] ?>">
                         <?= form_error('author', '<small class="text-danger pl-3">', ' </small>') ?>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
         </div>
         <div class="form-group row">
             <div class="col">
-                <textarea class="ckeditor" id="ckeditor" rows="6" name="isi"></textarea>
+                <textarea class="ckeditor" id="ckeditor" rows="6" name="isi" value="<?= $tampil['isi'] ?>"></textarea>
                 <?= form_error('isi', '<small class="text-danger pl-3">', ' </small>') ?>
             </div>
         </div>

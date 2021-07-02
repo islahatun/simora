@@ -73,22 +73,44 @@
         </div>
         <hr>
         <?php
-        $artikel =  $this->acc_model->tampilartikel();
-        foreach ($artikel as $a) : ?>
+        $tampil =  $this->acc_model->tampilartikel();
+        foreach ($tampil as $a) : ?>
             <h1 class="h4 text-gray-900 mb-4 text-xl-center">ARTIKEL</h1>
             <div class="row">
                 <div class="col-sm-4">
                     <div class="card" style="width: 25rem;">
-                        <img class="card-img-top" src="<?= base_url('assets/img/artikel/') . $a['foto']; ?>" alt="Card image cap" width="30">
+                        <img class="card-img-top p-3 " src="<?= base_url('assets/img/artikel/') . $a['foto']; ?>" alt="Card image cap" style="width: 25rem;">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $a['judul']; ?></h5>
-                            <p class="card-text"><?= $a['isi']; ?></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h3 class="card-title"><?= $a['judul']; ?></h3>
+                            <h5 class="card-title"><?= $a['author']; ?></h5>
+                            <a href="<?= base_url('auth/detail_artikel/') ?><?= $a['id'] ?>" class="btn btn-primary" class="btn btn-dark" data-toggle="modal" data-target="#detail">Baca Artikel</a>
                         </div>
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
+    </div>
+
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="detailLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailLabel"><?= $detail['judul']; ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <?= $detail['isi']; ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
