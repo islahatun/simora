@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">NPM</label>
+                        <label for="exampleInputEmail1">NPM/NIDN</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="npm">
                         <?= form_error('npm', '<small class="text-danger pl-3">', ' </small>') ?>
                     </div>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Jurusan</label>
+                        <label for="exampleInputPassword1">Jurusan/Lembaga</label>
                         <input type="text" class=" form-control" id="exampleInputPassword1" name="jurusan">
                         <?= form_error('jurusan', '<small class="text-danger pl-3">', ' </small>') ?>
                     </div>
@@ -118,9 +118,9 @@
             <thead class="thead-dark">
                 <tr class="text-center">
                     <th scope="col">#</th>
-                    <th scope="col">NPM</th>
+                    <th scope="col">NPM/NIDN</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">Jurusan</th>
+                    <th scope="col">Jurusan/Lembaga</th>
                     <th scope="col">Jabatan</th>
                     <th scope="col">Periode</th>
                     <th scope="col">Status</th>
@@ -178,30 +178,36 @@ foreach ($coba as $c) :
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputnama" class="col-sm-4 col-form-label">NPM</label>
+                            <label for="inputnama" class="col-sm-4 col-form-label">NPM/NIDN</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputnama" name="npm" value="">
-                                <?= form_error('npm', '<small class="text-danger pl-3">', ' </small>') ?>
+                                <input type="text" class="form-control" id="inputnama" name="npm" value="<?= $c['npm'] ?>" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputnama" class="col-sm-4 col-form-label">Jurusan</label>
+                            <label for="inputnama" class="col-sm-4 col-form-label">Jurusan/Lembaga</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputnama" name="jurusan" value="">
+                                <input type="text" class="form-control" id="inputnama" name="jurusan" value="<?= $c['jurusan'] ?>">
                                 <?= form_error('jurusan', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputnama" class="col-sm-4 col-form-label">Jabatan</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputnama" name="jabatan" value="">
+                                <input type="text" class="form-control" id="inputnama" name="jabatan" value="<?= $c['jabatan'] ?>">
                                 <?= form_error('jabatan', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputnama" class="col-sm-4 col-form-label">Jabatan</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputnama" name="periode" value="<?= $c['periode'] ?>">
+                                <?= form_error('periode', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputnama" class="col-sm-4 col-form-label">Status</label>
                             <div class="col-sm-8">
-                                <select class="form-control" id="exampleFormControlSelect1" name="status" value="">
+                                <select class="form-control" id="exampleFormControlSelect1" name="status" value="<?= $c['status'] ?>">
                                     <option>Aktif</option>
                                     <option>Alumni</option>
                                     <option>Tidak Aktif</option>
@@ -211,7 +217,7 @@ foreach ($coba as $c) :
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-7">
-                                <input class="form-check-input" id="inputnama" name="id" value="" hidden>
+                                <input class="form-check-input" id="inputnama" name="id" value="<?= $c['id'] ?>" hidden>
                             </div>
                         </div>
                     </div>

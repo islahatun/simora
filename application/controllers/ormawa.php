@@ -83,15 +83,13 @@ class ormawa extends CI_Controller
         }
     }
 
-    public function edit_anggota($id)
+    public function edit_anggota()
     {
         $data['title'] = "Data Organisasi";
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
         $data['anggota'] = $this->data_model->get_anggota();
-        $data['coba'] = $this->data_model->getanggotabyid($id);
 
-        $this->form_validation->set_rules('npm', 'npm', 'required|trim|is_unique[anggota_ormawa.npm]');
         $this->form_validation->set_rules('nama_anggota', 'nama_anggota', 'required|trim');
         $this->form_validation->set_rules('jurusan', 'jurusan', 'required|trim');
         $this->form_validation->set_rules('jabatan', 'jabatan', 'required|trim');
@@ -105,7 +103,7 @@ class ormawa extends CI_Controller
             $this->load->view('ormawa/data_ormawa', $data);
             $this->load->view('template/footer');
         } else {
-            $this->data_model->anggota();
+            $this->data_model->edit_anggota();
 
             redirect('ormawa/data_ormawa');
         }

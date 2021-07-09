@@ -17,6 +17,7 @@
                                 <th scope="col">Waktu Kegiatan</th>
                                 <th scope="col">Anggaran</th>
                                 <th scope="col">Pengajuan</th>
+                                <th scope="col">Pengajuan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +33,9 @@
                                     <td><?= $r['anggaran']; ?></td>
                                     <td>
                                         <a href="<?= base_url(); ?>pengajuan/proposal1/<?= $r['id'] ?>" class="badge badge-primary">Proposal</a>
+                                    </td>
+                                    <td>
+                                        <a href="<?= base_url(); ?>pengajuan/lpj1/<?= $r['id'] ?>" class="badge badge-primary">LPJ</a>
                                     </td>
                                 </tr>
                         </tbody>

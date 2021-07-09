@@ -58,6 +58,7 @@ class acc extends CI_Controller
         switch ($user['level_id']) {
             case 1; //kemahasiswaan
                 $data['acc'] =  $this->acc_model->accKemahasiswaan();
+                $data['kegiatan'] =  $this->acc_model->acckegiatanKemahasiswaan();
                 break;
             case 2; //biro akademik
                 $data['acc'] =  $this->acc_model->accbiro();

@@ -17,15 +17,17 @@
 
             <div class="row mt-3 ml-3 ">
                 <form action="<?= base_url('acc/detail_artikel/') ?><?= $detail['id'] ?>" method="post">
-                    <span>
-                        <button type=" submit" name="submit" class="btn btn-danger">Revisi</button>
-                    </span>
                     <span class="ml-3">
                         <button type="submit" value="Acc" name="status" class="btn btn-success">Acc</button>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="status" value="Acc" hidden>
                         <?= form_error('status', '<small class="text-danger pl-3">', ' </small>') ?>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="komentar" value="Ok" hidden>
                         <?= form_error('komentar', '<small class="text-danger pl-3">', ' </small>') ?>
+                    </span>
+                </form>
+                <form action="" method="post">
+                    <span>
+                        <button name="submit" class="btn btn-danger ml-3">Revisi</button>
                     </span>
                 </form>
             </div>

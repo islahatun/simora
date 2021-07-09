@@ -154,17 +154,17 @@ class data_model extends CI_Model
         $id = $pengguna['id'];
         return $this->db->get_where('anggota_ormawa', ['id_pengguna' => $id])->result_array();
     }
-    public function getanggotabyid($id)
+    // public function getanggotabyid($id)
+    // {
+    //     return $this->db->get_where('anggota_ormawa', ['id' => $id])->result();
+    //     // var_dump($r);
+    //     // die;
+    // }
+    public function edit_anggota()
     {
-        return $this->db->get_where('anggota_ormawa', ['id' => $id])->result();
-        // var_dump($r);
-        // die;
-    }
-    public function edit_anggota($id)
-    {
+        $id = $this->input->post('id');
         $data = [
             'nama_anggota' => $this->input->post('nama_anggota'),
-            'npm' => $this->input->post('npm'),
             'jurusan' => $this->input->post('jurusan'),
             'jabatan' => $this->input->post('jabatan'),
             'status' => $this->input->post('status'),
@@ -204,6 +204,7 @@ class data_model extends CI_Model
     {
         $data = [
             'id_rak' => $this->input->post('id_rak'),
+            'pengajuan' => $this->input->post('pengajuan'),
             'latar_belakang' => $this->input->post('latar_belakang'),
             'tema_kegiatan' => $this->input->post('tema_kegiatan'),
             'tujuan_pelaksanaan' => $this->input->post('tujuan_pelaksanaan'),
@@ -250,14 +251,19 @@ class data_model extends CI_Model
         ];
         $this->db->insert('p_jadwal', $data);
     }
-    public function selectjadwal()
+    public function selectjadwal($id)
     {
-        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
-        $pengguna = $pengguna['id'];
 
-        $jadwal = "SELECT * FROM `p_jadwal` where `p_jadwal`.`id_pengguna` =$pengguna ";
+        $jadwal = "SELECT * FROM `p_jadwal` where `p_jadwal`.`id_rak` =$id";
         return  $this->db->query($jadwal)->result_array();
     }
+    public function selectjadwallpj($id)
+    {
+
+        $jadwal = "SELECT * FROM `p_jadwal` where `p_jadwal`.`id_RAK` =$id and pengajuan='lpj'";
+        return  $this->db->query($jadwal)->result_array();
+    }
+
     public function insertAnggaran()
     {
         $data = [
@@ -271,14 +277,84 @@ class data_model extends CI_Model
         ];
         $this->db->insert('p_anggaran', $data);
     }
-    public function selectAnggaran()
+    public function selectAnggaran($id)
     {
 
-        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
-        $p = $pengguna['id'];
-
-        $anggaran = "SELECT * FROM `p_anggaran` where `p_anggaran`.`id_pengguna` =$p";
+        $anggaran = "SELECT * FROM `p_anggaran` where `p_anggaran`.`id_rak` =$id";
         return  $this->db->query($anggaran)->result_array();
+    }
+    public function selectAnggaranlpj($id)
+    {
+
+        $anggaran = "SELECT * FROM `p_anggaran` where `p_anggaran`.`id_rak` =$id and pengajuan ='lpj'";
+        return  $this->db->query($anggaran)->result_array();
+    }
+    public function lampiran()
+    {
+        $logo1 = $_FILES['lampiran1']['name'];
+        $logo2 = $_FILES['lampiran2']['name'];
+        $logo3 = $_FILES['lampiran3']['name'];
+        if ($logo1) {
+            $config['upload_path']          = './assets/img/lampiran/';
+            $config['allowed_types']        = 'pdf|jpg|png';
+            $config['max_size']             = 2048;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('lampiran1')) {
+                $error = array('error' => $this->upload->display_errors());
+
+                $this->load->view('upload_form', $error);
+            } else {
+
+                $new_logo1 = $this->upload->data('file_name');
+            }
+        }
+        if ($logo2) {
+            $config['upload_path']          = './assets/img/lampiran/';
+            $config['allowed_types']        = 'pdf|jpg|png';
+            $config['max_size']             = 2048;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('lampiran2')) {
+                $error = array('error' => $this->upload->display_errors());
+
+                $this->load->view('upload_form', $error);
+            } else {
+
+                $new_logo2 = $this->upload->data('file_name');
+            }
+        }
+        if ($logo3) {
+            $config['upload_path']          = './assets/img/lampiran/';
+            $config['allowed_types']        = 'pdf|jpg|png';
+            $config['max_size']             = 2048;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('lampiran3')) {
+                $error = array('error' => $this->upload->display_errors());
+
+                $this->load->view('upload_form', $error);
+            } else {
+
+                $new_logo3 = $this->upload->data('file_name');
+            }
+        }
+
+        $data = [
+            'id_rak' => $this->input->post('id_rak'),
+            'id_pengguna' => $this->input->post('id_pengguna'),
+            'pengajuan' => $this->input->post('pengajuan'),
+            'lampiran1' => $new_logo1,
+            'lampiran2' => $new_logo2,
+            'lampiran3' => $new_logo3
+        ];
+        $this->db->insert('p_lampiran', $data);
+    }
+    public function pengajuan()
+    {
+        $data = [
+            'pengajuan' => $this->input->post('pengajuan'),
+            'id_ormawa' => $this->input->post('id_ormawa'),
+            'periode' => $this->input->post('periode'),
+        ];
+        $this->db->insert('acc', $data);
     }
     public function berita()
     {
@@ -319,5 +395,9 @@ class data_model extends CI_Model
         return $this->db->query($tampil)->row();
         var_dump($tampil);
         die;
+    }
+    public function pendahuluan($id)
+    {
+        return $this->db->get_where('p_proposal', ['id_rak' => $id])->row_array();
     }
 }

@@ -39,7 +39,21 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class="d-block w-100 h-100" src="<?= base_url('assets/img/tampilan/1.jpg') ?>" alt="First slide">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100 h-100" src="<?= base_url('assets/img/tampilan/2.jpg') ?>" alt="Second slide">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100 h-100" src="<?= base_url('assets/img/tampilan/3.jpg') ?>" alt="Third slide">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -74,10 +88,11 @@
         <hr>
         <?php
         $tampil =  $this->acc_model->tampilartikel();
-        foreach ($tampil as $a) : ?>
-            <h1 class="h4 text-gray-900 mb-4 text-xl-center">ARTIKEL</h1>
-            <div class="row">
-                <div class="col-sm-4">
+        ?>
+        <h1 class="h4 text-gray-900 mb-4 text-xl-center">ARTIKEL</h1>
+        <div class="row">
+            <div class="col-sm-4">
+                <?php foreach ($tampil as $a) :  ?>
                     <div class="card" style="width: 25rem;">
                         <img class="card-img-top p-3 " src="<?= base_url('assets/img/artikel/') . $a['foto']; ?>" alt="Card image cap" style="width: 25rem;">
                         <div class="card-body">
@@ -86,9 +101,9 @@
                             <a href="<?= base_url('auth/detail_artikel/') ?><?= $a['id'] ?>" class="btn btn-primary" class="btn btn-dark" data-toggle="modal" data-target="#detail">Baca Artikel</a>
                         </div>
                     </div>
-                </div>
             </div>
-        <?php endforeach; ?>
+        </div>
+    <?php endforeach; ?>
     </div>
 
     <!-- Button trigger modal -->

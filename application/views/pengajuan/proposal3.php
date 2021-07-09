@@ -100,7 +100,7 @@
                 </tr>
             </tbody>
         </table>
-        <form action="">
+        <form action="<?= base_url('pengajuan/kirim_pengajuan/') ?><?= $rak['id'] ?>" method="post">
             <div class="row">
                 <div class="col">
                     <div class="form-group row">

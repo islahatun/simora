@@ -3,9 +3,9 @@
 <!-- Page Heading -->
 <div class="card">
     <div class="card-body">
-        <h1>Pengajuan RAK</h1>
+        <h1>Pengajuan</h1>
         <form action="<?= base_url('acc/pengajuan') ?>" method="post">
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col">
                     <table class="table table-bordered">
                         <thead class="thead-dark">
@@ -34,6 +34,7 @@
                     </table>
                 </div>
             </div>
+
     </div>
 
     <!-- End of Main Content -->

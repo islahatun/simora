@@ -47,7 +47,7 @@ class pengajuan extends CI_Controller
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
 
-        $this->form_validation->set_rules('ormawa', 'ormawa', 'required|trim');
+        $this->form_validation->set_rules('id_ormawa', 'id_ormawa', 'required|trim');
         $this->form_validation->set_rules('periode', 'periode', 'required|trim');
         $this->form_validation->set_rules('pengajuan', 'pengajuan', 'required|trim');
         if ($this->form_validation->run() == false) {
@@ -130,7 +130,7 @@ class pengajuan extends CI_Controller
         $data['rak'] = $this->data_model->getrakId($id);
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
-        $data['title'] = "Pengajuan Poposal";
+        $data['title'] = "Pengajuan Kegiatan";
         $data['judul'] = "Lembar Kepanitiaan";
         $data['panitia'] = $this->data_model->selectPanitia();
 
@@ -160,12 +160,12 @@ class pengajuan extends CI_Controller
     public function proposal3($id)
     {
 
-        $data['title'] = "Pengajuan Poposal";
+        $data['title'] = "Pengajuan Kegiatan";
         $data['judul'] = "Lembar Anggaran";
         $data['rak'] = $this->data_model->getrakId($id);
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
-        $data['anggaran'] = $this->data_model->selectAnggaran();
+        $data['anggaran'] = $this->data_model->selectAnggaran($id);
 
         $this->form_validation->set_rules('id_rak', 'id_rak', 'trim|required');
         $this->form_validation->set_rules('id_pengguna', 'id_pengguna', 'trim|required');
@@ -174,6 +174,7 @@ class pengajuan extends CI_Controller
         $this->form_validation->set_rules('harga', 'harga', 'trim|required');
         $this->form_validation->set_rules('quality', 'quality', 'trim|required');
         $this->form_validation->set_rules('pengajuan', 'pengajuan', 'trim|required');
+
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
@@ -192,15 +193,45 @@ class pengajuan extends CI_Controller
             redirect('pengajuan/proposal3/' . $id);
         }
     }
-    public function proposal4($id)
+    public function kirim_pengajuan($id)
     {
 
+        $data['title'] = "Pengajuan Kegiatan";
+        $data['judul'] = "Lembar Anggaran";
+        $data['rak'] = $this->data_model->getrakId($id);
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['menu'] = $this->data_model->menu();
+        $data['anggaran'] = $this->data_model->selectAnggaran($id);
+
+        $this->form_validation->set_rules('id_ormawa', 'id_ormawa', 'required|trim');
+        $this->form_validation->set_rules('periode', 'periode', 'required|trim');
+        $this->form_validation->set_rules('pengajuan', 'pengajuan', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar');
+            $this->load->view('pengajuan/proposal3', $data);
+            $this->load->view('template/footer');
+        } else {
+
+            $this->data_model->pengajuan();
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>RAK berhasil Terkirim</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button></div>');
+            redirect('pengajuan/proposal');
+        }
+    }
+    public function proposal4($id)
+    {
         $data['title'] = "Pengajuan Poposal";
         $data['judul'] = "Lembar Jadwal Kegiatan";
         $data['rak'] = $this->data_model->getrakId($id);
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
-        $data['jadwal'] = $this->data_model->selectjadwal();
+        $data['jadwal'] = $this->data_model->selectjadwal($id);
 
         $this->form_validation->set_rules('id_pengguna', 'id pengguna', 'trim|required');
         $this->form_validation->set_rules('id_rak', 'id rak', 'trim|required');
@@ -222,58 +253,124 @@ class pengajuan extends CI_Controller
             redirect('pengajuan/proposal4/' . $id);
         }
     }
-    public function lpj1()
+    public function lpj1($id)
     {
         $data['title'] = "Pengajuan Poposal";
-        $data['judul'] = "Lembar Anggaran";
+        $data['judul'] = "Lembar Pendahuluan";
+        $data['coba'] = $this->data_model->getAllpengguna();
+        $data['rak'] = $this->data_model->getrakId($id);
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
+        $data['pendahuluan'] = $this->data_model->pendahuluan($id);
 
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar', $data);
-        $this->load->view('template/topbar');
-        $this->load->view('pengajuan/lpj1', $data);
-        $this->load->view('template/footer');
+        $this->form_validation->set_rules('id_rak', 'id RAK', 'required|trim');
+        $this->form_validation->set_rules('latar_belakang', 'Latar Belakang', 'required|trim');
+        $this->form_validation->set_rules('tema_kegiatan', 'Tema Kegiatan', 'required|trim');
+        $this->form_validation->set_rules('jam_pelaksanaan', 'Jam Pelaksanaan', 'required|trim');
+        $this->form_validation->set_rules('waktu_kegiatan', 'Jam Pelaksanaan', 'required|trim');
+        $this->form_validation->set_rules('pelaksanaan_selesai', 'Jam selesi Pelaksanaan', 'required|trim');
+        $this->form_validation->set_rules('tujuan_pelaksanaan', 'Tujuan Pelaksanaan', 'required|trim');
+        $this->form_validation->set_rules('sasaran_peserta', 'Sasaran Peserta', 'required|trim');
+        $this->form_validation->set_rules('tempat', 'Tempat Kegiatan', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar');
+            $this->load->view('pengajuan/lpj1', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->data_model->insertPendahuluan();
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Pendahuluan berhasil ditambahkan</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button></div>');
+            redirect('pengajuan/lpj2/' . $id);
+        }
     }
-    public function lpj2()
+    public function lpj2($id)
     {
-        $data['title'] = "Pengajuan Poposal";
-        $data['judul'] = "Lembar Anggaran";
+        $data['title'] = "Pengajuan Kegiatan";
+        $data['judul'] = "Lembar Jadwal Kegiatan";
+        $data['rak'] = $this->data_model->getrakId($id);
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
+        $data['jadwal'] = $this->data_model->selectjadwallpj($id);
 
+        $this->form_validation->set_rules('id_pengguna', 'id pengguna', 'trim|required');
+        $this->form_validation->set_rules('id_rak', 'id rak', 'trim|required');
+        $this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
+        $this->form_validation->set_rules('mulai', 'mulai', 'trim|required');
+        $this->form_validation->set_rules('selesai', 'selesai', 'trim|required');
+        $this->form_validation->set_rules('kegiatan', 'kegiatan', 'trim|required');
+        $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
+        $this->form_validation->set_rules('pengajuan', 'pengajuan', 'trim|required');
 
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar', $data);
-        $this->load->view('template/topbar');
-        $this->load->view('pengajuan/lpj2', $data);
-        $this->load->view('template/footer');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar');
+            $this->load->view('pengajuan/lpj2', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->data_model->insertjadwal();
+            redirect('pengajuan/lpj2/' . $id);
+        }
     }
-    public function lpj3()
+    public function lpj3($id)
     {
+
+        $data['title'] = "Pengajuan Kegiatan";
+        $data['judul'] = "Lembar Anggaran";
+        $data['rak'] = $this->data_model->getrakId($id);
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
+        $data['anggaran'] = $this->data_model->selectAnggaranlpj($id);
+
+        $this->form_validation->set_rules('id_rak', 'id_rak', 'trim|required');
+        $this->form_validation->set_rules('id_pengguna', 'id_pengguna', 'trim|required');
+        $this->form_validation->set_rules('bagian', 'bagian', 'trim|required');
+        $this->form_validation->set_rules('barang', 'barang', 'trim|required');
+        $this->form_validation->set_rules('harga', 'harga', 'trim|required');
+        $this->form_validation->set_rules('quality', 'quality', 'trim|required');
+        $this->form_validation->set_rules('pengajuan', 'pengajuan', 'trim|required');
 
 
-        $data['title'] = "Pengajuan Poposal";
-        $data['judul'] = "Lembar Anggaran";
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar');
-        $this->load->view('template/topbar');
-        $this->load->view('pengajuan/lpj3', $data);
-        $this->load->view('template/footer');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar');
+            $this->load->view('pengajuan/lpj3', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->data_model->insertAnggaran();
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>anggaran berhasil ditambahkan</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button></div>');
+            redirect('pengajuan/lpj3/' . $id);
+        }
     }
-    public function lpj4()
+    public function lpj4($id)
     {
+        $data['title'] = "Pengajuan Kegiatan";
+        $data['judul'] = "Lembar Lampiran";
+        $data['rak'] = $this->data_model->getrakId($id);
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
 
-        $data['title'] = "Pengajuan Poposal";
-        $data['judul'] = "Lembar Anggaran";
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar');
-        $this->load->view('template/topbar');
-        $this->load->view('pengajuan/lpj4', $data);
-        $this->load->view('template/footer');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar', $data);
+            $this->load->view('pengajuan/lpj4', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->data_model->lampiran();
+            redirect('pengajuan/proposal');
+        }
     }
 }
