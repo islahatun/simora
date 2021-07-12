@@ -8,6 +8,7 @@ class acc extends CI_Controller
         parent::__construct();
         $this->load->model('acc_model');
         $this->load->model('data_model');
+        $this->load->library('pdf');
     }
     public function acc_pengajuan()
     {
@@ -23,7 +24,7 @@ class acc extends CI_Controller
             case 2; //biro akademik
                 $data['acc'] =  $this->acc_model->accbiro();
                 break;
-            case 3; // depm
+            case 3; // dpm
                 $data['acc'] =  $this->acc_model->accdpm();
                 break;
             case 6; //kaprodi
@@ -58,7 +59,6 @@ class acc extends CI_Controller
         switch ($user['level_id']) {
             case 1; //kemahasiswaan
                 $data['acc'] =  $this->acc_model->accKemahasiswaan();
-                $data['kegiatan'] =  $this->acc_model->acckegiatanKemahasiswaan();
                 break;
             case 2; //biro akademik
                 $data['acc'] =  $this->acc_model->accbiro();
@@ -81,8 +81,6 @@ class acc extends CI_Controller
         $this->form_validation->set_rules('acc', 'acc', 'trim|required');
         // $this->form_validation->set_rules('status', 'status', 'trim|required');
         // $this->form_validation->set_rules('revisi', 'revisi', 'trim|required');
-
-
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = "Acc Pengajuan";
             $this->load->view('template/header', $data);
@@ -102,6 +100,25 @@ class acc extends CI_Controller
 
             redirect('acc/acc_pengajuan');
         }
+    }
+    public function pdf($id)
+    {
+        $data['nama'] = $this->acc_model->tampilnama($id);
+        //menampilkan rak berdasarkan id acc
+        $data['detail_rak'] = $this->acc_model->getaccbyid($id);
+        // menampilkan id acc
+        $data['id'] = $this->acc_model->getidacc($id);
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf->setPrintFooter(false);
+        $pdf->setPrintHeader(false);
+        $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
+        $pdf->AddPage('');
+        $pdf->Write(0, '', '', 0, 'L', true, 0, false, false, 0);
+        $pdf->SetFont('');
+
+        $tabel = $this->load->view('acc/pdf_rak', $data, true);
+        $pdf->writeHTML($tabel);
+        $pdf->Output('Simora.pdf', 'I');
     }
     public function artikel()
     {

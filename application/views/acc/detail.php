@@ -52,22 +52,17 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_id'] ?>">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_id'] ?>" hidden>
                                     <?= form_error('acc', '<small class="text-danger pl-3">', ' </small>') ?>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="id" value="<?= $id['id'] ?>">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="id" value="<?= $id['id'] ?>" hidden>
                                         <?= form_error('id', '<small class="text-danger pl-3">', ' </small>') ?>
                                     </div>
                                 </div>
                             </div>
-                            <span class="text-right">
-                                <button type="submit" class="btn btn-danger mb-2" name="status" value="Revisi">Revisi</button>
-                            </span>
-                            <span>
-                                <button type="submit" class="btn btn-success mb-2" name="status" value="Acc">Acc</button>
-                            </span>
+                            <button type="submit" class="btn btn-success mb-2" name="status" value="Acc">Acc</button>
                     </form>
 
                 </div>

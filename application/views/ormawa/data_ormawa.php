@@ -180,7 +180,8 @@ foreach ($coba as $c) :
                         <div class="form-group row">
                             <label for="inputnama" class="col-sm-4 col-form-label">NPM/NIDN</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputnama" name="npm" value="<?= $c['npm'] ?>" readonly>
+                                <input type="text" class="form-control" id="inputnama" name="npm" value="<?= $c['npm'] ?>">
+                                <?= form_error('npm', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                         </div>
                         <div class="form-group row">

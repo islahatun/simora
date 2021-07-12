@@ -65,11 +65,11 @@ class data_model extends CI_Model
         $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
 
         $pengguna = $pengguna['id'];
+        $periode = date('Y');
 
+        $rak = "SELECT * FROM `p_rak` where `p_rak`.`id_pengguna`= $pengguna and periode =$periode";
 
-        $rak = "SELECT * FROM `p_rak` where `p_rak`.`id_pengguna`= $pengguna";
-
-        return  $this->db->query($rak)->result_array();
+        return $this->db->query($rak)->result_array();
     }
     public function insertRAK()
     {
@@ -164,6 +164,7 @@ class data_model extends CI_Model
     {
         $id = $this->input->post('id');
         $data = [
+            'npm' => $this->input->post('npm'),
             'nama_anggota' => $this->input->post('nama_anggota'),
             'jurusan' => $this->input->post('jurusan'),
             'jabatan' => $this->input->post('jabatan'),
