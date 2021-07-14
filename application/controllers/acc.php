@@ -106,19 +106,32 @@ class acc extends CI_Controller
         $data['nama'] = $this->acc_model->tampilnama($id);
         //menampilkan rak berdasarkan id acc
         $data['detail_rak'] = $this->acc_model->getaccbyid($id);
+        $rak = $this->acc_model->getaccbyid($id);
         // menampilkan id acc
         $data['id'] = $this->acc_model->getidacc($id);
-        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-        $pdf->setPrintFooter(false);
-        $pdf->setPrintHeader(false);
-        $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
-        $pdf->AddPage('');
-        $pdf->Write(0, '', '', 0, 'L', true, 0, false, false, 0);
-        $pdf->SetFont('');
+        $user =  $this->data_model->sessionpengguna();
+        $rak = $this->acc_model->accKemahasiswaan();
+        foreach ($rak as $r) {
+            if ($r['pengajuan'] = 'proposal') {
+                $this->load->view('acc/pdf_proposal', $data);
+            } else if ($r['pengajuan'] = 'RAK') {
+                $this->load->view('acc/pdf_rak', $data);
+            } else {
+                $this->load->view('acc/pdf_lpj', $data);
+            }
 
-        $tabel = $this->load->view('acc/pdf_rak', $data, true);
-        $pdf->writeHTML($tabel);
-        $pdf->Output('Simora.pdf', 'I');
+            // switch ($r['pengajuan']) {
+            //     case 'RAK':
+            //         $this->load->view('acc/pdf_rak', $data);
+            //         break;
+            //     case 'proposal':
+            //         $this->load->view('acc/pdf_proposal', $data);
+            //         break;
+            //     default:
+            //         $this->load->view('acc/pdf_lpj', $data);
+            //         break;
+            // }
+        }
     }
     public function artikel()
     {
@@ -163,7 +176,7 @@ class acc extends CI_Controller
             </button>
             </div>');
 
-            redirect('acc/detail_artikel/' . $id);
+            redirect('acc/artikel');
         }
     }
 }

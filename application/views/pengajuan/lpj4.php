@@ -21,7 +21,14 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-3 col-form-label">Lampiran Absen Peserta</label>
+            <label for="staticEmail" class="col-sm-3 col-form-label">Lampiran Dokumentasi</label>
+            <div class="col-sm-3">
+                <input type="file" class="custom-file-input" name="lampiran3" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-3 col-form-label">Lampiran Kwitansi</label>
             <div class="col-sm-3">
                 <input type="file" class="custom-file-input" name="lampiran3" id="customFile">
                 <label class="custom-file-label" for="customFile">Choose file</label>

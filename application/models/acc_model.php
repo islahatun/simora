@@ -70,7 +70,7 @@ class acc_model extends CI_Model
     }
     public function artikelById($id)
     {
-        return $this->db->get_where('artikel', ['id' => $id])->row_array();
+        return $this->db->get_where('artikel', ['id_artikel' => $id])->row_array();
     }
     public function accartikel($id)
     {
@@ -80,7 +80,7 @@ class acc_model extends CI_Model
         ];
         //    $komentar = $this->input->post('komentar');
         //    $this->db->set('komentar',$komentar);
-        $this->db->where('id', $id);
+        $this->db->where('id_artikel', $id);
         $this->db->update('artikel', $data);
     }
     public function tampilartikel()

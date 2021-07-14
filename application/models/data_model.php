@@ -201,6 +201,39 @@ class data_model extends CI_Model
             $this->db->insert('artikel', $data);
         }
     }
+    public function perbaikan_artikel()
+    {
+        $logo = $_FILES['foto']['name'];
+        if ($logo) {
+            $config['upload_path']          = './assets/img/artikel/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 2048;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('foto')) {
+                $error = array('error' => $this->upload->display_errors());
+
+                $this->load->view('upload_form', $error);
+            } else {
+
+                $new_logo = $this->upload->data('file_name');
+            }
+            $id = $this->input->post('id_artikel');
+
+            $judul = $this->input->post('judul');
+            $author = $this->input->post('author');
+            $isi = $this->input->post('isi');
+            $status = 'Di Perbaiki';
+            $foto = $new_logo;
+
+            $this->db->set('judul', $judul);
+            $this->db->set('author', $author);
+            $this->db->set('isi', $isi);
+            $this->db->set('status', $status);
+            $this->db->set('foto', $foto);
+            $this->db->where('id_artikel', $id);
+            $this->db->update('artikel');
+        }
+    }
     public function insertPendahuluan()
     {
         $data = [
@@ -385,18 +418,18 @@ class data_model extends CI_Model
     }
     public function tampil_artikel_komentar($id)
     {
-        return $this->db->get_where('artikel', ['id' => $id])->row();
+
+        return $this->db->get_where('artikel', ['id_artikel' => $id])->row_array();
 
         // var_dump($r);
         // die;
     }
     public function tampil_artikleById($id)
     {
-        $tampil = "SELECT * FROM artikel WHERE id = $id";
-        return $this->db->query($tampil)->row();
-        var_dump($tampil);
-        die;
+        $tampil = "SELECT * FROM artikel WHERE id_artikel = $id";
+        return $this->db->query($tampil)->row_array();
     }
+
     public function pendahuluan($id)
     {
         return $this->db->get_where('p_proposal', ['id_rak' => $id])->row_array();

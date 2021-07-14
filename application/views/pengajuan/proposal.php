@@ -3,7 +3,8 @@
 <!-- Page Heading -->
 <div class="card">
     <div class="card-body">
-        <h1>Pengajuan Proposal</h1>
+        <h1>Pengajuan Kegiatan
+        </h1>
         <form action="<?= base_url('pengajuan/kirimRAK') ?>" method="post">
             <div class="row">
                 <div class="col">

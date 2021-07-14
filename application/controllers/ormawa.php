@@ -119,7 +119,7 @@ class ormawa extends CI_Controller
         if ($r['status'] == 'Revisi' and $r['author'] == $pengguna['nama']) {
             $this->session->set_flashdata('message', '
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Revisi : ' . $r['komentar'] . ' <br> <a href="' . base_url('ormawa/edit_artikel/') . $r['id'] . '">klik Untuk memperbaiki</a></strong> 
+            <strong>Revisi : ' . $r['komentar'] . ' <br> <a href="' . base_url('ormawa/edit_artikel/') . $r['id_artikel'] . '">klik Untuk memperbaiki</a></strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -141,7 +141,7 @@ class ormawa extends CI_Controller
 
             $this->session->set_flashdata('message', '
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Artikel berhasil di Publish</strong> 
+            <strong>Artikel berhasil di Kirim</strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -150,13 +150,13 @@ class ormawa extends CI_Controller
             redirect('ormawa/artikel');
         }
     }
-    public function edit_artikel($id)
+    public function edit_artikel()
     {
         $data['title'] = "Artikel";
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
         $data['revisi'] = $this->data_model->tampil_revisi();
-        $data['tampil'] = $this->data_model->tampil_artikel_komentar($id);
+        // $data['tampil'] = $this->data_model->tampil_artikel_komentar($id);
 
         $this->form_validation->set_rules('judul', 'Judul', 'trim|required');
         $this->form_validation->set_rules('author', 'author', 'trim|required');
@@ -170,11 +170,11 @@ class ormawa extends CI_Controller
             $this->load->view('template/footer');
         } else {
 
-
+            $this->data_model->perbaikan_artikel();
 
             $this->session->set_flashdata('message', '
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Artikel berhasil di Publish</strong> 
+            <strong>Artikel berhasil di Perbaiki</strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>

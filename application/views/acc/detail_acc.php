@@ -16,7 +16,7 @@
             </div>
 
             <div class="row mt-3 ml-3 ">
-                <form action="<?= base_url('acc/detail_artikel/') ?><?= $detail['id'] ?>" method="post">
+                <form action="<?= base_url('acc/detail_artikel/') ?><?= $detail['id_artikel'] ?>" method="post">
                     <span class="ml-3">
                         <button type="submit" value="Acc" name="status" class="btn btn-success">Acc</button>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="status" value="Acc" hidden>
@@ -34,7 +34,7 @@
 
             <?php
             if (isset($_POST['submit'])) { ?>
-                <form action="<?= base_url('acc/detail_artikel/') ?><?= $detail['id'] ?>" method="post">
+                <form action="<?= base_url('acc/detail_artikel/') ?><?= $detail['id_artikel'] ?>" method="post">
                     <div class="row mt-3">
                         <div class="col">
                             <div class="form-group">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-1">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="status" value="Revisi" name="status">
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="status" value="Revisi" name="status" hidden>
                             </div>
                         </div>
                     </div>

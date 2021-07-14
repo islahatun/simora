@@ -3,7 +3,7 @@
 <!-- Page Heading -->
 <div class="card">
     <div class="card-body">
-        <h1>Pengajuan RAK</h1>
+        <h1>Pengajuan Artikel</h1>
         <form action="<?= base_url('acc/pengajuan') ?>" method="post">
             <div class="row">
                 <div class="col">
@@ -14,7 +14,8 @@
                                 <th scope="col">Nama Organisasi</th>
                                 <th scope="col">Jenis Pengajuan</th>
                                 <th scope="col">File</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Komentar</th>
+                                <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,8 +25,9 @@
                                     <th scope="row" class="text-center"><?= $i; ?></th>
                                     <td><?= $a['author']; ?></td>
                                     <td><?= $a['judul']; ?></td>
-                                    <td class="text-center"><a href="<?= base_url(); ?>acc/detail_artikel/<?= $a['id']; ?>" class="badge badge-primary">Detail</a>
+                                    <td class="text-center"><a href="<?= base_url(); ?>acc/detail_artikel/<?= $a['id_artikel']; ?>" class="badge badge-primary">Detail</a>
                                     </td>
+                                    <td><?= $a['komentar']; ?></td>
                                     <td><?= $a['status']; ?></td>
                                 </tr>
                         </tbody>

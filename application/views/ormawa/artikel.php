@@ -15,7 +15,7 @@
             <div class="col">
                 <div class="form-group row">
                     <div class="col">
-                        <input type="text" class="form-control" id="staticEmail" name="judul" placeholder="Masukkan Judul" value="<?= $r['judul'] ?>">
+                        <input type="text" class="form-control" id="staticEmail" name="judul" placeholder="Masukkan Judul">
                         <?= form_error('judul', '<small class="text-danger pl-3">', ' </small>') ?>
                     </div>
                 </div>

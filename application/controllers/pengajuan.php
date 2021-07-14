@@ -255,7 +255,7 @@ class pengajuan extends CI_Controller
     }
     public function lpj1($id)
     {
-        $data['title'] = "Pengajuan Poposal";
+        $data['title'] = "Pengajuan Kegiatan";
         $data['judul'] = "Lembar Pendahuluan";
         $data['coba'] = $this->data_model->getAllpengguna();
         $data['rak'] = $this->data_model->getrakId($id);
