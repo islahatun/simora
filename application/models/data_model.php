@@ -323,14 +323,12 @@ class data_model extends CI_Model
         $anggaran = "SELECT * FROM `p_anggaran` where `p_anggaran`.`id_rak` =$id and pengajuan ='lpj'";
         return  $this->db->query($anggaran)->result_array();
     }
-    public function lampiran()
+    public function lampiran1()
     {
-        $logo1 = $_FILES['lampiran1']['name'];
-        $logo2 = $_FILES['lampiran2']['name'];
-        $logo3 = $_FILES['lampiran3']['name'];
-        if ($logo1) {
+        $lampiran1 = $_FILES['lampiran1']['name'];
+        if ($lampiran1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'pdf|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|png';
             $config['max_size']             = 2048;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran1')) {
@@ -339,12 +337,25 @@ class data_model extends CI_Model
                 $this->load->view('upload_form', $error);
             } else {
 
-                $new_logo1 = $this->upload->data('file_name');
+                $new_lampiran1 = $this->upload->data('file_name');
+                $data = [
+                    'id_rak' => $this->input->post('id_rak'),
+                    'id_pengguna' => $this->input->post('id_pengguna'),
+                    'pengajuan' => $this->input->post('pengajuan'),
+                    'lampiran1' => $new_lampiran1
+                ];
+
+                $this->db->insert('p_lampiran', $data);
             }
         }
-        if ($logo2) {
+    }
+    public function lampiran2()
+    {
+        $logo1 = $_FILES['lampiran2']['name'];
+
+        if ($logo1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'pdf|jpg|png';
+            $config['allowed_types']        = 'pdf';
             $config['max_size']             = 2048;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran2')) {
@@ -352,13 +363,21 @@ class data_model extends CI_Model
 
                 $this->load->view('upload_form', $error);
             } else {
-
+                $id = $this->input->post('id_rak');
                 $new_logo2 = $this->upload->data('file_name');
+                $this->db->set('lampiran2', $new_logo2);
+                $this->db->where('id', $id);
+                $this->db->update('p_lampiran');
             }
         }
-        if ($logo3) {
+    }
+    public function lampiran3()
+    {
+        $logo1 = $_FILES['lampiran3']['name'];
+
+        if ($logo1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'pdf|jpg|png';
+            $config['allowed_types']        = 'pdf';
             $config['max_size']             = 2048;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran3')) {
@@ -366,20 +385,35 @@ class data_model extends CI_Model
 
                 $this->load->view('upload_form', $error);
             } else {
-
+                $id = $this->input->post('id_rak');
                 $new_logo3 = $this->upload->data('file_name');
+                $this->db->set('lampiran3', $new_logo3);
+                $this->db->where('id', $id);
+                $this->db->update('p_lampiran');
             }
         }
+    }
+    public function lampiran4()
+    {
+        $logo1 = $_FILES['lampiran4']['name'];
 
-        $data = [
-            'id_rak' => $this->input->post('id_rak'),
-            'id_pengguna' => $this->input->post('id_pengguna'),
-            'pengajuan' => $this->input->post('pengajuan'),
-            'lampiran1' => $new_logo1,
-            'lampiran2' => $new_logo2,
-            'lampiran3' => $new_logo3
-        ];
-        $this->db->insert('p_lampiran', $data);
+        if ($logo1) {
+            $config['upload_path']          = './assets/img/lampiran/';
+            $config['allowed_types']        = 'pdf';
+            $config['max_size']             = 2048;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('lampiran4')) {
+                $error = array('error' => $this->upload->display_errors());
+
+                $this->load->view('upload_form', $error);
+            } else {
+                $id = $this->input->post('id_rak');
+                $new_logo4 = $this->upload->data('file_name');
+                $this->db->set('lampiran4', $new_logo4);
+                $this->db->where('id', $id);
+                $this->db->update('p_lampiran');
+            }
+        }
     }
     public function pengajuan()
     {

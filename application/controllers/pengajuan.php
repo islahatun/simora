@@ -369,7 +369,10 @@ class pengajuan extends CI_Controller
             $this->load->view('pengajuan/lpj4', $data);
             $this->load->view('template/footer');
         } else {
-            $this->data_model->lampiran();
+            $this->data_model->lampiran1();
+            // $this->data_model->lampiran2();
+            // $this->data_model->lampiran3();
+            // $this->data_model->lampiran4();
             redirect('pengajuan/proposal');
         }
     }
