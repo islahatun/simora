@@ -48,6 +48,7 @@ class pengajuan extends CI_Controller
         $data['menu'] = $this->data_model->menu();
 
         $this->form_validation->set_rules('id_ormawa', 'id_ormawa', 'required|trim');
+        $this->form_validation->set_rules('id_rak', 'id_rak', 'required|trim');
         $this->form_validation->set_rules('periode', 'periode', 'required|trim');
         $this->form_validation->set_rules('pengajuan', 'pengajuan', 'required|trim');
         if ($this->form_validation->run() == false) {
@@ -57,12 +58,7 @@ class pengajuan extends CI_Controller
             $this->load->view('pengajuan/rak', $data);
             $this->load->view('template/footer');
         } else {
-            $data = [
-                'pengajuan' => $this->input->post('pengajuan'),
-                'id_ormawa' => $this->input->post('id_ormawa'),
-                'periode' => $this->input->post('periode'),
-            ];
-            $this->db->insert('acc', $data);
+            $this->data_model->pengajuan();
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>RAK berhasil Terkirim</strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -206,6 +202,7 @@ class pengajuan extends CI_Controller
         $this->form_validation->set_rules('id_ormawa', 'id_ormawa', 'required|trim');
         $this->form_validation->set_rules('periode', 'periode', 'required|trim');
         $this->form_validation->set_rules('pengajuan', 'pengajuan', 'required|trim');
+        $this->form_validation->set_rules('id_rak', 'id_rak', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
@@ -362,6 +359,11 @@ class pengajuan extends CI_Controller
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
 
+        $this->form_validation->set_rules('id_rak', 'id_rak', 'trim|required');
+        $this->form_validation->set_rules('id_pengguna', 'id_pengguna', 'trim|required');
+        $this->form_validation->set_rules('pengajuan', 'pengajuan', 'trim|required');
+        $this->form_validation->set_rules('id_ormawa', 'id_ormawa', 'trim|required');
+
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar', $data);
@@ -370,9 +372,10 @@ class pengajuan extends CI_Controller
             $this->load->view('template/footer');
         } else {
             $this->data_model->lampiran1();
-            // $this->data_model->lampiran2();
-            // $this->data_model->lampiran3();
-            // $this->data_model->lampiran4();
+            $this->data_model->lampiran2();
+            $this->data_model->lampiran3();
+            $this->data_model->lampiran4();
+            $this->data_model->pengajuan();
             redirect('pengajuan/proposal');
         }
     }

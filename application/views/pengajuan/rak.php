@@ -81,6 +81,12 @@
                             <?= form_error('id_ormawa', '<small class="text-danger pl-3">', ' </small>') ?>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputPassword" name="id_rak" hidden value="<?= $pengguna['id'] ?><?= date('y') ?>">
+                            <?= form_error('id_rak', '<small class="text-danger pl-3">', ' </small>') ?>
+                        </div>
+                    </div>
                     <div class="col">
                         <div class="form-group row">
                             <div class="col-sm-8">

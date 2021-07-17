@@ -111,6 +111,12 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputPassword" name="id_rak" hidden value="<?= $rak['id'] ?>">
+                            <?= form_error('id_rak', '<small class="text-danger pl-3">', ' </small>') ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8">
                             <input type="text" class="form-control" id="inputPassword" name="id_ormawa" hidden value="<?= $pengguna['id'] ?>">
                             <?= form_error('id_ormawa', '<small class="text-danger pl-3">', ' </small>') ?>
                         </div>

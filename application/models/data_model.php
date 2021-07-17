@@ -328,7 +328,7 @@ class data_model extends CI_Model
         $lampiran1 = $_FILES['lampiran1']['name'];
         if ($lampiran1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'pdf';
             $config['max_size']             = 2048;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran1')) {
@@ -342,7 +342,10 @@ class data_model extends CI_Model
                     'id_rak' => $this->input->post('id_rak'),
                     'id_pengguna' => $this->input->post('id_pengguna'),
                     'pengajuan' => $this->input->post('pengajuan'),
-                    'lampiran1' => $new_lampiran1
+                    'lampiran1' => $new_lampiran1,
+                    // 'lampiran2' => $new_lampiran1,
+                    // 'lampiran3' => $new_lampiran1,
+                    // 'lampiran4' => $new_lampiran1
                 ];
 
                 $this->db->insert('p_lampiran', $data);
@@ -366,7 +369,7 @@ class data_model extends CI_Model
                 $id = $this->input->post('id_rak');
                 $new_logo2 = $this->upload->data('file_name');
                 $this->db->set('lampiran2', $new_logo2);
-                $this->db->where('id', $id);
+                $this->db->where('id_rak', $id);
                 $this->db->update('p_lampiran');
             }
         }
@@ -388,7 +391,7 @@ class data_model extends CI_Model
                 $id = $this->input->post('id_rak');
                 $new_logo3 = $this->upload->data('file_name');
                 $this->db->set('lampiran3', $new_logo3);
-                $this->db->where('id', $id);
+                $this->db->where('id_rak', $id);
                 $this->db->update('p_lampiran');
             }
         }
@@ -410,7 +413,7 @@ class data_model extends CI_Model
                 $id = $this->input->post('id_rak');
                 $new_logo4 = $this->upload->data('file_name');
                 $this->db->set('lampiran4', $new_logo4);
-                $this->db->where('id', $id);
+                $this->db->where('id_rak', $id);
                 $this->db->update('p_lampiran');
             }
         }
@@ -420,6 +423,7 @@ class data_model extends CI_Model
         $data = [
             'pengajuan' => $this->input->post('pengajuan'),
             'id_ormawa' => $this->input->post('id_ormawa'),
+            'id_rak' => $this->input->post('id_rak'),
             'periode' => $this->input->post('periode'),
         ];
         $this->db->insert('acc', $data);
