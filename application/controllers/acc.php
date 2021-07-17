@@ -53,6 +53,11 @@ class acc extends CI_Controller
         $data['nama'] = $this->acc_model->tampilnama($id);
         //menampilkan rak berdasarkan id acc
         $data['detail_rak'] = $this->acc_model->getaccbyid($id);
+        $data['pendahuluan'] = $this->acc_model->detail_pendahuluan($id);
+        $data['panitia'] = $this->acc_model->detail_panitia($id);
+        $data['anggaran'] = $this->acc_model->detail_anggaran($id);
+        $data['jadwal'] = $this->acc_model->detail_jadwal($id);
+        $data['lampiran'] = $this->acc_model->detail_lampiran($id);
         // menampilkan id acc
         $data['id'] = $this->acc_model->getidacc($id);
         $acc = $this->acc_model->getidacc($id);
@@ -90,13 +95,13 @@ class acc extends CI_Controller
             // $this->load->view('acc/detail');
             switch ($acc['pengajuan']) {
                 case 'RAK':
-                    $this->load->view('acc/pdf_rak', $data);
+                    $this->load->view('acc/detail_rak', $data);
                     break;
                 case 'proposal':
-                    $this->load->view('acc/pdf_proposal', $data);
+                    $this->load->view('acc/detail_proposal', $data);
                     break;
                 default:
-                    $this->load->view('acc/pdf_lpj', $data);
+                    $this->load->view('acc/detail_lpj', $data);
                     break;
             }
             $this->load->view('template/footer');

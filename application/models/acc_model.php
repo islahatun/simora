@@ -87,4 +87,29 @@ class acc_model extends CI_Model
     {
         return $this->db->get_where('artikel', ['status' => 'Acc'])->result_array();
     }
+    public function detail_pendahuluan($id)
+    {
+        $proposal = "SELECT * from p_proposal JOIN acc ON p_proposal.id_rak = acc.id_rak JOIN p_rak ON p_rak.id = p_proposal.id_rak WHERE acc.id = $id and p_proposal.pengajuan='proposal' ";
+        return $this->db->query($proposal)->result_array();
+    }
+    public function detail_panitia($id)
+    {
+        $proposal = "SELECT * from p_panitia JOIN acc ON p_panitia.id_rak = acc.id_rak WHERE acc.id = $id";
+        return $this->db->query($proposal)->result_array();
+    }
+    public function detail_anggaran($id)
+    {
+        $proposal = "SELECT * from p_anggaran JOIN acc ON p_anggaran.id_rak = acc.id_rak WHERE acc.id = $id and p_anggaran.pengajuan='proposal'";
+        return $this->db->query($proposal)->result_array();
+    }
+    public function detail_jadwal($id)
+    {
+        $proposal = "SELECT * from p_jadwal JOIN acc ON p_jadwal.id_rak = acc.id_rak WHERE acc.id = $id and p_jadwal.pengajuan='proposal'";
+        return $this->db->query($proposal)->result_array();
+    }
+    public function detail_lampiran($id)
+    {
+        $proposal = "SELECT * from p_lampiran JOIN acc ON p_lampiran.id_rak = acc.id_rak WHERE acc.id = $id and p_lampiran.pengajuan='proposal'";
+        return $this->db->query($proposal)->result_array();
+    }
 }
