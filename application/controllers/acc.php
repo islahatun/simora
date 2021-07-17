@@ -55,6 +55,7 @@ class acc extends CI_Controller
         $data['detail_rak'] = $this->acc_model->getaccbyid($id);
         // menampilkan id acc
         $data['id'] = $this->acc_model->getidacc($id);
+        $acc = $this->acc_model->getidacc($id);
         //menampilkan acc pengajuan berdasarkan level
         switch ($user['level_id']) {
             case 1; //kemahasiswaan
@@ -86,7 +87,18 @@ class acc extends CI_Controller
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar', $data);
             $this->load->view('template/topbar');
-            $this->load->view('acc/detail');
+            // $this->load->view('acc/detail');
+            switch ($acc['pengajuan']) {
+                case 'RAK':
+                    $this->load->view('acc/pdf_rak', $data);
+                    break;
+                case 'proposal':
+                    $this->load->view('acc/pdf_proposal', $data);
+                    break;
+                default:
+                    $this->load->view('acc/pdf_lpj', $data);
+                    break;
+            }
             $this->load->view('template/footer');
         } else {
             $this->acc_model->detailacc();
@@ -106,32 +118,33 @@ class acc extends CI_Controller
         $data['nama'] = $this->acc_model->tampilnama($id);
         //menampilkan rak berdasarkan id acc
         $data['detail_rak'] = $this->acc_model->getaccbyid($id);
-        $rak = $this->acc_model->getaccbyid($id);
+        $rak = $this->acc_model->getaccbyid($id); //menampilkan data berdasarkan id acc
         // menampilkan id acc
         $data['id'] = $this->acc_model->getidacc($id);
-        $user =  $this->data_model->sessionpengguna();
-        $rak = $this->acc_model->accKemahasiswaan();
-        foreach ($rak as $r) {
-            if ($r['pengajuan'] = 'proposal') {
-                $this->load->view('acc/pdf_proposal', $data);
-            } else if ($r['pengajuan'] = 'RAK') {
-                $this->load->view('acc/pdf_rak', $data);
-            } else {
-                $this->load->view('acc/pdf_lpj', $data);
-            }
+        $acc = $this->acc_model->getidacc($id);
+        // $user =  $this->data_model->sessionpengguna();
+        // $rak = $this->acc_model->accKemahasiswaan();
+        // foreach ($rak as $r) {
+        //     if ($r['pengajuan'] = 'proposal') {
+        //         $this->load->view('acc/pdf_proposal', $data);
+        //     } else if ($r['pengajuan'] = 'RAK') {
+        //         $this->load->view('acc/pdf_rak', $data);
+        //     } else {
+        //         $this->load->view('acc/pdf_lpj', $data);
+        //     }
 
-            // switch ($r['pengajuan']) {
-            //     case 'RAK':
-            //         $this->load->view('acc/pdf_rak', $data);
-            //         break;
-            //     case 'proposal':
-            //         $this->load->view('acc/pdf_proposal', $data);
-            //         break;
-            //     default:
-            //         $this->load->view('acc/pdf_lpj', $data);
-            //         break;
-            // }
+        switch ($acc['pengajuan']) {
+            case 'RAK':
+                $this->load->view('acc/pdf_rak', $data);
+                break;
+            case 'proposal':
+                $this->load->view('acc/pdf_proposal', $data);
+                break;
+            default:
+                $this->load->view('acc/pdf_lpj', $data);
+                break;
         }
+        // }
     }
     public function artikel()
     {

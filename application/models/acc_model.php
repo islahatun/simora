@@ -10,7 +10,7 @@ class acc_model extends CI_Model
 
     public function accbiro()
     {
-        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.pengajuan ='proposal' or acc.pengajuan ='lpj' AND acc.pengajuan ='lpj' and acc.acc =1 or acc.acc =2  ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.pengajuan ='proposal' or acc.pengajuan ='lpj' and acc.acc =1 or acc.acc =2  ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
         return $this->db->query($join)->result_array();
         // var_dump($n);
         // die;
@@ -59,7 +59,7 @@ class acc_model extends CI_Model
     }
     public function getidacc($id)
     {
-        return $this->db->get('acc', ['id' => $id])->row_array();;
+        return $this->db->get_where('acc', ['id' => $id])->row_array();;
     }
     public function artikel()
     {
