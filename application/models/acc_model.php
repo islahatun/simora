@@ -44,16 +44,16 @@ class acc_model extends CI_Model
         $join = "SELECT *,pengguna.nama FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.id=$id";
         return $this->db->query($join)->row_array();
     }
-    public function detailacc()
+    public function detailacc($id)
     {
-        $id = $this->input->post('id');
+
         $acc = $this->input->post('acc');
         $status = $this->input->post('status');
-        $revisi = $this->input->post('revisi');
+        $komentar = $this->input->post('komentar');
 
         $this->db->set('acc', $acc);
         $this->db->set('status', $status);
-        $this->db->set('revisi', $revisi);
+        $this->db->set('komentar', $komentar);
         $this->db->where('id', $id);
         $this->db->update('acc');
     }
@@ -94,12 +94,12 @@ class acc_model extends CI_Model
     }
     public function detail_panitia($id)
     {
-        $proposal = "SELECT * from p_panitia JOIN acc ON p_panitia.id_rak = acc.id_rak WHERE acc.id = $id";
+        $proposal = "SELECT * from p_panitia JOIN acc ON p_panitia.id_rak = acc.id_rak WHERE acc.id = $id ";
         return $this->db->query($proposal)->result_array();
     }
     public function detail_anggaran($id)
     {
-        $proposal = "SELECT * from p_anggaran JOIN acc ON p_anggaran.id_rak = acc.id_rak WHERE acc.id = $id and p_anggaran.pengajuan='proposal'";
+        $proposal = "SELECT * from p_anggaran JOIN acc ON p_anggaran.id_rak = acc.id_rak WHERE acc.id = $id and p_anggaran.pengajuan='Proposal' ";
         return $this->db->query($proposal)->result_array();
     }
     public function detail_jadwal($id)

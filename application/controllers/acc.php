@@ -83,10 +83,9 @@ class acc extends CI_Controller
                 }
                 break;
         }
-        $this->form_validation->set_rules('id', 'id', 'trim|required');
         $this->form_validation->set_rules('acc', 'acc', 'trim|required');
-        // $this->form_validation->set_rules('status', 'status', 'trim|required');
-        // $this->form_validation->set_rules('revisi', 'revisi', 'trim|required');
+        $this->form_validation->set_rules('status', 'status', 'trim|required');
+        $this->form_validation->set_rules('komentar', 'komentar', 'trim|required');
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = "Acc Pengajuan";
             $this->load->view('template/header', $data);
@@ -106,7 +105,7 @@ class acc extends CI_Controller
             }
             $this->load->view('template/footer');
         } else {
-            $this->acc_model->detailacc();
+            $this->acc_model->detailacc($id);
             $this->session->set_flashdata('message', '
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
             <strong>Berhasil Terkirim</strong> 
