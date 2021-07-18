@@ -192,7 +192,7 @@
     </div>
     <div class="row mt-3 ml-3 ">
         <form action="<?= base_url('acc/detail_pengajuan/') ?><?= $id['id'] ?>" method="post">
-            <span class="ml-3">
+            <span class="ml-3 mb-3">
                 <button type="submit" value="Acc <?= $pengguna['nama']; ?>" name="status" class="btn btn-success">Acc</button>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['id'] ?>" hidden>
                 <!-- <?= form_error('acc', '<small class="text-danger pl-3">', ' </small>') ?> -->
@@ -204,7 +204,7 @@
         </form>
         <form action="" method="post">
             <span>
-                <button name="submit" class="btn btn-danger ml-3">Revisi</button>
+                <button name="submit" class="btn btn-danger ml-3 mb-3">Revisi</button>
             </span>
         </form>
     </div>
