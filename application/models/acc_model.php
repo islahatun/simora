@@ -4,13 +4,13 @@ class acc_model extends CI_Model
 {
     public function accKemahasiswaan()
     {
-        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =1 or acc.acc=2 or acc.acc=3 OR acc.acc=7  ORDER BY acc.id desc"; // 3 = berdasarkan level dpm
+        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'or acc.pengajuan ='RAK' and acc.acc =1 or acc.acc=2 or acc.acc=3 OR acc.acc=7  ORDER BY acc.id desc"; // 3 = berdasarkan level dpm
         return $this->db->query($join)->result_array();
     }
 
     public function accbiro()
     {
-        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.pengajuan ='proposal' or acc.pengajuan ='lpj' and acc.acc =1 or acc.acc =2  ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj' and acc.acc =1 or acc.acc =2   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
         return $this->db->query($join)->result_array();
         // var_dump($n);
         // die;
@@ -92,6 +92,11 @@ class acc_model extends CI_Model
         $proposal = "SELECT * from p_proposal JOIN acc ON p_proposal.id_rak = acc.id_rak JOIN p_rak ON p_rak.id = p_proposal.id_rak WHERE acc.id = $id and p_proposal.pengajuan='proposal' ";
         return $this->db->query($proposal)->result_array();
     }
+    public function detail_pendahuluan_lpj($id)
+    {
+        $proposal = "SELECT * from p_proposal JOIN acc ON p_proposal.id_rak = acc.id_rak JOIN p_rak ON p_rak.id = p_proposal.id_rak WHERE acc.id = $id and p_proposal.pengajuan='lpj' ";
+        return $this->db->query($proposal)->result_array();
+    }
     public function detail_panitia($id)
     {
         $proposal = "SELECT * from p_panitia JOIN acc ON p_panitia.id_rak = acc.id_rak WHERE acc.id = $id ";
@@ -102,14 +107,24 @@ class acc_model extends CI_Model
         $proposal = "SELECT * from p_anggaran JOIN acc ON p_anggaran.id_rak = acc.id_rak WHERE acc.id = $id and p_anggaran.pengajuan='Proposal' ";
         return $this->db->query($proposal)->result_array();
     }
+    public function detail_anggaran_lpj($id)
+    {
+        $proposal = "SELECT * from p_anggaran JOIN acc ON p_anggaran.id_rak = acc.id_rak WHERE acc.id = $id and p_anggaran.pengajuan='lpj' ";
+        return $this->db->query($proposal)->result_array();
+    }
     public function detail_jadwal($id)
     {
         $proposal = "SELECT * from p_jadwal JOIN acc ON p_jadwal.id_rak = acc.id_rak WHERE acc.id = $id and p_jadwal.pengajuan='proposal'";
         return $this->db->query($proposal)->result_array();
     }
+    public function detail_jadwal_lpj($id)
+    {
+        $proposal = "SELECT * from p_jadwal JOIN acc ON p_jadwal.id_rak = acc.id_rak WHERE acc.id = $id and p_jadwal.pengajuan='lpj'";
+        return $this->db->query($proposal)->result_array();
+    }
     public function detail_lampiran($id)
     {
-        $proposal = "SELECT * from p_lampiran JOIN acc ON p_lampiran.id_rak = acc.id_rak WHERE acc.id = $id and p_lampiran.pengajuan='proposal'";
-        return $this->db->query($proposal)->result_array();
+        $proposal = "SELECT * from p_lampiran JOIN acc ON p_lampiran.id_rak = acc.id_rak WHERE acc.id = $id";
+        return $this->db->query($proposal)->row_array();
     }
 }

@@ -15,6 +15,7 @@
                                 <th scope="col">Jenis Pengajuan</th>
                                 <th scope="col">File</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Komentar</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -28,6 +29,7 @@
                                     <td class="text-center"><a href="<?= base_url(); ?>acc/detail_pengajuan/<?= $a['id']; ?>" class="badge badge-primary">Detail</a>
                                     </td>
                                     <td><?= $a['status']; ?></td>
+                                    <td><?= $a['komentar']; ?></td>
                                     <?php if ($a['acc'] = 1 or $a['acc'] = 2 and $a['status'] = 'Acc') { ?>
                                         <td class="text-center"><a href="<?= base_url(); ?>acc/pdf/<?= $a['id']; ?>" class="badge badge-primary">Download</a>
                                         <?php } ?>
