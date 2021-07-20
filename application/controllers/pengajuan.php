@@ -7,6 +7,7 @@ class pengajuan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('data_model');
+        $this->load->model('acc_model');
     }
 
     public function index()
@@ -75,6 +76,17 @@ class pengajuan extends CI_Controller
         $data['rak'] = $this->data_model->getallrak();
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
+        $pengguna =  $this->data_model->sessionpengguna();
+        $r = $this->data_model->tampil_revisi_kegiatan();
+        if ($r['komentar'] !== 'Ok' and $r['id_ormawa'] == $pengguna['id']) {
+            $this->session->set_flashdata('message', '
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Revisi : ' . $r['komentar'] . ' <br> <a href="' . base_url('pengajuan/edit_pengajuan/') . $r['id'] . '">klik Untuk memperbaiki</a></strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>');
+        }
 
         $this->form_validation->set_rules('id_pengguna', 'id_pengguna', 'required|trim');
 
@@ -377,6 +389,64 @@ class pengajuan extends CI_Controller
             $this->data_model->lampiran4();
             $this->data_model->pengajuan();
             redirect('pengajuan/proposal');
+        }
+    }
+    public function edit_pengajuan($id)
+    {
+        $data['title'] = "Revisi Pengajuan Kegiatan";
+        $data['rak'] = $this->data_model->getrakId($id);
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['edit'] = $this->data_model->tampil_revisi_kegiatan();
+        $data['menu'] = $this->data_model->menu();
+        $data['pendahuluan'] = $this->acc_model->detail_pendahuluan($id);
+        $data['panitia'] = $this->acc_model->detail_panitia($id);
+        $data['anggaran'] = $this->acc_model->detail_anggaran($id);
+        $data['jadwal'] = $this->acc_model->detail_jadwal($id);
+        $data['lampiran'] = $this->acc_model->detail_lampiran($id);
+        $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
+        $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
+        $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
+        $data['lampiran'] = $this->acc_model->detail_lampiran($id);
+
+        $this->form_validation->set_rules('id_rak', 'id RAK', 'required|trim');
+        $this->form_validation->set_rules('latar_belakang', 'Latar Belakang', 'required|trim');
+        $this->form_validation->set_rules('tema_kegiatan', 'Tema Kegiatan', 'required|trim');
+        $this->form_validation->set_rules('jam_pelaksanaan', 'Jam Pelaksanaan', 'required|trim');
+        $this->form_validation->set_rules('waktu_kegiatan', 'Jam Pelaksanaan', 'required|trim');
+        $this->form_validation->set_rules('pelaksanaan_selesai', 'Jam selesi Pelaksanaan', 'required|trim');
+        $this->form_validation->set_rules('tujuan_pelaksanaan', 'Tujuan Pelaksanaan', 'required|trim');
+        $this->form_validation->set_rules('sasaran_peserta', 'Sasaran Peserta', 'required|trim');
+        $this->form_validation->set_rules('tempat', 'Tempat Kegiatan', 'required|trim');
+
+        $this->form_validation->set_rules('id_pengguna', 'id pengguna', 'trim|required');
+        $this->form_validation->set_rules('id_rak', 'id rak', 'trim|required');
+        $this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
+        $this->form_validation->set_rules('mulai', 'mulai', 'trim|required');
+        $this->form_validation->set_rules('selesai', 'selesai', 'trim|required');
+        $this->form_validation->set_rules('kegiatan', 'kegiatan', 'trim|required');
+        $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
+        $this->form_validation->set_rules('pengajuan', 'pengajuan', 'trim|required');
+
+        $this->form_validation->set_rules('id_rak', 'id_rak', 'trim|required');
+        $this->form_validation->set_rules('id_pengguna', 'id_pengguna', 'trim|required');
+        $this->form_validation->set_rules('bagian', 'bagian', 'trim|required');
+        $this->form_validation->set_rules('barang', 'barang', 'trim|required');
+        $this->form_validation->set_rules('harga', 'harga', 'trim|required');
+        $this->form_validation->set_rules('quality', 'quality', 'trim|required');
+        $this->form_validation->set_rules('pengajuan', 'pengajuan', 'trim|required');
+
+        $this->form_validation->set_rules('id_rak', 'id_rak', 'trim|required');
+        $this->form_validation->set_rules('id_pengguna', 'id_pengguna', 'trim|required');
+        $this->form_validation->set_rules('pengajuan', 'pengajuan', 'trim|required');
+        $this->form_validation->set_rules('id_ormawa', 'id_ormawa', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar');
+            $this->load->view('pengajuan/edit_pengajuan');
+            $this->load->view('template/footer');
+        } else {
         }
     }
 }

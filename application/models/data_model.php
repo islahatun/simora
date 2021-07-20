@@ -454,6 +454,17 @@ class data_model extends CI_Model
         // return $this->db->get_where('artikel', ['status' => 'Revisi'])->row_array();
         // return $this->db->get_where('artikel', ['author' => $p])->row_array();
     }
+    public function tampil_revisi_kegiatan()
+    {
+
+        $r = "SELECT * FROM acc  where `status`='Revisi Kemahasiswaan' or `status`='Revisi Biro Akademik' or `status`='Revisi Ka Prodi' or `status`='Revisi BEM'  ";
+        return $this->db->query($r)->row_array();
+
+        // var_dump($r);
+        // die;
+        // return $this->db->get_where('artikel', ['status' => 'Revisi'])->row_array();
+        // return $this->db->get_where('artikel', ['author' => $p])->row_array();
+    }
     public function tampil_artikel_komentar($id)
     {
 
