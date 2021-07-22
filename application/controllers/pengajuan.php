@@ -395,10 +395,11 @@ class pengajuan extends CI_Controller
     {
         $data['title'] = "Revisi Pengajuan Kegiatan";
         $data['rak'] = $this->data_model->getrakId($id);
+        $data['acc'] = $this->acc_model->getidacc($id);
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['edit'] = $this->data_model->tampil_revisi_kegiatan();
         $data['menu'] = $this->data_model->menu();
-        $data['pendahuluan'] = $this->acc_model->detail_pendahuluan($id);
+        $data['pendahuluan'] = $this->data_model->revisi_pendahuluan($id);
         $data['panitia'] = $this->acc_model->detail_panitia($id);
         $data['anggaran'] = $this->acc_model->detail_anggaran($id);
         $data['jadwal'] = $this->acc_model->detail_jadwal($id);

@@ -25,7 +25,7 @@
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <form action="<?= base_url('pengajuan/lpj1/') ?><?= $rak['id'] ?> " method="post">
+                    <form action="<?= base_url('pengajuan/edit_pengajuan/') ?><?= $acc['id'] ?> " method="post">
                         <div class="form-group row">
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="staticEmail" value="lpj" hidden name="pengajuan">

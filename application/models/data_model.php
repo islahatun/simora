@@ -483,4 +483,11 @@ class data_model extends CI_Model
     {
         return $this->db->get_where('p_proposal', ['id_rak' => $id])->row_array();
     }
+    public function revisi_pendahuluan($id)
+    {
+        $proposal = "SELECT * from p_proposal JOIN acc ON p_proposal.id_rak = acc.id_rak JOIN p_rak ON p_rak.id = p_proposal.id_rak WHERE acc.id = $id  ";
+        return $this->db->query($proposal)->result_array();
+        // var_dump($n);
+        // die;
+    }
 }
