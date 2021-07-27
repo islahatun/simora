@@ -98,7 +98,7 @@
                         <div class="card-body">
                             <h3 class="card-title"><?= $a['judul']; ?></h3>
                             <h5 class="card-title"><?= $a['author']; ?></h5>
-                            <a href="<?= base_url('auth/detail_artikel/') ?><?= $a['id'] ?>" class="btn btn-primary" class="btn btn-dark" data-toggle="modal" data-target="#detail">Baca Artikel</a>
+                            <a href="<?= base_url('auth/detail_artikel/') ?><?= $a['id_artikel'] ?>" class="btn btn-primary" class="btn btn-dark" data-toggle="modal" data-target="#detail<?= $a['id_artikel'] ?>">Baca Artikel</a>
                         </div>
                     </div>
             </div>
@@ -107,26 +107,30 @@
     </div>
 
     <!-- Button trigger modal -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="detailLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="detailLabel"><?= $detail['judul']; ?></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <?= $detail['isi']; ?>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <?php
+    $artikel = $this->db->get('artikel')->result_array();
+    foreach ($artikel as $ar) :
+    ?>
+        <!-- Modal -->
+        <div class="modal fade" id="detail<?= $ar['id_artikel'] ?>" tabindex="-1" role="dialog" aria-labelledby="detailLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="detailLabel"><?= $ar['judul']; ?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?= $ar['isi']; ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    <?php endforeach; ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="<?= base_url('assets/') ?>vendor/jquery/jquery.min.js"></script>

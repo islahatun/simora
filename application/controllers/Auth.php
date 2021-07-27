@@ -77,7 +77,7 @@ class auth extends CI_Controller
         $data['tampil'] = $this->acc_model->tampilartikel();
         $this->load->view('auth/login', $data);
     }
-    public function dtail_artikel($id)
+    public function detail_artikel($id)
     {
         $data['title'] = "Login";
         $data['detail'] = $this->data_model->tampil_artikleById($id);
