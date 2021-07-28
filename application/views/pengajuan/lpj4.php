@@ -36,31 +36,31 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="staticEmail" value="lpj" name="pengajuan">
+                <input type="text" class="form-control" id="staticEmail" value="lpj" name="pengajuan" hidden>
                 <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="staticEmail" value="<?= $rak['id'] ?>" name="id_rak">
+                <input type="text" class="form-control" id="staticEmail" value="<?= $rak['id'] ?>" name="id_rak" hidden>
                 <?= form_error('id_rak', '<small class="text-danger pl-3">', ' </small>') ?>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="staticEmail" value="<?= $pengguna['id'] ?>" name="id_pengguna">
+                <input type="text" class="form-control" id="staticEmail" value="<?= $pengguna['id'] ?>" name="id_pengguna" hidden>
                 <?= form_error('id_pengguna', '<small class="text-danger pl-3">', ' </small>') ?>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="staticEmail" value="<?= $pengguna['id'] ?>" name="id_ormawa">
+                <input type="text" class="form-control" id="staticEmail" value="<?= $pengguna['id'] ?>" name="id_ormawa" hidden>
                 <?= form_error('id_ormawa', '<small class="text-danger pl-3">', ' </small>') ?>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="staticEmail" name="periode" value="<?= DATE('Y') ?>">
+                <input type="text" class="form-control" id="staticEmail" name="periode" value="<?= DATE('Y') ?>" hidden>
                 <?= form_error('periode', '<small class="text-danger pl-3">', ' </small>') ?>
             </div>
         </div>

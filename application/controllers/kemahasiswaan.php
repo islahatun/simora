@@ -81,21 +81,23 @@ class kemahasiswaan extends CI_Controller
 
         redirect('kemahasiswaan/pengguna');
     }
-    public function ubah_pengguna($id)
+    public function ubah_pengguna()
     {
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
         $data['title'] = "Ubah Data Pengguna";
         // mengambil data level melalui model
         // $data['query'] = $this->data_model->get_level();
-        $data['ubah'] = $this->data_model->getpenggunabyid($id);
-
+        // $data['ubah'] = $this->data_model->getpenggunabyid($id);
+        $data['ubah'] = $this->data_model->getAllpengguna();
+        $data['level'] = $this->db->get('level')->result_array();
         $this->form_validation->set_rules('nama', 'Nama Pengguna', 'required|trim');
+        // $this->form_validation->set_rules('level', 'level Pengguna', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
             $this->load->view('template/topbar');
-            $this->load->view('kemahasiswaan/ubah_pengguna', $data);
+            $this->load->view('kemahasiswaan/pengguna', $data);
             $this->load->view('template/footer');
         } else {
 

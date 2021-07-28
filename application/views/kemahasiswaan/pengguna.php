@@ -33,14 +33,16 @@
         </thead>
         <tbody>
             <?php $i = 1; ?>
-            <?php foreach ($query as $r) : ?>
+            <?php
+            $query =  $this->data_model->get_level();
+            foreach ($query as $r) : ?>
                 <tr>
                     <th scope="row" class="text-center"><?= $i; ?></th>
                     <td><?= $r['nama']; ?></td>
                     <td><?= $r['level'] ?></td>
                     <td><?= $r['aktif'] ?></td>
                     <td class="text-center">
-                        <a href="<?= base_url(); ?>kemahasiswaan/ubah_pengguna/<?= $r['id']; ?>" class="badge badge-primary">Ubah</a> |
+                        <a href="<?= base_url(); ?>kemahasiswaan/ubah_pengguna/<?= $r['id']; ?>" class="badge badge-primary" data-toggle="modal" data-target="#ubahpengguna<?= $r['id']; ?>">Ubah</a> |
                         <a href="<?= base_url(); ?>kemahasiswaan/hapus_pengguna/<?= $r['id']; ?>" class="badge badge-danger" onclick="return confirm('Apakah Anda yakin menghapus pengguna ini?')">Hapus</a>
                     </td>
                 </tr>
@@ -54,6 +56,68 @@
 </div>
 
 <!-- End of Main Content -->
+<?php
+$ubah = $this->data_model->getAllpengguna();
+foreach ($ubah as $u) :
+?>
+    <!-- Modal tambah -->
+    <div class="modal fade" id="ubahpengguna<?= $u['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="ubahpenggunaLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ubahpenggunaLabel">Ubah data Pengguna</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('kemahasiswaan/ubah_pengguna/'); ?>" method="post">
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputnama" name="id" value="<?= $u['id'] ?>" hidden>
+                                <?= form_error('id', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputnama" class="col-sm-4 col-form-label">Nama Pengguna</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputnama" name="nama" value="<?= $u['nama'] ?>">
+                                <?= form_error('nama', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputnama" class="col-sm-4 col-form-label">Level</label>
+                            <div class="col-sm-8">
+
+                                <select class="form-control" id="exampleFormControlSelect1" name="level_id">
+                                    <option>Pilih Level Pengguna</option>
+                                    <?php foreach ($level as $l) : ?>
+                                        <option value="<?= $l['id_level']; ?>"><?= $l['level']; ?></option>
+                                    <?php endforeach;  ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputnama" class="col-sm-4 col-form-label">Aktif</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="exampleFormControlSelect1" name="aktif">
+                                    <option><?= $u['aktif'] ?></option>
+                                    <option>0</option>
+                                    <option>1</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark">Ubah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
 <!-- Modal tambah -->
 <div class="modal fade" id="tambahpengguna" tabindex="-1" role="dialog" aria-labelledby="tambahpenggunaLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -95,7 +159,7 @@
                             <select class="form-control" id="exampleFormControlSelect1" name="level_id">
                                 <option>Pilih Level Pengguna</option>
                                 <?php foreach ($level as $l) : ?>
-                                    <option value="<?= $l['id']; ?>"><?= $l['level']; ?></option>
+                                    <option value="<?= $l['id_level']; ?>"><?= $l['level']; ?></option>
                                 <?php endforeach;  ?>
                             </select>
 

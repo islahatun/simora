@@ -15,7 +15,7 @@ class data_model extends CI_Model
     }
     public function get_level()
     {
-        $level = "SELECT * FROM pengguna JOIN `level` ON pengguna.level_id = `level`.`id`";
+        $level = "SELECT * FROM pengguna JOIN `level` ON pengguna.level_id = `level`.`id_level` ORDER BY `level`.`id_level` ";
         return $this->db->query($level)->result_array();
     }
     public function getAllpengguna()
@@ -45,10 +45,11 @@ class data_model extends CI_Model
         $data = [
             'nama' => htmlspecialchars($this->input->post('nama', true)),
             'level_id' => $this->input->post('level_id'),
-            'aktif' => 1
+            'aktif' => $this->input->post('aktif')
         ];
         //baru ini(2)
-        $this->db->where('id', $this->input->post('id'));
+        $id = $this->input->post('id');
+        $this->db->where('id', $id);
         // ini dulu (1)
         $this->db->update('pengguna', $data);
     }

@@ -199,7 +199,7 @@ foreach ($coba as $c) :
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputnama" class="col-sm-4 col-form-label">Jabatan</label>
+                            <label for="inputnama" class="col-sm-4 col-form-label">Periode</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="inputnama" name="periode" value="<?= $c['periode'] ?>">
                                 <?= form_error('periode', '<small class="text-danger pl-3">', ' </small>') ?>
