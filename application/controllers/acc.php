@@ -130,6 +130,15 @@ class acc extends CI_Controller
         // menampilkan id acc
         $data['id'] = $this->acc_model->getidacc($id);
         $acc = $this->acc_model->getidacc($id);
+        $data['pendahuluan'] = $this->acc_model->detail_pendahuluan($id);
+        $data['panitia'] = $this->acc_model->detail_panitia($id);
+        $data['anggaran'] = $this->acc_model->detail_anggaran($id);
+        $data['jadwal'] = $this->acc_model->detail_jadwal($id);
+        $data['lampiran'] = $this->acc_model->detail_lampiran($id);
+        $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
+        $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
+        $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
+        $data['lampiran'] = $this->acc_model->detail_lampiran($id);
         // $user =  $this->data_model->sessionpengguna();
         // $rak = $this->acc_model->accKemahasiswaan();
         // foreach ($rak as $r) {

@@ -84,4 +84,11 @@ class auth extends CI_Controller
         $data['d'] = $this->data_ormawa->tampil_artikleById($id);
         $this->load->view('auth/login', $data);
     }
+    public function logout()
+    {
+        $this->session->unset_userdata('nik');
+        $this->session->unset_userdata('level_id');
+
+        redirect('auth');
+    }
 }
