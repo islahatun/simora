@@ -436,6 +436,7 @@ class data_model extends CI_Model
             'judul' => $this->input->post('judul'),
             'isi' => $this->input->post('isi')
         ];
+        $this->db->where('author', 'Kemahasiswaan');
         $this->db->update('artikel', $data);
     }
     public function tampilberita()
