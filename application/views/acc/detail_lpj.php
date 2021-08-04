@@ -194,7 +194,7 @@
         <form action="<?= base_url('acc/detail_pengajuan/') ?><?= $id['id'] ?>" method="post">
             <span class="ml-3 mb-3">
                 <button type="submit" value="Acc <?= $pengguna['nama']; ?>" name="status" class="btn btn-success">Acc</button>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['id'] ?>" hidden>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_id'] ?>" hidden>
                 <!-- <?= form_error('acc', '<small class="text-danger pl-3">', ' </small>') ?> -->
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="komentar" value="Ok" hidden>
                 <!-- <?= form_error('komentar', '<small class="text-danger pl-3">', ' </small>') ?> -->
@@ -227,7 +227,7 @@
                 </div>
                 <div class="col-1">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['id'] ?>" hidden>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_id'] ?>" hidden>
                         <!-- <?= form_error('acc', '<small class="text-danger pl-3">', ' </small>') ?> -->
                     </div>
                 </div>
