@@ -183,4 +183,25 @@ class ormawa extends CI_Controller
             redirect('ormawa/artikel');
         }
     }
+    public function sandi()
+    {
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['menu'] = $this->data_model->menu();
+        $this->form_validation->set_rules('sandi', 'Password', 'required|trim|min_length[6]|matches[sandi2]', [
+            'matches' => 'Password Tidak Cocok',
+            'min_length' => 'Password Harus minimal 6 Karakter'
+        ]);
+        $this->form_validation->set_rules('sandi2', 'Konfirmasi Password', 'required|trim|matches[sandi]');
+
+        $this->data_model->sandi();
+        $this->session->set_flashdata('message', '
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Sandi Berhasil diubah</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>');
+
+        redirect('ormawa/artikel');
+    }
 }

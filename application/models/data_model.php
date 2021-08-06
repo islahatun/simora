@@ -492,4 +492,20 @@ class data_model extends CI_Model
         // var_dump($n);
         // die;
     }
+    public function sandi()
+    {
+        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+        $pengguna = $pengguna['id'];
+
+        $sandi = password_hash($this->input->post('sandi'), PASSWORD_DEFAULT);
+        $this->db->where('id', $pengguna);
+        $this->db->update('pengguna', $sandi);
+    }
+    public function tampil_rak()
+    {
+        $date = date('Y');
+
+        $rak = "SELECT *, pengguna.nama from p_rak JOIN pengguna ON p_rak.id_pengguna = pengguna.id WHERE periode = $date ORDER BY waktu  ";
+        return $this->db->query($rak)->result_array();
+    }
 }

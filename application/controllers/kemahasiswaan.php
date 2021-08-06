@@ -15,6 +15,7 @@ class kemahasiswaan extends CI_Controller
         $data['menu'] = $this->data_model->menu();
         $data['title'] = "Dashboard";
         $data['berita'] = $this->data_model->tampilberita();
+        $data['rak'] = $this->data_model->tampil_rak();
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/topbar');

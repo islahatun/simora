@@ -30,8 +30,10 @@
                                     </td>
                                     <td><?= $a['status']; ?></td>
                                     <td><?= $a['komentar']; ?></td>
-                                    <?php if ($a['acc'] = 1 or $a['acc'] = 2 and $a['status'] = 'Acc') { ?>
+                                    <?php if ($a['komentar'] = "Acc Biro Akademik") { ?>
                                         <td class="text-center"><a href="<?= base_url(); ?>acc/pdf/<?= $a['id']; ?>" class="badge badge-primary">Download</a>
+                                        <?php } else { ?>
+                                            <!-- <td class="text-center"><a href="<?= base_url(); ?>acc/pdf/<?= $a['id']; ?>" class="badge badge-primary">Download</a> -->
                                         <?php } ?>
                                 </tr>
                         </tbody>
