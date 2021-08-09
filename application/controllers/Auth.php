@@ -8,7 +8,6 @@ class auth extends CI_Controller
         parent::__construct();
         $this->load->model('acc_model');
         $this->load->model('data_model');
-        $this->load->model('data_ormawa');
     }
 
     public function index()
