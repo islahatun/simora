@@ -91,21 +91,20 @@
         ?>
         <h1 class="h4 text-gray-900 mb-4 text-xl-center">ARTIKEL</h1>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-4 mr-5 mb-3">
                 <?php foreach ($tampil as $a) :  ?>
                     <div class="card" style="width: 25rem;">
-                        <img class="card-img-top p-3 " src="<?= base_url('assets/img/artikel/') . $a['foto']; ?>" alt="Card image cap" style="width: 25rem;">
+                        <img class="card-img-top p-3 " src="<?= base_url('assets/img/artikel/') . $a['foto']; ?>" alt="Card image cap" style="width: 25rem; height: 17rem">
                         <div class="card-body">
                             <h3 class="card-title"><?= $a['judul']; ?></h3>
                             <h5 class="card-title"><?= $a['author']; ?></h5>
-                            <a href="<?= base_url('auth/detail_artikel/') ?><?= $a['id_artikel'] ?>" class="btn btn-primary" class="btn btn-dark" data-toggle="modal" data-target="#detail<?= $a['id_artikel'] ?>">Baca Artikel</a>
+                            <a href="<?= base_url('auth/detail_artikel/') ?><?= $a['id_artikel'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#detail<?= $a['id_artikel'] ?>"> Baca Artikel</a>
                         </div>
                     </div>
             </div>
+        <?php endforeach; ?>
         </div>
-    <?php endforeach; ?>
     </div>
-
     <!-- Button trigger modal -->
     <?php
     $artikel = $this->db->get('artikel')->result_array();

@@ -90,6 +90,12 @@ class data_model extends CI_Model
     {
         return $this->db->get_where('p_rak', ['id' => $id])->row_array();
     }
+    public function getrakIdacc()
+    {
+        $rak = "SELECT * FROM `p_rak` JOIN acc ON p_rak.id = acc.id_rak";
+
+        return $this->db->query($rak)->row_array();
+    }
 
     public function editprofil()
     {
@@ -488,7 +494,7 @@ class data_model extends CI_Model
     public function revisi_pendahuluan($id)
     {
         $proposal = "SELECT * from p_proposal JOIN acc ON p_proposal.id_rak = acc.id_rak JOIN p_rak ON p_rak.id = p_proposal.id_rak WHERE acc.id = $id  ";
-        return $this->db->query($proposal)->result_array();
+        return $this->db->query($proposal)->row_array();
         // var_dump($n);
         // die;
     }

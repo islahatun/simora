@@ -394,7 +394,7 @@ class pengajuan extends CI_Controller
     public function edit_pengajuan($id)
     {
         $data['title'] = "Revisi Pengajuan Kegiatan";
-        $data['rak'] = $this->data_model->getrakId($id);
+        $data['rak'] = $this->data_model->getrakIdacc();
         $data['acc'] = $this->acc_model->getidacc($id);
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['edit'] = $this->data_model->tampil_revisi_kegiatan();

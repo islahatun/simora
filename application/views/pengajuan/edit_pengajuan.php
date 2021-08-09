@@ -111,10 +111,113 @@
                         </div>
                     </form>
                 </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-                <div class="tab-pane fade" id="pills-anggaran" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-                <div class="tab-pane fade" id="pills-lampiran" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr class="text-center">
+                                <th scope="col">#</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Jabatan</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1; ?>
+                            <?php foreach ($panitia as $p) : ?>
+                                <tr>
+                                    <th scope="row" class="text-center"><?= $i; ?></th>
+                                    <td><?= $p['nama_panitia']; ?></td>
+                                    <td><?= $p['jabatan'] ?></td>
+                                    <td>
+                                        <a href="<?= base_url('pengajuan/proposal4/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Ubah</a>
+                                        <a href="<?= base_url('pengajuan/proposal4/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
+                                    </td>
+                                </tr>
+                        </tbody>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                    </table>
+                    <div class="text-right">
+                        <a href="<?= base_url('pengajuan/proposal4/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Kirim</a>
+                    </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr class="text-center">
+                                <th scope="col">Tanggal</th>
+                                <th scope="col">Waktu</th>
+                                <th scope="col">Nama Kegiatan</th>
+                                <th scope="col">Keterangan</th>
+                                <th scope="col">Ubah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($jadwal as $j) : ?>
+                                <tr>
+                                </tr>
+                                <tr>
+                                    <td rowspan=3>
+                                        <?php $tanggal = $j['tanggal'];
+                                        echo date("d F Y", strtotime($tanggal)); ?>
+                                    </td>
+                                    <td><?= $j['mulai']; ?> - <?= $j['selesai']; ?></td>
+                                    <td><?= $j['kegiatan']; ?></td>
+                                    <td><?= $j['keterangan']; ?></td>
+                                </tr>
+                        </tbody>
+                    <?php endforeach; ?>
+                    </table>
+                    <div class="text-right">
+                        <a href="<?= base_url('pengajuan/proposal3/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Kirim</a>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-anggaran" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr class="text-center">
+                                <th scope="col">#</th>
+                                <th scope="col">Bagian</th>
+                                <th scope="col">Nama Barang</th>
+                                <th scope="col">Jumlah Barang</th>
+                                <th scope="col">Harga satuan</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Total Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1; ?>
+                            <?php $t = 0 ?>
+                            <?php foreach ($anggaran as $a) : ?>
+                                <tr>
+                                    <th scope="row" class="text-center"><?= $i; ?></th>
+                                    <td><?= $a['bagian']; ?></td>
+                                    <td><?= $a['barang']; ?></td>
+                                    <td><?= $a['quality']; ?></td>
+                                    <td>
+                                        <a href="<?= base_url('pengajuan/proposal4/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Ubah</a>
+                                        <a href="<?= base_url('pengajuan/proposal4/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
+                                    </td>
+                                    <td>Rp.<?= $a['harga']; ?></td>
+                                    <td>Rp. <?= $h = $a['quality']  * $a['harga']; ?> </td>
+                                </tr>
+                                <?php $i++; ?>
+                                <?php
+                                $t += $h;
+
+                                ?>
+                            <?php endforeach; ?>
+                            <tr>
+                                <td colspan="6" class="text-center font-weight-bold">Total Keseluruhan</td>
+                                <td class="font-weight-bold">Rp.<?= $t; ?> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="pills-lampiran" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+                </div>
             </div>
     </div>
 </div>
