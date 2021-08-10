@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2021 at 02:25 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.3.21
+-- Generation Time: Aug 10, 2021 at 10:38 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,8 +45,8 @@ CREATE TABLE `acc` (
 INSERT INTO `acc` (`id`, `id_rak`, `pengajuan`, `id_ormawa`, `periode`, `acc`, `status`, `komentar`) VALUES
 (1, 0, 'RAK', 3, 2021, '1', 'Acc Kemahasiswaan', 'Ok'),
 (2, 0, 'RAK', 16, 2021, '', '', ''),
-(3, 1, 'proposal', 3, 2021, '18', 'Revisi Biro Akademik', 'masukkan anggran'),
-(4, 1, 'lpj', 3, 2021, '1', 'Acc Kemahasiswaan', 'Ok'),
+(3, 1, 'proposal', 3, 2021, '2', 'Revisi Biro Akademik', 'Anggaran Kurang Lengkap'),
+(4, 1, 'lpj', 3, 2021, '6', 'Acc Kaprodi Teknik Informatika', 'Ok'),
 (7, 321, 'RAK', 3, 2021, '', '', '');
 
 -- --------------------------------------------------------
@@ -77,7 +77,8 @@ INSERT INTO `anggota_ormawa` (`id`, `id_pengguna`, `nama_anggota`, `npm`, `jurus
 (4, 8, 'Ummi Athiyah', '1102171153', 'Teknik Informatika', 'Anggota', 0000, 'Aktif'),
 (5, 8, 'Siska', '1102171161', 'Teknik Informatika', 'Anggota', 2020, 'Aktif'),
 (6, 3, 'Aldo Dianata', '1102171166', 'Teknik Informatika', 'Anggota', 2021, 'Alumni'),
-(7, 3, 'Islahatun Nufusi', '1102171151', 'Teknik Informatika', 'Anggota', 2020, 'Aktif');
+(7, 3, 'Islahatun Nufusi', '1102171151', 'Teknik Informatika', 'Anggota', 2020, 'Aktif'),
+(8, 17, 'Yul Hendra', '00432421', 'Teknik Informatika', 'Ka Prodi', 2021, 'Tidak Aktif');
 
 -- --------------------------------------------------------
 
@@ -100,10 +101,9 @@ CREATE TABLE `artikel` (
 --
 
 INSERT INTO `artikel` (`id_artikel`, `judul`, `author`, `isi`, `foto`, `status`, `komentar`) VALUES
-(2, 'Pengumpulan Proposal', 'Kemahasiswaan', '<p>Ketentuan pengajuan kegiatan</p>\r\n\r\n<ol>\r\n	<li>Harus sesuai dengan rak</li>\r\n	<li>maksimal pengajuan 1 minggu sebelum kegiatan&nbsp;</li>\r\n	<li>pengajuan lpj maksimal 1 minggu setelah kegiatan</li>\r\n</ol>', '', '', ''),
-(3, 'WORKSHOP KEGIATAN', 'Computer Community', '<p>Worhshop Kewirausahaan yang dilaksanakan pada tanggala 13 Juli 2020 yang bertempat di auditorium Universitas Banten Jaya dengan Pemateri Bapak A, memberikan materi yang sangat bermanfaat dan peserta sangat antusias mengikutinya</p>', 'UNBAJA.png', 'Acc', 'Ok'),
-(4, 'seminar Programing', 'Humanika', '<p>workshop ini di ikuti oleh mahasiswa dan anak smk</p>', 'IMG-20191102-WA00103.jpg', 'Di Perbaiki', 'tolong perbanyak isinya'),
-(5, 'Workshop Landing Page', 'Computer Community', '<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>', 'IMG-20191102-WA0015.jpg', '', '');
+(2, 'Pengumuman Pengajuan Kegiatan', 'Kemahasiswaan', '<ol>\r\n	<li>harus seuai dengan RAK</li>\r\n	<li>Pengajuan tidak boleh lebih dari 7 hari sebelum kegiatan</li>\r\n</ol>', '', '', ''),
+(6, 'Seminar Kependidikan', 'ESA', '<p>Acara Seminar Ini Dilaksanakan pada tanggal 14 Agustus 2021 Dalam Rangka Memperingati Hari Pramuka Indonesia yang diselenggaraan di Universitas Banten Jaya</p>', 'foto_11.jpg', 'Acc', 'Ok'),
+(7, 'Pelatihan BPPTIK', 'Computer Community', '<p>Pelatihan Komputerisasi Computer Community yang bekerjasama dengan Lembaga Kominfo BPPTIK&nbsp; pelatihan ini diadakan pada tanggal 12 Januari 2021 selama 1 bulan dengan 3 Minggu pelatihan dan 1 hari assesment dengan 3 skema diantaranya desain grafis, web, jaringan, office . acara ini di lakukan secara online</p>', '052c71e2dfefe038d832ec2d7acbf856.jpg', 'Acc', 'Ok');
 
 -- --------------------------------------------------------
 
@@ -112,7 +112,7 @@ INSERT INTO `artikel` (`id_artikel`, `judul`, `author`, `isi`, `foto`, `status`,
 --
 
 CREATE TABLE `level` (
-  `id` int(11) NOT NULL,
+  `id_level` int(11) NOT NULL,
   `level` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -120,7 +120,7 @@ CREATE TABLE `level` (
 -- Dumping data for table `level`
 --
 
-INSERT INTO `level` (`id`, `level`) VALUES
+INSERT INTO `level` (`id_level`, `level`) VALUES
 (1, 'Kemahasiswaan'),
 (2, 'Biro Akademik'),
 (3, 'DPM'),
@@ -155,14 +155,15 @@ INSERT INTO `pengguna` (`id`, `nama`, `visi`, `misi`, `email`, `logo`, `sandi`, 
 (1, 'Kemahasiswaan', '', '', '', 'default.jpg', '$2y$10$7NZa4dr.RHw8.Fv5LT8MSuBUyBh3BW4YloqKDp5/k1cp4m8lMdt4G', 1, 1),
 (3, 'Computer Community', 'Meningkatkan ilmu organisasi dan teknologi', 'membuat pembelajaran tiap minggu', 'ccunbaja@gmail.com', 'Logo_CC1.png', '$2y$10$5d8FoZxZtUzYF2D3Kfsj6Ohklq9T6Nn8hkIUgNcnKutsAasBV05Ly', 4, 1),
 (8, 'Humanika', '', '', '', 'default.jpg', '$2y$10$Hl4n7AE.lNFpKyJYnqoWY.SK6pqB.XHXAK1ZtxRO8ow2WXKlzegrW', 5, 1),
-(9, 'Himasi', '', '', '', 'default.jpg', '$2y$10$VY0VW7XVqaz0O1iaceV5POgAswobAh4vbQmyp5SUxXY50qFuOE7BW', 5, 1),
-(10, 'Esa', '', '', '', 'default.jpg', '$2y$10$/3Baojf724Fe5Tr/hM4fS.zUjtX.JtlWCr2GmTrFqJPrXIeM0nMOG', 5, 1),
+(9, 'Himasi', '', '', '', 'default.jpg', '$2y$10$VY0VW7XVqaz0O1iaceV5POgAswobAh4vbQmyp5SUxXY50qFuOE7BW', 5, 0),
+(10, 'ESA', '', '', '', 'default.jpg', '$2y$10$/3Baojf724Fe5Tr/hM4fS.zUjtX.JtlWCr2GmTrFqJPrXIeM0nMOG', 5, 1),
 (11, 'Gempa', '', '', '', 'default.jpg', '$2y$10$tMrbtpfJC9p.XHep1QOgNOKTVc8HWf3E.cIOt/gsb.V3SvwPKxmPG', 4, 1),
-(12, 'KOMPAS', '', '', '', 'default.jpg', '$2y$10$nRdoSVXJIM9MerYJVu03/OdsMoZYtbY16o.buJqEgtzoy9/0FYZam', 4, 1),
 (15, 'DPM', '', '', '', 'default.jpg', '$2y$10$lJvbJHUqB0vWnocOyWek7e0MhsL5rYC6R.XgRjhKhRaQufpyV8Bc2', 3, 1),
 (16, 'BEM', '', '', '', 'default.jpg', '$2y$10$0d/CFNsJq15ddFnq9CVYX.kOB.xnW1YU3n/RzgE..IZc3upg5tEHC', 7, 1),
 (17, 'Kaprodi Teknik Informatika', '', '', '', 'default.jpg', '$2y$10$Lb0bfFbwdHespF311pmfB.0yn3lbEqd6CdU0f1lCAl28di6dS26Ga', 6, 1),
-(18, 'Biro Akademik', 'Meningaktakan Mutu akademik dan mahasiswa', 'melakukan hal yang terbaik', 'biroakademik@gmail.com', 'Logo-unbaja.png', '$2y$10$ucKFzFBKSpnTiXCCY9vFj.z0/W/JEonTSfewBVmdrO77Pw3ZKW4rW', 2, 1);
+(18, 'Biro Akademik', 'Meningaktakan Mutu akademik dan mahasiswa', 'melakukan hal yang terbaik', 'biroakademik@gmail.com', 'Logo-unbaja.png', '$2y$10$ucKFzFBKSpnTiXCCY9vFj.z0/W/JEonTSfewBVmdrO77Pw3ZKW4rW', 2, 1),
+(19, 'HMCB', '', '', '', 'default.jpg', '$2y$10$DugrPQAOBi0gbVRuZuiaeeDBMSe12YDqbXm0Cwjl0FPPW8WyiN4Nm', 4, 1),
+(20, 'Kompas', '', '', '', 'default.jpg', '$2y$10$RezFd1eIDRfIGrWwnMOsyOpGbzrdsZf5SawyNiCfB/yJkQtLms6Ra', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -171,6 +172,7 @@ INSERT INTO `pengguna` (`id`, `nama`, `visi`, `misi`, `email`, `logo`, `sandi`, 
 --
 
 CREATE TABLE `p_anggaran` (
+  `id_anggaran` int(11) NOT NULL,
   `id_rak` int(11) NOT NULL,
   `id_pengguna` int(11) NOT NULL,
   `bagian` varchar(30) NOT NULL,
@@ -184,12 +186,14 @@ CREATE TABLE `p_anggaran` (
 -- Dumping data for table `p_anggaran`
 --
 
-INSERT INTO `p_anggaran` (`id_rak`, `id_pengguna`, `bagian`, `pengajuan`, `barang`, `harga`, `quality`) VALUES
-(2, 3, '', 'Proposal', 'Batrai Mic', 5000, 2),
-(2, 3, '', 'Proposal', 'spanguk', 70000, 1),
-(2, 3, 'pubdekdoklat', 'Proposal', 'balon', 2000, 10),
-(2, 3, 'humas', 'Proposal', 'bensin', 10000, 5),
-(1, 3, 'humas', 'LPJ', 'bensin', 10000, 2);
+INSERT INTO `p_anggaran` (`id_anggaran`, `id_rak`, `id_pengguna`, `bagian`, `pengajuan`, `barang`, `harga`, `quality`) VALUES
+(1, 2, 3, '', 'Proposal', 'Batrai Mic', 5000, 2),
+(2, 2, 3, '', 'Proposal', 'spanguk', 70000, 1),
+(3, 2, 3, 'pubdekdoklat', 'Proposal', 'balon', 2000, 10),
+(4, 2, 3, 'humas', 'Proposal', 'bensin', 10000, 5),
+(5, 1, 3, 'humas', 'LPJ', 'bensin', 10000, 2),
+(6, 3, 3, 'Konsumsi', 'LPJ', 'Air Mineral', 20000, 2),
+(12, 1, 3, 'Konsumsi', 'Proposal', 'Air Mineral', 20000, 1);
 
 -- --------------------------------------------------------
 
@@ -198,6 +202,7 @@ INSERT INTO `p_anggaran` (`id_rak`, `id_pengguna`, `bagian`, `pengajuan`, `baran
 --
 
 CREATE TABLE `p_jadwal` (
+  `id_jadwal` int(11) NOT NULL,
   `id_rak` int(11) NOT NULL,
   `id_pengguna` int(11) NOT NULL,
   `pengajuan` enum('Proposal','LPJ','','') NOT NULL,
@@ -212,10 +217,10 @@ CREATE TABLE `p_jadwal` (
 -- Dumping data for table `p_jadwal`
 --
 
-INSERT INTO `p_jadwal` (`id_rak`, `id_pengguna`, `pengajuan`, `tanggal`, `mulai`, `selesai`, `kegiatan`, `keterangan`) VALUES
-(1, 3, 'Proposal', '2021-06-04', '00:59:00', '01:02:00', 'Pembukaan', 'Mc'),
-(1, 3, 'Proposal', '2021-06-04', '01:02:00', '04:00:00', 'sambutan kepala sekolah', 'kepala sekolah'),
-(1, 3, 'LPJ', '2021-07-07', '21:05:00', '21:05:00', 'pembukaan', 'mc');
+INSERT INTO `p_jadwal` (`id_jadwal`, `id_rak`, `id_pengguna`, `pengajuan`, `tanggal`, `mulai`, `selesai`, `kegiatan`, `keterangan`) VALUES
+(1, 1, 3, 'Proposal', '2021-06-04', '00:59:00', '01:02:00', 'Pembukaan', 'Mc'),
+(2, 1, 3, 'Proposal', '2021-06-04', '01:02:00', '04:00:00', 'sambutan kepala sekolah', 'kepala sekolah'),
+(3, 1, 3, 'LPJ', '2021-07-07', '21:05:00', '21:05:00', 'pembukaan', 'mc');
 
 -- --------------------------------------------------------
 
@@ -224,6 +229,7 @@ INSERT INTO `p_jadwal` (`id_rak`, `id_pengguna`, `pengajuan`, `tanggal`, `mulai`
 --
 
 CREATE TABLE `p_lampiran` (
+  `id_lampiran` int(11) NOT NULL,
   `id_rak` int(11) NOT NULL,
   `id_pengguna` int(11) NOT NULL,
   `pengajuan` varchar(15) NOT NULL,
@@ -237,8 +243,8 @@ CREATE TABLE `p_lampiran` (
 -- Dumping data for table `p_lampiran`
 --
 
-INSERT INTO `p_lampiran` (`id_rak`, `id_pengguna`, `pengajuan`, `lampiran1`, `lampiran2`, `lampiran3`, `lampiran4`) VALUES
-(1, 3, 'lpj', '01__Prinsip_dasar_desain_(1)3.pdf', '03_Menerapkan_Design_Brief_(4).pdf', '03__DESIGN_BRIEF2.pdf', '05__Menciptakan_karya_desain_(2).pdf');
+INSERT INTO `p_lampiran` (`id_lampiran`, `id_rak`, `id_pengguna`, `pengajuan`, `lampiran1`, `lampiran2`, `lampiran3`, `lampiran4`) VALUES
+(0, 1, 3, 'lpj', '01__Prinsip_dasar_desain_(1)3.pdf', '03_Menerapkan_Design_Brief_(4).pdf', '03__DESIGN_BRIEF2.pdf', '05__Menciptakan_karya_desain_(2).pdf');
 
 -- --------------------------------------------------------
 
@@ -293,7 +299,6 @@ CREATE TABLE `p_proposal` (
 INSERT INTO `p_proposal` (`id`, `id_rak`, `pengajuan`, `tema_kegiatan`, `latar_belakang`, `tujuan_pelaksanaan`, `sasaran_peserta`, `jam_pelaksanaan`, `pelaksanaan_selesai`, `tempat`) VALUES
 (1, 1, 'Proposal', 'Menjalin Silatrahmi', '<p>apa aja boleh</p>', 'tujuannya adalah', 'sasarannya adalah', '22:08:00', '22:10:00', 'kampus 1'),
 (3, 9, 'proposal', 'Robotik', '<p>dizaman yang sudah canggih ini banyak sekai hal yang mulai digantikan dengan robot</p>', 'tujuan dari kegiatan ini adalah menciptakan robot', 'sasaran kegiatan ini adalah anak smk umum', '17:02:00', '17:07:00', 'kampus 2'),
-(4, 1, 'Proposal', 'Menjalin Silatrahmi', '<p>apa aja boleh</p>', 'tujuannya adalah', 'sasarannya adalah', '22:08:00', '22:10:00', 'kampus 1'),
 (5, 1, 'lpj', 'memajukan teknologi', 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla', 'tujuan diadakannya acara ini adalah untuk memberikan pengetauan tentang it', 'sasaran peserta kegiatan ini adalah smk dan umum', '08:00:00', '09:00:00', 'kampus 1');
 
 -- --------------------------------------------------------
@@ -434,13 +439,25 @@ ALTER TABLE `artikel`
 -- Indexes for table `level`
 --
 ALTER TABLE `level`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_level`);
 
 --
 -- Indexes for table `pengguna`
 --
 ALTER TABLE `pengguna`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `p_anggaran`
+--
+ALTER TABLE `p_anggaran`
+  ADD PRIMARY KEY (`id_anggaran`);
+
+--
+-- Indexes for table `p_jadwal`
+--
+ALTER TABLE `p_jadwal`
+  ADD PRIMARY KEY (`id_jadwal`);
 
 --
 -- Indexes for table `p_proposal`
@@ -480,25 +497,37 @@ ALTER TABLE `acc`
 -- AUTO_INCREMENT for table `anggota_ormawa`
 --
 ALTER TABLE `anggota_ormawa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `level`
 --
 ALTER TABLE `level`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `p_anggaran`
+--
+ALTER TABLE `p_anggaran`
+  MODIFY `id_anggaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `p_jadwal`
+--
+ALTER TABLE `p_jadwal`
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `p_proposal`
