@@ -90,9 +90,9 @@ class data_model extends CI_Model
     {
         return $this->db->get_where('p_rak', ['id' => $id])->row_array();
     }
-    public function getrakIdacc()
+    public function getrakIdacc($id)
     {
-        $rak = "SELECT * FROM `p_rak` JOIN acc ON p_rak.id = acc.id_rak";
+        $rak = "SELECT *,acc.id_rak FROM `p_rak` JOIN acc ON p_rak.id = acc.id_rak WHERE acc.id=$id ";
 
         return $this->db->query($rak)->row_array();
     }

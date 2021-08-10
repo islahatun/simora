@@ -28,13 +28,13 @@
                     <form action="<?= base_url('pengajuan/edit_pengajuan/') ?><?= $acc['id'] ?> " method="post">
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="staticEmail" value="lpj" hidden name="pengajuan">
+                                <input type="text" class="form-control" id="staticEmail" value="Proposal" hidden name="pengajuan">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="staticEmail" value="<?= $rak['id'] ?>" hidden name="id_rak">
-                                <?= form_error('id', '<small class="text-danger pl-3">', ' </small>') ?>
+                                <input type="text" class="form-control" id="staticEmail" value="<?= $rak['id_rak'] ?>" name="id_rak" hidden>
+                                <?= form_error('id_rak', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -174,7 +174,7 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-anggaran" role="tabpanel" aria-labelledby="pills-contact-tab">
-                    <form action="<?= base_url('pengajuan/edit_pengajuan/') ?><?= $rak['id'] ?>" method="post">
+                    <form action="<?= base_url('pengajuan/edit_anggaran/') ?><?= $rak['id'] ?>" method="post">
                         <?= $this->session->flashdata('message'); ?>
                         <div class="row">
                             <div class="col">
@@ -215,7 +215,7 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <input type="text" class=" form-control" value="<?= $rak['id'] ?>" name="id_rak" id="exampleInputPassword1" hidden>
+                                    <input type="text" class=" form-control" value="<?= $rak['id_rak'] ?>" name="id_rak" id="exampleInputPassword1" hidden>
                                     <?= form_error('id_rak', '<small class="text-danger pl-3">', ' </small>') ?>
                                 </div>
                             </div>
@@ -254,8 +254,8 @@
                                     <td><?= $a['barang']; ?></td>
                                     <td><?= $a['quality']; ?></td>
                                     <td>
-                                        <a href="<?= base_url('pengajuan/proposal4/') ?><?= $a['barang'] ?>" class="badge badge-primary" data-toggle="modal" data-target="#ubahanggaran<?= $r['id']; ?>">Ubah</a>
-                                        <a href="<?= base_url('pengajuan/proposal4/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
+                                        <a href="<?= base_url('pengajuan/ubah_anggaran/') ?><?= $a['id_anggaran'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#ubah<?= $a['id_anggaran']; ?>">Ubah</a>
+                                        <a href="<?= base_url('pengajuan/hapus_anggaran/') ?><?= $a['id_anggaran'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
                                     </td>
                                     <td>Rp.<?= $a['harga']; ?></td>
                                     <td>Rp. <?= $h = $a['quality']  * $a['harga']; ?> </td>
@@ -283,63 +283,71 @@
 <!-- End of Main Content -->
 <?php
 $ubah = $this->db->get('p_anggaran')->result_array();
+
 foreach ($ubah as $u) :
 ?>
-    <!-- Modal tambah -->
-    <div class="modal fade" id="ubahanggaran<?= $u['barang']; ?>" tabindex="-1" role="dialog" aria-labelledby="ubahanggaranLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ubahanggaranLabel">Ubah data anggaran</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+    <?php
+
+    foreach ($anggaran as $a) :
+    ?>
+        <!-- Modal tambah -->
+        <div class="modal fade" id="ubah<?= $u['id_anggaran']; ?>" tabindex="-1" role="dialog" aria-labelledby="ubahLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ubahLabel">Ubah data anggaran</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="<?= base_url('pengajuan/ubah_anggaran/'); ?><?= $a['id']; ?>" method="post">
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputnama" name="id_anggaran" value="<?= $u['id_anggaran'] ?>" hidden>
+                                    <?= form_error('id_anggaran', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputnama" class="col-sm-4 col-form-label">Bagian </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputnama" name="bagian" value="<?= $u['bagian'] ?>">
+                                    <?= form_error('bagian', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputnama" class="col-sm-4 col-form-label">Nama Barang </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputnama" name="barang" value="<?= $u['barang'] ?>">
+                                    <?= form_error('barang', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputnama" class="col-sm-4 col-form-label">Jumlah Barang </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputnama" name="harga" value="<?= $u['harga'] ?>">
+                                    <?= form_error('harga', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputnama" class="col-sm-4 col-form-label">Harga Satuan </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputnama" name="quality" value="<?= $u['quality'] ?>">
+                                    <?= form_error('quality', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-dark">Ubah</button>
+                        </div>
+                    </form>
                 </div>
-                <form action="<?= base_url('pengajuan/edit_pengajuan/'); ?>" method="post">
-                    <div class="modal-body">
-                        <div class="form-group row">
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputnama" name="id" value="<?= $u['id'] ?>" hidden>
-                                <?= form_error('id', '<small class="text-danger pl-3">', ' </small>') ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputnama" class="col-sm-4 col-form-label">Nama Pengguna</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputnama" name="nama" value="<?= $u['nama'] ?>">
-                                <?= form_error('nama', '<small class="text-danger pl-3">', ' </small>') ?>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputnama" class="col-sm-4 col-form-label">Level</label>
-                            <div class="col-sm-8">
-
-                                <select class="form-control" id="exampleFormControlSelect1" name="level_id">
-                                    <option>Pilih Level Pengguna</option>
-                                    <?php foreach ($level as $l) : ?>
-                                        <option value="<?= $l['id_level']; ?>"><?= $l['level']; ?></option>
-                                    <?php endforeach;  ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputnama" class="col-sm-4 col-form-label">Aktif</label>
-                            <div class="col-sm-8">
-                                <select class="form-control" id="exampleFormControlSelect1" name="aktif">
-                                    <option><?= $u['aktif'] ?></option>
-                                    <option>0</option>
-                                    <option>1</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-dark">Ubah</button>
-                    </div>
-                </form>
             </div>
         </div>
-    </div>
+    <?php endforeach; ?>
 <?php endforeach; ?>
