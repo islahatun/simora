@@ -318,6 +318,25 @@ class data_model extends CI_Model
         ];
         $this->db->insert('p_anggaran', $data);
     }
+    public function editAnggaran()
+    {
+        // $data = [
+        $id_rak = $this->input->post('id_rak');
+        // $id_pengguna = $this->input->post('id_pengguna');
+        $pengajuan = $this->input->post('pengajuan');
+        $bagian = $this->input->post('bagian');
+        $barang = $this->input->post('barang');
+        $harga = $this->input->post('harga');
+        $quality = $this->input->post('quality');
+        // ];
+        $this->db->set('pengajuan', $pengajuan);
+        $this->db->set('bagian', $bagian);
+        $this->db->set('barang', $barang);
+        $this->db->set('harga', $harga);
+        $this->db->set('quality', $quality);
+        $this->db->where('id_rak', $id_rak);
+        $this->db->insert('p_anggaran');
+    }
     public function selectAnggaran($id)
     {
 

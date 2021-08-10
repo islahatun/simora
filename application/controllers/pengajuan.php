@@ -448,6 +448,8 @@ class pengajuan extends CI_Controller
             $this->load->view('pengajuan/edit_pengajuan');
             $this->load->view('template/footer');
         } else {
+            $this->data_model->insertAnggaran();
+            $this->data_model->editAnggaran();
         }
     }
 }
