@@ -430,6 +430,7 @@ class pengajuan extends CI_Controller
         } else {
             $this->data_model->edit_pendahuluan();
             $this->data_model->edit_acc();
+            redirect('pengajuan/edit_pendahuluan/' . $id);
         }
     }
     public function edit_pengajuan($id)

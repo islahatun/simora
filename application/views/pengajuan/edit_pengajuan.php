@@ -106,6 +106,12 @@
                                 <input type="text" class="form-control" id="staticEmail" value="<?= $rak['anggaran'] ?>" name="anggaran" readonly>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputPassword" name="id" value="<?= $rak['id'] ?>">
+                                <?= form_error('id', '<small class="text-danger pl-3">', ' </small>') ?>
+                            </div>
+                        </div>
                         <div class="text-right">
                             <button type="submit" class="btn btn-dark mb-2 ">Kirim</button>
                         </div>

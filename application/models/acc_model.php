@@ -4,37 +4,37 @@ class acc_model extends CI_Model
 {
     public function accKemahasiswaan()
     {
-        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'or acc.pengajuan ='RAK' and acc.acc =1 or acc.acc=2 or acc.acc=3 OR acc.acc=7  ORDER BY acc.id desc"; // 3 = berdasarkan level dpm
+        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'or acc.pengajuan ='RAK' and acc.acc =1 or acc.acc=2 or acc.acc=3 OR acc.acc=7 and  acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Perbaikan' or acc.status='Acc Biro Akademik'and  acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Perbaikan' or acc.status='Acc Biro Akademik' ORDER BY acc.id desc"; // 3 = berdasarkan level dpm
         return $this->db->query($join)->result_array();
     }
 
     public function accbiro()
     {
-        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =1 or acc.acc =2 and  acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'    ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =1 or acc.acc =2 and  acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Perbaikan' or acc.status='Acc Biro Akademik'  and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
         return $this->db->query($join)->result_array();
         // var_dump($n);
         // die;
     }
     public function acckaprodi()
     {
-        $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE pengguna.level_id = 5 and acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj' and acc.acc =1 or acc.acc =2 or acc.acc =6 or acc.acc =7   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+        $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE pengguna.level_id = 5 and acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Acc Biro Akademik'or acc.status='Revisi Kaprodi' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj' and acc.acc =1 or acc.acc =2 or acc.acc =6 or acc.acc =7 or acc.status='Perbaikan'  ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
         return $this->db->query($join)->result_array();
         // var_dump($n);
         // die;
     }
     public function accdpm()
     {
-        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.pengajuan ='RAK' ORDER BY acc.id desc";
+        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.pengajuan ='RAK' or acc.status='Perbaikan' ORDER BY acc.id desc";
         return $this->db->query($join)->result_array();
     }
     public function accbem()
     {
-        $join = "SELECT *,pengguna.nama FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa  WHERE acc.pengajuan ='proposal' OR acc.pengajuan ='lpj' and acc.acc =1 or acc.acc =2 or acc.acc =6 or acc.acc =7 ORDER BY acc.id desc";
+        $join = "SELECT *,pengguna.nama FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa  WHERE acc.pengajuan ='proposal' OR acc.pengajuan ='lpj' and acc.acc =1 or acc.acc =2 or acc.acc =6 or acc.acc =7 or acc.status='Perbaikan' ORDER BY acc.id desc";
         return $this->db->query($join)->result_array();
     }
     public function accbemHMJ()
     {
-        $join = "SELECT *,pengguna.nama FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =6 and acc.pengajuan ='proposal' OR acc.pengajuan ='lpj'  ORDER BY acc.id desc"; // 6 = berdasarkan level kaprodi
+        $join = "SELECT *,pengguna.nama FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =6 and acc.pengajuan ='proposal' OR acc.pengajuan ='lpj' or acc.status='Perbaikan'  ORDER BY acc.id desc"; // 6 = berdasarkan level kaprodi
         return $this->db->query($join)->result_array();
     }
     public function getaccbyid($id)
