@@ -391,6 +391,47 @@ class pengajuan extends CI_Controller
             redirect('pengajuan/proposal');
         }
     }
+    public function edit_pendahuluan($id)
+    {
+        $data['title'] = "Revisi Pengajuan Kegiatan";
+        $data['rak'] = $this->data_model->getrakIdacc($id);
+        $data['acc'] = $this->acc_model->getidacc($id);
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['edit'] = $this->data_model->tampil_revisi_kegiatan();
+        $data['menu'] = $this->data_model->menu();
+        $data['pendahuluan'] = $this->data_model->revisi_pendahuluan($id);
+        $data['panitia'] = $this->acc_model->detail_panitia($id);
+        $data['anggaran'] = $this->acc_model->detail_anggaran($id);
+        $data['jadwal'] = $this->acc_model->detail_jadwal($id);
+        $data['lampiran'] = $this->acc_model->detail_lampiran($id);
+        $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
+        $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
+        $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
+        $data['lampiran'] = $this->acc_model->detail_lampiran($id);
+
+        $this->form_validation->set_rules('id_rak', 'id RAK', 'required|trim');
+        $this->form_validation->set_rules('latar_belakang', 'Latar Belakang', 'required|trim');
+        $this->form_validation->set_rules('tema_kegiatan', 'Tema Kegiatan', 'required|trim');
+        $this->form_validation->set_rules('jam_pelaksanaan', 'Jam Pelaksanaan', 'required|trim');
+        $this->form_validation->set_rules('waktu_kegiatan', 'Jam Pelaksanaan', 'required|trim');
+        $this->form_validation->set_rules('pelaksanaan_selesai', 'Jam selesi Pelaksanaan', 'required|trim');
+        $this->form_validation->set_rules('tujuan_pelaksanaan', 'Tujuan Pelaksanaan', 'required|trim');
+        $this->form_validation->set_rules('sasaran_peserta', 'Sasaran Peserta', 'required|trim');
+        $this->form_validation->set_rules('tempat', 'Tempat Kegiatan', 'required|trim');
+
+        $this->form_validation->set_rules('id', 'id', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar');
+            $this->load->view('pengajuan/edit_pengajuan');
+            $this->load->view('template/footer');
+        } else {
+            $this->data_model->edit_pendahuluan();
+            $this->data_model->edit_acc();
+        }
+    }
     public function edit_pengajuan($id)
     {
         $data['title'] = "Revisi Pengajuan Kegiatan";

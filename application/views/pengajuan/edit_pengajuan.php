@@ -25,7 +25,7 @@
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <form action="<?= base_url('pengajuan/edit_pengajuan/') ?><?= $acc['id'] ?> " method="post">
+                    <form action="<?= base_url('pengajuan/edit_pendahuluan/') ?><?= $acc['id'] ?> " method="post">
                         <div class="form-group row">
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="staticEmail" value="Proposal" hidden name="pengajuan">
@@ -253,11 +253,11 @@
                                     <td><?= $a['bagian']; ?></td>
                                     <td><?= $a['barang']; ?></td>
                                     <td><?= $a['quality']; ?></td>
+                                    <td>Rp.<?= $a['harga']; ?></td>
                                     <td>
                                         <a href="<?= base_url('pengajuan/ubah_anggaran/') ?><?= $a['id_anggaran'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#ubah<?= $a['id_anggaran']; ?>">Ubah</a>
                                         <a href="<?= base_url('pengajuan/hapus_anggaran/') ?><?= $a['id_anggaran'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
                                     </td>
-                                    <td>Rp.<?= $a['harga']; ?></td>
                                     <td>Rp. <?= $h = $a['quality']  * $a['harga']; ?> </td>
                                 </tr>
                                 <?php $i++; ?>
@@ -327,16 +327,16 @@ foreach ($ubah as $u) :
                             <div class="form-group row">
                                 <label for="inputnama" class="col-sm-4 col-form-label">Jumlah Barang </label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputnama" name="harga" value="<?= $u['harga'] ?>">
-                                    <?= form_error('harga', '<small class="text-danger pl-3">', ' </small>') ?>
+                                    <input type="text" class="form-control" id="inputnama" name="quality" value="<?= $u['quality'] ?>">
+                                    <?= form_error('quality', '<small class="text-danger pl-3">', ' </small>') ?>
 
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputnama" class="col-sm-4 col-form-label">Harga Satuan </label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputnama" name="quality" value="<?= $u['quality'] ?>">
-                                    <?= form_error('quality', '<small class="text-danger pl-3">', ' </small>') ?>
+                                    <input type="text" class="form-control" id="inputnama" name="harga" value="<?= $u['harga'] ?>">
+                                    <?= form_error('harga', '<small class="text-danger pl-3">', ' </small>') ?>
 
                                 </div>
                             </div>

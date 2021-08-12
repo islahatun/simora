@@ -533,4 +533,36 @@ class data_model extends CI_Model
         $rak = "SELECT *, pengguna.nama from p_rak JOIN pengguna ON p_rak.id_pengguna = pengguna.id WHERE periode = $date ORDER BY waktu  ";
         return $this->db->query($rak)->result_array();
     }
+    public function edit_pendahuluan()
+    {
+        $id_rak = $this->input->post('id_rak');
+        $pengajuan = $this->input->post('pengajuan');
+        $latar_belakang = $this->input->post('latar_belakang');
+        $tema_kegiatan = $this->input->post('tema_kegiatan');
+        $tujuan_pelaksanaan = $this->input->post('tujuan_pelaksanaan');
+        $sasaran_peserta = $this->input->post('sasaran_peserta');
+        $jam_pelaksanaan = $this->input->post('jam_pelaksanaan');
+        $pelaksanaan_selesai = $this->input->post('pelaksanaan_selesai');
+        $tempat = $this->input->post('tempat');
+
+        $this->db->set('pengajuan', $pengajuan);
+        $this->db->set('latar_belakang', $latar_belakang);
+        $this->db->set('tema_kegiatan', $tema_kegiatan);
+        $this->db->set('tujuan_pelaksanaan', $tujuan_pelaksanaan);
+        $this->db->set('sasaran_peserta', $sasaran_peserta);
+        $this->db->set('jam_pelaksanaan', $jam_pelaksanaan);
+        $this->db->set('pelaksanaan_selesai', $pelaksanaan_selesai);
+        $this->db->set('tempat', $tempat);
+        $this->db->where('id_rak', $id_rak);
+        $this->db->update('p_proposal');
+    }
+    public function edit_acc()
+    {
+        $id = $this->input->post('id');
+        $status = "Perbaikan";
+
+        $this->db->set('status', $status);
+        $this->db->where('id', $id);
+        $this->db->update('acc');
+    }
 }
