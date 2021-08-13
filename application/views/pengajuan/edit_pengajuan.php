@@ -9,17 +9,17 @@
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendahuluan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Kepanitiaan</a>
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="true">Kepanitiaan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Jadwal Kegiatan</a>
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="true">Jadwal Kegiatan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-anggaran" role="tab" aria-controls="pills-contact" aria-selected="false">Anggaran</a>
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-anggaran" role="tab" aria-controls="pills-contact" aria-selected="true">Anggaran</a>
                 </li>
             <?php } else { ?>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-lampiran" role="tab" aria-controls="pills-contact" aria-selected="false">Lampiran</a>
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-lampiran" role="tab" aria-controls="pills-contact" aria-selected="true">Lampiran</a>
                 </li>
             <?php }; ?>
             </ul>
@@ -108,7 +108,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputPassword" name="id" value="<?= $rak['id'] ?>">
+                                <input type="text" class="form-control" id="inputPassword" name="id_proposal" value="<?= $rak['id_propoasl'] ?>">
                                 <?= form_error('id', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                         </div>

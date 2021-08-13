@@ -186,7 +186,6 @@
                     <a href="<?= base_url('assets/img/lampiran/') ?><?= $lampiran['lampiran3'] ?>">Lampiran Kwitansi</a>
                 </div>
             </div>
-
         </div>
 
     </div>
@@ -227,7 +226,7 @@
                 </div>
                 <div class="col-1">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_id'] ?>" hidden>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_ id'] ?>" hidden>
                         <!-- <?= form_error('acc', '<small class="text-danger pl-3">', ' </small>') ?> -->
                     </div>
                 </div>
