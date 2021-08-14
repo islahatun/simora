@@ -412,7 +412,7 @@ class pengajuan extends CI_Controller
         $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
         $data['lampiran'] = $this->acc_model->detail_lampiran($id);
 
-        $this->form_validation->set_rules('id_rak', 'id RAK', 'required|trim');
+        $this->form_validation->set_rules('id_proposal', 'id proposal', 'required|trim');
         $this->form_validation->set_rules('latar_belakang', 'Latar Belakang', 'required|trim');
         $this->form_validation->set_rules('tema_kegiatan', 'Tema Kegiatan', 'required|trim');
         $this->form_validation->set_rules('jam_pelaksanaan', 'Jam Pelaksanaan', 'required|trim');
@@ -552,6 +552,25 @@ class pengajuan extends CI_Controller
     {
         $this->db->where('id_anggaran', $id_anggaran);
         $this->db->delete('p_anggaran');
+        redirect('pengajuan/edit_anggaran/' . $id);
+    }
+    public function ubah_panitia($id)
+    {
+
+        $id_panitia = $this->input->post('id_panitia');
+        $nama_panitia =  $this->input->post('nama_panitia');
+        $jabatan =  $this->input->post('jabatan');
+
+        $this->db->set('nama_panitia', $nama_panitia);
+        $this->db->set('jabatan', $jabatan);
+        $this->db->where('id_panitia', $id_panitia);
+        $this->db->update('p_panitia');
+        redirect('pengajuan/edit_anggaran/' . $id);
+    }
+    public function hapus_panitia($id, $id_panitia)
+    {
+        $this->db->where('id_panitia', $id_panitia);
+        $this->db->delete('p_panitia');
         redirect('pengajuan/edit_anggaran/' . $id);
     }
 }

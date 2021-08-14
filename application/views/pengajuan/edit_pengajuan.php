@@ -135,8 +135,8 @@
                                     <td><?= $p['nama_panitia']; ?></td>
                                     <td><?= $p['jabatan'] ?></td>
                                     <td>
-                                        <a href="<?= base_url('pengajuan/proposal4/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Ubah</a>
-                                        <a href="<?= base_url('pengajuan/proposal4/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
+                                        <a href="<?= base_url('pengajuan/edit_panitia/') ?><?= $p['id_panitia'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#ubahpanitia<?= $p['id_panitia']; ?>">Ubah</a>
+                                        <a href="<?= base_url('pengajuan/hapus_panitia/') ?><?= $p['id_panitia'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
                                     </td>
                                 </tr>
                         </tbody>
@@ -144,7 +144,7 @@
                     <?php endforeach; ?>
                     </table>
                     <div class="text-right">
-                        <a href="<?= base_url('pengajuan/proposal4/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Kirim</a>
+                        <a href="<?= base_url('pengajuan/edit_panitia/') ?><?= $p['id_panitia'] ?>" class="btn btn-dark mb-2 ">Kirim</a>
                     </div>
                     </form>
                 </div>
@@ -343,6 +343,61 @@ foreach ($ubah as $u) :
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="inputnama" name="harga" value="<?= $u['harga'] ?>">
                                     <?= form_error('harga', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-dark">Ubah</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php endforeach; ?>
+
+<?php
+$ubah = $this->db->get('p_panitia')->result_array();
+
+foreach ($ubah as $u) :
+?>
+    <?php
+
+    foreach ($panitia as $a) :
+    ?>
+        <!-- Modal tambah -->
+        <div class="modal fade" id="ubahpanitia<?= $u['id_panitia']; ?>" tabindex="-1" role="dialog" aria-labelledby="ubahLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ubahLabel">Ubah data anggaran</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="<?= base_url('pengajuan/ubah_panitia/'); ?><?= $a['id']; ?>" method="post">
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputnama" name="id_panitia" value="<?= $u['id_panitia'] ?>" hidden>
+                                    <?= form_error('id_panitia', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputnama" class="col-sm-4 col-form-label">Nama Panitia </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputnama" name="nama_panitia" value="<?= $u['nama_panitia'] ?>">
+                                    <?= form_error('nama_panitia', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputnama" class="col-sm-4 col-form-label">Jabatan</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputnama" name="jabatan" value="<?= $u['jabatan'] ?>">
+                                    <?= form_error('jabatan', '<small class="text-danger pl-3">', ' </small>') ?>
 
                                 </div>
                             </div>
