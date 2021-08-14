@@ -13,71 +13,69 @@
 </head>
 
 <body>
-
-    <table>
-        <tr>
-            <td> <img src="<?= base_url('assets/img/profil/') ?><?= $nama['logo']; ?>" width="100" height="100"></td>
-            <td>
-                <h1 class="text-center">Rancangan Anggaran Kegiatan <?= $nama['nama'] ?> <?= date('Y') ?></h1>
-            </td>
-            <td><img src="<?= base_url('assets/img/profil/unbaja.png') ?>" width="100" height="100"></td>
-        </tr>
-    </table>
+    <div class="mt-5 ml-5 mr-3">
+        <table>
+            <tr>
+                <td> <img src="<?= base_url('assets/img/profil/') ?><?= $nama['logo']; ?>" width="100" height="100"></td>
+                <td>
+                    <h1 class="text-center">Rancangan Anggaran Kegiatan <?= $nama['nama'] ?> <?= date('Y') ?></h1>
+                </td>
+                <td><img src="<?= base_url('assets/img/profil/unbaja.png') ?>" width="100" height="100"></td>
+            </tr>
+        </table>
+    </div>
 
     <br>
 
     <!-- Begin Page Content -->
 
     <!-- Page Heading -->
-    <div class="card">
-        <div class="card-body">
-            <hr>
-            <div class="text-center">
-                <h3>Rancangan Anggaran Kegiatan <?= $nama['nama'] ?> </h3>
-                <h3><?= date('Y') ?></h3>
-                <?= $this->session->flashdata('message') ?>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <form action="">
-                        <table class="table table-bordered">
-                            <thead class="thead-dark">
-                                <tr class="text-center">
-                                    <th scope="col">#</th>
-                                    <th scope="col">Jenis Kegiatan</th>
-                                    <th scope="col">Tujuan</th>
-                                    <th scope="col">Sasaran</th>
-                                    <th scope="col">Waktu Kegiatan</th>
-                                    <th scope="col">Anggaran</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i = 1; ?>
-                                <?php $t = 0 ?>
-                                <?php foreach ($detail_rak as $r) : ?>
-                                    <tr>
-                                        <th scope="row" class="text-center"><?= $i; ?></th>
-                                        <td><?= $r['jenis_kegiatan']; ?></td>
-                                        <td><?= $r['tujuan']; ?></td>
-                                        <td><?= $r['sasaran']; ?></td>
-                                        <td><?= date("d F Y", strtotime($r['waktu']));; ?></td>
-                                        <td><?= $r['anggaran']; ?></td>
-                                    </tr>
-                            </tbody>
-                            <?php $i++; ?>
-                            <?php
-                                    $t += $r['anggaran'];
-
-                            ?>
-                        <?php endforeach; ?>
-                        <tr>
-                            <th scope="row" class="text-center" colspan="5">Total</th>
-                            <td><?= $t; ?></td>
+    <hr>
+    <div class="text-center">
+        <h3>Rancangan Anggaran Kegiatan <?= $nama['nama'] ?> </h3>
+        <h3><?= date('Y') ?></h3>
+        <?= $this->session->flashdata('message') ?>
+    </div>
+    <div class="row ml-5 mr-5">
+        <div class="col">
+            <form action="">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr class="text-center">
+                            <th scope="col">#</th>
+                            <th scope="col">Jenis Kegiatan</th>
+                            <th scope="col">Tujuan</th>
+                            <th scope="col">Sasaran</th>
+                            <th scope="col">Waktu Kegiatan</th>
+                            <th scope="col">Anggaran</th>
                         </tr>
-                        </table>
-                </div>
-            </div>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php $t = 0 ?>
+                        <?php foreach ($detail_rak as $r) : ?>
+                            <tr>
+                                <th scope="row" class="text-center"><?= $i; ?></th>
+                                <td><?= $r['jenis_kegiatan']; ?></td>
+                                <td><?= $r['tujuan']; ?></td>
+                                <td><?= $r['sasaran']; ?></td>
+                                <td><?= date("d F Y", strtotime($r['waktu']));; ?></td>
+                                <td><?= $r['anggaran']; ?></td>
+                            </tr>
+                    </tbody>
+                    <?php $i++; ?>
+                    <?php
+                            $t += $r['anggaran'];
+
+                    ?>
+                <?php endforeach; ?>
+                <tr>
+                    <th scope="row" class="text-center" colspan="5">Total</th>
+                    <td><?= $t; ?></td>
+                </tr>
+                </table>
         </div>
+
 
         <!-- End of Main Content -->
 
