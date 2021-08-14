@@ -60,7 +60,11 @@
                 </div>
             </div>
             <div class="text-right">
-                <button type="submit" class="btn btn-dark mb-2 ">Tambah data RAK</button>
+                <?php if ($button['periode'] == date('Y')) { ?>
+                    <button type="submit" class="btn btn-dark mb-2 " disabled>Tambah Data RAK</button>
+                <?php } else { ?>
+                    <button type="submit" class="btn btn-dark mb-2 ">Tambah Data RAK</button>
+                <?php } ?>
             </div>
         </form>
         <hr>
@@ -136,8 +140,11 @@
                     </tr>
                     </table>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-dark mb-2 ">Kirim</button>
-                        <button type="submit" class="btn btn-dark mb-2 " disabled>Kirim</button>
+                        <?php if ($button['periode'] == date('Y')) { ?>
+                            <button type="submit" class="btn btn-dark mb-2 " disabled>Kirim</button>
+                        <?php } else { ?>
+                            <button type="submit" class="btn btn-dark mb-2 ">Kirim</button>
+                        <?php } ?>
                     </div>
         </form>
 
