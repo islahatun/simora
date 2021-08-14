@@ -133,4 +133,12 @@ class acc_model extends CI_Model
         $proposal = "SELECT * from p_lampiran JOIN acc ON p_lampiran.id_rak = acc.id_rak WHERE acc.id = $id";
         return $this->db->query($proposal)->row_array();
     }
+    public function tampil_proposal_acc()
+    {
+        //menampilkan proposal berdasarkan pengguna
+        $p = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+        $id = $p['id'];
+        $proposal = "SELECT id,pengajuan,periode from  acc  WHERE id_ormawa = $id and `status` ='Acc Biro Akademik' ";
+        return $this->db->query($proposal)->result_array();
+    }
 }

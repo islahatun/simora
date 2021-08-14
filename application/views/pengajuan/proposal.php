@@ -53,7 +53,7 @@
                 <table class="table table-bordered col-5">
                     <thead class="thead-dark">
                         <tr class="text-center">
-                            <th scope="col">#</th>
+                            <th scope="col">No</th>
                             <th scope="col">Jenis Pengajuan</th>
                             <th scope="col">Periode</th>
                             <th scope="col">Cetak</th>
@@ -61,15 +61,16 @@
                     </thead>
                     <tbody>
                         <?php $i = 1; ?>
-
-                        <tr>
-                            <th scope="row" class="text-center"><?= $i; ?></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <?php foreach ($acc as $a) : ?>
+                            <tr>
+                                <th scope="row" class="text-center"><?= $i; ?></th>
+                                <td><?= $a['pengajuan'] ?></td>
+                                <td><?= $a['periode'] ?></td>
+                                <td></td>
+                            </tr>
                     </tbody>
                     <?php $i++; ?>
+                <?php endforeach; ?>
                 </table>
             </div>
         </div>

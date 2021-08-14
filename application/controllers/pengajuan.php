@@ -77,6 +77,7 @@ class pengajuan extends CI_Controller
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
         $pengguna =  $this->data_model->sessionpengguna();
+        $data['acc'] = $this->acc_model->tampil_proposal_acc();
         $r = $this->data_model->tampil_revisi_kegiatan();
         if ($r['komentar'] !== 'Ok' and $r['id_ormawa'] == $pengguna['id']) {
             $this->session->set_flashdata('message', '
