@@ -16,6 +16,8 @@ class pengajuan extends CI_Controller
         $data['title'] = "Pengajuan RAK";
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
+        $data['acc'] = $this->acc_model->tampil_rak_acc();
+        $data['button'] = $this->acc_model->disable_button_rak();
 
         $this->form_validation->set_rules('id_pengguna', 'id_pengguna', 'required|trim');
         $this->form_validation->set_rules('jenis_kegiatan', 'Jenis Kegiatan', 'required|trim');

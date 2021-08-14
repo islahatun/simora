@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <div class="text-center mb-3">
-                        <h3>Rancangan Anggaran Kegiatan Commputer Community</h3>
+                        <h3>Rancangan Anggaran Kegiatan <?= $pengguna['nama'] ?></h3>
                         <h3><?= date('Y') ?></h3>
                     </div>
                     <?= $this->session->flashdata('message'); ?>
@@ -137,6 +137,7 @@
                     </table>
                     <div class="text-right">
                         <button type="submit" class="btn btn-dark mb-2 ">Kirim</button>
+                        <button type="submit" class="btn btn-dark mb-2 " disabled>Kirim</button>
                     </div>
         </form>
 
@@ -147,22 +148,21 @@
             <thead class="thead-dark">
                 <tr class="text-center">
                     <th scope="col">#</th>
-                    <th scope="col">RAK</th>
                     <th scope="col">Periode</th>
                     <th scope="col">Cetak</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $i = 1; ?>
-
-                <tr>
-                    <th scope="row" class="text-center"><?= $i; ?></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <?php foreach ($acc as $a) : ?>
+                    <tr>
+                        <th scope="row" class="text-center"><?= $i; ?></th>
+                        <td><?= $a['periode'] ?></td>
+                        <td></td>
+                    </tr>
             </tbody>
             <?php $i++; ?>
+        <?php endforeach; ?>
         </table>
     </div>
 </div>

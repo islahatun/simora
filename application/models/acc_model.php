@@ -4,7 +4,7 @@ class acc_model extends CI_Model
 {
     public function accKemahasiswaan()
     {
-        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'or acc.pengajuan ='RAK' and acc.acc =1 or acc.acc=2 or acc.acc=3 OR acc.acc=7 and  acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Perbaikan' or acc.status='Acc Biro Akademik'and  acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Perbaikan' or acc.status='Acc Biro Akademik' ORDER BY acc.id desc"; // 3 = berdasarkan level dpm
+        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =1 or acc.acc=2 or acc.acc=3 OR acc.acc=7 and  acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Perbaikan' or acc.status='Acc Biro Akademik'and  acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Perbaikan' or acc.status='Acc Biro Akademik' ORDER BY acc.id desc"; // 3 = berdasarkan level dpm
         return $this->db->query($join)->result_array();
     }
     public function accbiro()
@@ -140,5 +140,20 @@ class acc_model extends CI_Model
         $id = $p['id'];
         $proposal = "SELECT id,pengajuan,periode from  acc  WHERE id_ormawa = $id and `status` ='Acc Biro Akademik' ";
         return $this->db->query($proposal)->result_array();
+    }
+    public function tampil_rak_acc()
+    {
+        //menampilkan proposal berdasarkan pengguna
+        $p = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+        $id = $p['id'];
+        $RAK = "SELECT id,pengajuan,periode from  acc  WHERE id_ormawa = $id and `status` ='Acc Kemahasiswaan' and pengajuan ='RAK' ";
+        return $this->db->query($RAK)->result_array();
+    }
+    public function disable_button_rak()
+    {
+        $p = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+        $id = $p['id'];
+
+        return $this->db->get_where('acc', ['id_ormawa' => $id])->row_array();
     }
 }
