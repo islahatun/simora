@@ -14,18 +14,17 @@
 
 <body>
 
-    <span>
-        <img src="<?= base_url('assets/img/profil/') ?><?= $nama['logo']; ?>" width="70" height="70">
-    </span>
-    <span></span>
-    <h1>Rancangan Anggaran Kegiatan <?= $nama['nama'] ?> <?= date('Y') ?></h1>
-
+    <table>
+        <tr>
+            <td> <img src="<?= base_url('assets/img/profil/') ?><?= $nama['logo']; ?>" width="100" height="100"></td>
+            <td>
+                <h1 class="text-center">Rancangan Anggaran Kegiatan <?= $nama['nama'] ?> <?= date('Y') ?></h1>
+            </td>
+            <td><img src="<?= base_url('assets/img/profil/unbaja.png') ?>" width="100" height="100"></td>
+        </tr>
+    </table>
 
     <br>
-
-
-
-
 
     <!-- Begin Page Content -->
 
