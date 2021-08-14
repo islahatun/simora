@@ -535,7 +535,7 @@ class data_model extends CI_Model
     }
     public function edit_pendahuluan()
     {
-        $id_rak = $this->input->post('id_rak');
+        $id_proposal = $this->input->post('id_proposal');
         $pengajuan = $this->input->post('pengajuan');
         $latar_belakang = $this->input->post('latar_belakang');
         $tema_kegiatan = $this->input->post('tema_kegiatan');
@@ -553,7 +553,7 @@ class data_model extends CI_Model
         $this->db->set('jam_pelaksanaan', $jam_pelaksanaan);
         $this->db->set('pelaksanaan_selesai', $pelaksanaan_selesai);
         $this->db->set('tempat', $tempat);
-        $this->db->where('id_rak', $id_rak);
+        $this->db->where('id_proposal', $id_proposal);
         $this->db->update('p_proposal');
     }
     public function edit_acc()

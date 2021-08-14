@@ -22,7 +22,10 @@
         <div class="ml-5 mr-5">
 
             <h1 class="text-center mt-5">
-                <font size="12 px" face="times">Laporan Pertanggungjawaban <br> <?= $pl['tema_kegiatan'] ?><br> <?= $nama['nama'] ?> <?= date('Y') ?></font>
+                <font face="times">
+                    <center> Laporan Pertanggungjawaban <br> <?= $pl['tema_kegiatan'] ?><br> <?= $nama['nama'] ?> <?= date('Y') ?>
+                    </center>
+                </font>
             </h1>
             <br>
             <br>
@@ -34,13 +37,13 @@
             <br>
             <br>
             <br>
-            <font size="12 px" face="times" align="center">
+            <font face="times" align="center">
                 <h2><?= $nama['nama'] ?> <?= date('Y') ?></h2>
             </font>
-            <font size="12 px" face="times" align="center">
+            <font face="times" align="center">
                 <h3>Universitas Banten Jaya</h3>
             </font>
-            <font size="12 px" face="times" align="center">
+            <font face="times" align="center">
                 <h3> Warung pojok doni, Jl. Ciwaru Raya No.73, Cipare, Kec. Serang, Kota Serang, Banten 42117</h3>
             </font>
             <br>
@@ -50,78 +53,78 @@
             <table>
                 <tr>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3>A.</h3>
 
                         </font>
                     </td>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3>Latar Belakang</h3>
                         </font>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
 
 
                         </font>
                     </td>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3><?= $pl['latar_belakang'] ?></h3>
                         </font>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3>B.</h3>
 
                         </font>
                     </td>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3>Tema Kegiatan</h3>
                         </font>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
 
 
                         </font>
                     </td>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3>Kegiatan ini bertemakan "<?= $pl['tema_kegiatan'] ?>"</h3>
                         </font>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3>C.</h3>
 
                         </font>
                     </td>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3>Tujuan Kegiatan</h3>
                         </font>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
 
 
                         </font>
                     </td>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3><?= $pl['tujuan_pelaksanaan'] ?></h3>
                         </font>
                     </td>
@@ -129,50 +132,50 @@
 
                 <tr>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3>D.</h3>
 
                         </font>
                     </td>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3>Sasaran Peserta</h3>
                         </font>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
 
 
                         </font>
                     </td>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3><?= $pl['sasaran_peserta'] ?></h3>
                         </font>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3>E.</h3>
 
                         </font>
                     </td>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3>Waktu dan Tempat Kegiatan</h3>
                         </font>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                         </font>
                     </td>
                     <td>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <table>
                                 <tr>
                                     <td>
@@ -208,20 +211,20 @@
 
             <tr>
                 <td>
-                    <font size="12 px" face="times">
+                    <font face="times">
                         <h3>F.</h3>
 
                     </font>
                 </td>
                 <td>
-                    <font size="12 px" face="times">
+                    <font face="times">
                         <h3>Panitia Kegiatan</h3>
                     </font>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <font size="12 px" face="times">
+                    <font face="times">
                     </font>
                 </td>
                 <td>
@@ -230,7 +233,7 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr class="text-center">
-                                        <font size="12 px" face="times">
+                                        <font face="times">
                                             <th scope="col">Nama Panitia</th>
                                             <th scope="col">Jabatan</th>
                                         </font>
@@ -244,10 +247,10 @@
                                         <tr>
 
                                             <td>
-                                                <font size="5 px" face="times"><?= $p['nama_panitia'] ?> </font>
+                                                <font face="times"><?= $p['nama_panitia'] ?> </font>
                                             </td>
                                             <td>
-                                                <font size="5 px" face="times"><?= $p['jabatan']; ?> </font>
+                                                <font face="times"><?= $p['jabatan']; ?> </font>
                                             </td>
 
                                         </tr>
@@ -260,25 +263,25 @@
             </tr>
             <tr>
                 <td>
-                    <font size="12 px" face="times">
+                    <font face="times">
                         <h3>G.</h3>
 
                     </font>
                 </td>
                 <td>
-                    <font size="12 px" face="times">
+                    <font face="times">
                         <h3>Anggaran Kegiatan</h3>
                     </font>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <font size="12 px" face="times">
+                    <font face="times">
                     </font>
                 </td>
                 <td>
                     <?php foreach ($pendahuluan as $pl) : ?>
-                        <font size="12 px" face="times">
+                        <font face="times">
                             <h3>Adapun Anggaran Kegiatan ini berasal dari subsidi Kampus dengan besar anggaran Rp. <?= $pl['anggaran'] ?> </h3>
                         </font>
                     <?php endforeach; ?>
@@ -286,20 +289,20 @@
             </tr>
             <tr>
                 <td>
-                    <font size="12 px" face="times">
+                    <font face="times">
                         <h3>H.</h3>
 
                     </font>
                 </td>
                 <td>
-                    <font size="12 px" face="times">
+                    <font face="times">
                         <h3>Jadwal Kegiatan</h3>
                     </font>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <font size="12 px" face="times">
+                    <font face="times">
                     </font>
                 </td>
                 <td>
@@ -318,18 +321,18 @@
                                 </tr>
                                 <tr>
                                     <td rowspan=3>
-                                        <font size="5 px" face="times">
+                                        <font face="times">
                                             <?php $tanggal = $j['tanggal'];
                                             echo date("d F Y", strtotime($tanggal)); ?> </font>
                                     </td>
                                     <td>
-                                        <font size="5 px" face="times"><?= $j['mulai']; ?> - <?= $j['selesai']; ?></font>
+                                        <font face="times"><?= $j['mulai']; ?> - <?= $j['selesai']; ?></font>
                                     </td>
                                     <td>
-                                        <font size="5 px" face="times"><?= $j['kegiatan']; ?></font>
+                                        <font face="times"><?= $j['kegiatan']; ?></font>
                                     </td>
                                     <td>
-                                        <font size="5 px" face="times"><?= $j['keterangan']; ?></font>
+                                        <font face="times"><?= $j['keterangan']; ?></font>
                                     </td>
                                 </tr>
                         </tbody>
@@ -337,20 +340,20 @@
                     </table>
             <tr>
                 <td>
-                    <font size="12 px" face="times">
+                    <font face="times">
                         <h3>I.</h3>
 
                     </font>
                 </td>
                 <td>
-                    <font size="12 px" face="times">
+                    <font face="times">
                         <h3>Rincian Kegiatan</h3>
                     </font>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <font size="12 px" face="times">
+                    <font face="times">
                     </font>
                 </td>
                 <td>
@@ -371,22 +374,22 @@
                             <?php foreach ($anggaran_lpj as $a) : ?>
                                 <tr>
                                     <th scope="row" class="text-center">
-                                        <font size="5 px" face="times"><?= $i; ?> </font>
+                                        <font face="times"><?= $i; ?> </font>
                                     </th>
                                     <td>
-                                        <font size="5 px" face="times"><?= $a['bagian']; ?> </font>
+                                        <font face="times"><?= $a['bagian']; ?> </font>
                                     </td>
                                     <td>
-                                        <font size="5 px" face="times"><?= $a['barang']; ?> </font>
+                                        <font face="times"><?= $a['barang']; ?> </font>
                                     </td>
                                     <td>
-                                        <font size="5 px" face="times"><?= $a['quality']; ?> </font>
+                                        <font face="times"><?= $a['quality']; ?> </font>
                                     </td>
                                     <td>
-                                        <font size="5 px" face="times">Rp.<?= $a['harga']; ?> </font>
+                                        <font face="times">Rp.<?= $a['harga']; ?> </font>
                                     </td>
                                     <td>
-                                        <font size="5 px" face="times">Rp. <?= $h = $a['quality']  * $a['harga']; ?> </font>
+                                        <font face="times">Rp. <?= $h = $a['quality']  * $a['harga']; ?> </font>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>
@@ -397,16 +400,16 @@
                             <?php endforeach; ?>
                             <tr>
                                 <td colspan="5" class="text-center font-weight-bold">
-                                    <font size="5 px" face="times">Total Keseluruhan </font>
+                                    <font face="times">Total Keseluruhan </font>
                                 </td>
                                 <td class="font-weight-bold">
-                                    <font size="5 px" face="times">Rp.<?= $t; ?> </font>
+                                    <font face="times">Rp.<?= $t; ?> </font>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="text-right">
-                        <font size="5 px" face="times">
+                        <font face="times">
                             <div>Mengetahui</div>
                             <div>Bendahara Umum</div>
                             <br>

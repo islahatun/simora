@@ -226,7 +226,7 @@
                 </div>
                 <div class="col-1">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_ id'] ?>" hidden>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_id'] ?>" hidden>
                         <!-- <?= form_error('acc', '<small class="text-danger pl-3">', ' </small>') ?> -->
                     </div>
                 </div>

@@ -91,6 +91,7 @@ class acc extends CI_Controller
         $this->form_validation->set_rules('status', 'status', 'trim|required');
         $this->form_validation->set_rules('komentar', 'komentar', 'trim|required');
         if ($this->form_validation->run() == FALSE) {
+            $data['pengguna'] = $this->data_model->sessionpengguna();
             $data['title'] = "Acc Pengajuan";
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar', $data);

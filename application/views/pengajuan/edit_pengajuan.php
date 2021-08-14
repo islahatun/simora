@@ -33,8 +33,8 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="staticEmail" value="<?= $rak['id_rak'] ?>" name="id_rak" hidden>
-                                <?= form_error('id_rak', '<small class="text-danger pl-3">', ' </small>') ?>
+                                <input type="text" class="form-control" id="staticEmail" value="<?= $pendahuluan['id_proposal'] ?>" name="id_proposal" hidden>
+                                <?= form_error('id_proposal', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -108,7 +108,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputPassword" name="id_proposal" value="<?= $rak['id_propoasl'] ?>">
+                                <input type="text" class="form-control" id="inputPassword" name="id" value="<?= $rak['id'] ?>" hidden>
                                 <?= form_error('id', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                         </div>
