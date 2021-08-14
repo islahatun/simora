@@ -158,7 +158,7 @@
                     <tr>
                         <th scope="row" class="text-center"><?= $i; ?></th>
                         <td><?= $a['periode'] ?></td>
-                        <td></td>
+                        <td><a href="<?= base_url(); ?>acc/pdf/<?= $a['id']; ?>" class="badge badge-primary">Download</a></td>
                     </tr>
             </tbody>
             <?php $i++; ?>
