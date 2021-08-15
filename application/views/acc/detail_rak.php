@@ -52,7 +52,7 @@
                         <div class="row mt-3 ml-3 ">
                             <form action="<?= base_url('acc/detail_pengajuan/') ?><?= $id['id'] ?>" method="post">
                                 <span class="ml-3">
-                                    <?php if ($pengguna['level_id'] == 2) { ?>
+                                    <?php if ($pengguna['level_id'] == 2 or $pengguna['level_id'] == 6) { ?>
 
                                     <?php } else { ?>
                                     <button type="submit" value="Acc <?= $pengguna['nama']; ?>" name="status"
