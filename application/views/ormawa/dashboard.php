@@ -35,7 +35,12 @@
                             Computer Community
                         </div>
                         <div class="col">
-                            : 50%
+                            : <?php
+                                $date = date('Y');
+                                $hitung = "SELECT id_ormawa FROM acc WHERE id_ormawa=3 and periode=$date and status ='Acc Biro Akademik'";
+                                $h = $this->db->query($hitung)->num_rows();
+                                echo $h;
+                                ?>
                         </div>
                     </div>
                     <div class="row">
@@ -43,7 +48,12 @@
                             Humanika
                         </div>
                         <div class="col">
-                            : 50%
+                            :<?php
+                                $date = date('Y');
+                                $hitung = "SELECT id_ormawa FROM acc WHERE id_ormawa=8 and periode=$date and status ='Acc Biro Akademik'";
+                                $h = $this->db->query($hitung)->num_rows();
+                                echo $h;
+                                ?>
                         </div>
                     </div>
                     <div class="row">
@@ -51,7 +61,12 @@
                             HMTL
                         </div>
                         <div class="col-5">
-                            : 50%
+                            : <?php
+                                $date = date('Y');
+                                $hitung = "SELECT id_ormawa FROM acc WHERE id_ormawa=8 and periode=$date and status ='Acc Biro Akademik'";
+                                $h = $this->db->query($hitung)->num_rows();
+                                echo $h;
+                                ?>
                         </div>
                     </div>
                     <div class="row">
@@ -59,7 +74,12 @@
                             Himasi
                         </div>
                         <div class="col-5">
-                            : 50%
+                            : <?php
+                                $date = date('Y');
+                                $hitung = "SELECT id_ormawa FROM acc WHERE id_ormawa=9 and periode=$date and status ='Acc Biro Akademik'";
+                                $h = $this->db->query($hitung)->num_rows();
+                                echo $h;
+                                ?>
                         </div>
                     </div>
                     <div class="row">
@@ -91,7 +111,12 @@
                             ESA
                         </div>
                         <div class="col">
-                            : 50%
+                            : <?php
+                                $date = date('Y');
+                                $hitung = "SELECT id_ormawa FROM acc WHERE id_ormawa=10 and periode=$date and status ='Acc Biro Akademik'";
+                                $h = $this->db->query($hitung)->num_rows();
+                                echo $h;
+                                ?>
                         </div>
                     </div>
                     <div class="row">
@@ -147,14 +172,14 @@
                     <div class="text-center">
                     </div>
                     <?php foreach ($rak as $r) : ?>
-                        <div class="row">
-                            <div class="col">
-                                <?= date('d F Y', strtotime($r['waktu'])); ?>
-                            </div>
-                            <div class="col">
-                                <?= $r['jenis_kegiatan']; ?>
-                            </div>
+                    <div class="row">
+                        <div class="col">
+                            <?= date('d F Y', strtotime($r['waktu'])); ?>
                         </div>
+                        <div class="col">
+                            <?= $r['jenis_kegiatan']; ?>
+                        </div>
+                    </div>
 
                     <?php endforeach; ?>
                 </div>
@@ -172,8 +197,15 @@
                 <div class="card-body">
                     <div class="text-center">
                     </div>
-                    <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution! constantly updated collection of beautiful svg images that you can use completely free and without attribution! constantly updated collection of beautiful svg images that you can use completely free and without attribution! constantly updated collection of beautiful svg images that you can use completely free and without attribution! </p>
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
+                    <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow"
+                            href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg
+                        images that you can use completely free and without attribution! constantly updated collection
+                        of beautiful svg images that you can use completely free and without attribution! constantly
+                        updated collection of beautiful svg images that you can use completely free and without
+                        attribution! constantly updated collection of beautiful svg images that you can use completely
+                        free and without attribution! </p>
+                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw
+                        &rarr;</a>
                 </div>
 
             </div>
