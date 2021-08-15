@@ -29,35 +29,46 @@
                                 <?php $i = 1; ?>
                                 <?php $t = 0 ?>
                                 <?php foreach ($detail_rak as $r) : ?>
-                                    <tr>
-                                        <th scope="row" class="text-center"><?= $i; ?></th>
-                                        <td><?= $r['jenis_kegiatan']; ?></td>
-                                        <td><?= $r['tujuan']; ?></td>
-                                        <td><?= $r['sasaran']; ?></td>
-                                        <td><?= date("d F Y", strtotime($r['waktu']));; ?></td>
-                                        <td><?= $r['anggaran']; ?></td>
-                                    </tr>
+                                <tr>
+                                    <th scope="row" class="text-center"><?= $i; ?></th>
+                                    <td><?= $r['jenis_kegiatan']; ?></td>
+                                    <td><?= $r['tujuan']; ?></td>
+                                    <td><?= $r['sasaran']; ?></td>
+                                    <td><?= date("d F Y", strtotime($r['waktu']));; ?></td>
+                                    <td><?= $r['anggaran']; ?></td>
+                                </tr>
                             </tbody>
                             <?php $i++; ?>
                             <?php
                                     $t += $r['anggaran'];
 
                             ?>
-                        <?php endforeach; ?>
-                        <tr>
-                            <th scope="row" class="text-center" colspan="5">Total</th>
-                            <td><?= $t; ?></td>
-                        </tr>
+                            <?php endforeach; ?>
+                            <tr>
+                                <th scope="row" class="text-center" colspan="5">Total</th>
+                                <td><?= $t; ?></td>
+                            </tr>
                         </table>
                         <div class="row mt-3 ml-3 ">
                             <form action="<?= base_url('acc/detail_pengajuan/') ?><?= $id['id'] ?>" method="post">
                                 <span class="ml-3">
-                                    <button type="submit" value="Acc <?= $pengguna['nama']; ?>" name="status" class="btn btn-success">Acc</button>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_id'] ?>" hidden>
+                                    <?php if ($pengguna['level_id'] == 2) { ?>
+
+                                    <?php } else { ?>
+                                    <button type="submit" value="Acc <?= $pengguna['nama']; ?>" name="status"
+                                        class="btn btn-success">Acc</button>
+                                    <?php } ?>
+
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_id'] ?>"
+                                        hidden>
                                     <!-- <?= form_error('acc', '<small class="text-danger pl-3">', ' </small>') ?> -->
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="komentar" value="Ok" hidden>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="komentar" value="Ok" hidden>
                                     <!-- <?= form_error('komentar', '<small class="text-danger pl-3">', ' </small>') ?> -->
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="status" value="Acc <?= $pengguna['nama'] ?>" hidden>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="status" value="Acc <?= $pengguna['nama'] ?>"
+                                        hidden>
                                     <!-- <?= form_error('status', '<small class="text-danger pl-3">', ' </small>') ?> -->
                                 </span>
                             </form>

@@ -8,7 +8,7 @@ class acc extends CI_Controller
         parent::__construct();
         $this->load->model('acc_model');
         $this->load->model('data_model');
-        $this->load->library('pdf');
+        // $this->load->library('pdf');
     }
     public function acc_pengajuan()
     {
