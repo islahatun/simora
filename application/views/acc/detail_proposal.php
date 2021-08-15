@@ -5,84 +5,92 @@
     <div class="card-body">
         <ul class="nav nav-tabs" id="pills-tab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendahuluan</a>
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                    aria-controls="pills-home" aria-selected="true">Pendahuluan</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Kepanitiaan</a>
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                    aria-controls="pills-profile" aria-selected="false">Kepanitiaan</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Jadwal Kegiatan</a>
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                    aria-controls="pills-contact" aria-selected="false">Jadwal Kegiatan</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-anggaran" role="tab" aria-controls="pills-contact" aria-selected="false">Anggaran</a>
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-anggaran" role="tab"
+                    aria-controls="pills-contact" aria-selected="false">Anggaran</a>
             </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="home-tab">
                 <?php foreach ($pendahuluan as $pe) : ?>
-                    <div class="mt-3">
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-3 col-form-label">Jenis Kegiatan</label>
-                            <div class="col-sm-7">
-                                : <?= $pe['jenis_kegiatan']; ?>
-                            </div>
+                <div class="mt-3">
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Jenis Kegiatan</label>
+                        <div class="col-sm-7">
+                            : <?= $pe['jenis_kegiatan']; ?>
                         </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-3 col-form-label">Tema Kegiatan</label>
-                            <div class="col-sm-7">
-                                : <?= $pe['tema_kegiatan']; ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputPassword" class="col-sm-3 col-form-label">Latar Belakang</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" rows="6" name="latar_belakang"><?= $pe['latar_belakang']; ?></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-3 col-form-label">Tujuan Kegiatan</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="tujuan_pelaksanaan"><?= $pe['tujuan']; ?></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-3 col-form-label">Sasaran Kegiatan dan Jumlah peserta</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="sasaran_peserta"><?= $pe['sasaran_peserta']; ?></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-3 col-form-label">Tanggal Kegiatan</label>
-                            <div class="col-sm-7">
-                                : <?= $pe['waktu']; ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-3 col-form-label">Waktu Kegiatan</label>
-                            <div class="col-sm-7">
-
-                                : <?= $pe['jam_pelaksanaan']; ?>
-
-                                s/d
-
-                                <?= $pe['pelaksanaan_selesai']; ?>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-3 col-form-label">Tempat Kegiatan</label>
-                            <div class="col-sm-7">
-                                :<?= $pe['tempat']; ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-3 col-form-label">Anggaran Subsidi Kampus</label>
-                            <div class="col-sm-7">
-                                : <?= $pe['anggaran']; ?>
-                            </div>
-                        </div>
-                    <?php endforeach ?>
                     </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Tema Kegiatan</label>
+                        <div class="col-sm-7">
+                            : <?= $pe['tema_kegiatan']; ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-3 col-form-label">Latar Belakang</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" rows="6"
+                                name="latar_belakang"><?= $pe['latar_belakang']; ?></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Tujuan Kegiatan</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"
+                                name="tujuan_pelaksanaan"><?= $pe['tujuan']; ?></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Sasaran Kegiatan dan Jumlah
+                            peserta</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                name="sasaran_peserta"><?= $pe['sasaran_peserta']; ?></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Tanggal Kegiatan</label>
+                        <div class="col-sm-7">
+                            : <?= $pe['waktu']; ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Waktu Kegiatan</label>
+                        <div class="col-sm-7">
+
+                            : <?= $pe['jam_pelaksanaan']; ?>
+
+                            s/d
+
+                            <?= $pe['pelaksanaan_selesai']; ?>
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Tempat Kegiatan</label>
+                        <div class="col-sm-7">
+                            :<?= $pe['tempat']; ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Anggaran Subsidi Kampus</label>
+                        <div class="col-sm-7">
+                            : <?= $pe['anggaran']; ?>
+                        </div>
+                    </div>
+                    <?php endforeach ?>
+                </div>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="profile-tab">
                 <table class="table table-bordered mt-3">
@@ -94,14 +102,14 @@
                     </thead>
                     <tbody>
                         <?php foreach ($panitia as $pa) : ?>
-                            <tr>
-                            </tr>
-                            <tr>
-                                <td><?= $pa['nama_panitia']; ?></td>
-                                <td><?= $pa['jabatan']; ?></td>
-                            </tr>
+                        <tr>
+                        </tr>
+                        <tr>
+                            <td><?= $pa['nama_panitia']; ?></td>
+                            <td><?= $pa['jabatan']; ?></td>
+                        </tr>
                     </tbody>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </table>
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -116,19 +124,19 @@
                     </thead>
                     <tbody>
                         <?php foreach ($jadwal as $j) : ?>
-                            <tr>
-                            </tr>
-                            <tr>
-                                <td rowspan=3>
-                                    <?php $tanggal = $j['tanggal'];
+                        <tr>
+                        </tr>
+                        <tr>
+                            <td rowspan=3>
+                                <?php $tanggal = $j['tanggal'];
                                     echo date("d F Y", strtotime($tanggal)); ?>
-                                </td>
-                                <td><?= $j['mulai']; ?> - <?= $j['selesai']; ?></td>
-                                <td><?= $j['kegiatan']; ?></td>
-                                <td><?= $j['keterangan']; ?></td>
-                            </tr>
+                            </td>
+                            <td><?= $j['mulai']; ?> - <?= $j['selesai']; ?></td>
+                            <td><?= $j['kegiatan']; ?></td>
+                            <td><?= $j['keterangan']; ?></td>
+                        </tr>
                     </tbody>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </table>
             </div>
             <div class="tab-pane fade" id="pills-anggaran" role="tabpanel" aria-labelledby="contact-tab">
@@ -147,16 +155,16 @@
                         <?php $i = 1; ?>
                         <?php $t = 0 ?>
                         <?php foreach ($anggaran as $a) : ?>
-                            <tr>
-                                <th scope="row" class="text-center"><?= $i; ?></th>
-                                <td><?= $a['bagian']; ?></td>
-                                <td><?= $a['barang']; ?></td>
-                                <td><?= $a['quality']; ?></td>
-                                <td>Rp.<?= $a['harga']; ?></td>
-                                <td>Rp. <?= $h = $a['quality']  * $a['harga']; ?> </td>
-                            </tr>
-                            <?php $i++; ?>
-                            <?php
+                        <tr>
+                            <th scope="row" class="text-center"><?= $i; ?></th>
+                            <td><?= $a['bagian']; ?></td>
+                            <td><?= $a['barang']; ?></td>
+                            <td><?= $a['quality']; ?></td>
+                            <td>Rp.<?= $a['harga']; ?></td>
+                            <td>Rp. <?= $h = $a['quality']  * $a['harga']; ?> </td>
+                        </tr>
+                        <?php $i++; ?>
+                        <?php
                             $t += $h;
 
                             ?>
@@ -172,12 +180,16 @@
         <div class="row mt-3 ml-3 ">
             <form action="<?= base_url('acc/detail_pengajuan/') ?><?= $id['id'] ?>" method="post">
                 <span class="ml-3">
-                    <button type="submit" value="Acc <?= $pengguna['nama']; ?>" name="status" class="btn btn-success">Acc</button>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_id'] ?>" hidden>
+                    <button type="submit" value="Acc <?= $pengguna['nama']; ?>" name="status"
+                        class="btn btn-success">Acc</button>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        name="acc" value="<?= $pengguna['level_id'] ?>" hidden>
                     <!-- <?= form_error('acc', '<small class="text-danger pl-3">', ' </small>') ?> -->
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="komentar" value="Ok" hidden>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        name="komentar" value="Ok" hidden>
                     <!-- <?= form_error('komentar', '<small class="text-danger pl-3">', ' </small>') ?> -->
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="status" value="Acc <?= $pengguna['nama'] ?>" hidden>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        name="status" value="Acc <?= $pengguna['nama'] ?>" hidden>
                     <!-- <?= form_error('status', '<small class="text-danger pl-3">', ' </small>') ?> -->
                 </span>
             </form>
@@ -190,29 +202,32 @@
 
         <?php
         if (isset($_POST['submit'])) { ?>
-            <form action="<?= base_url('acc/detail_pengajuan/') ?><?= $id['id'] ?>" method="post">
-                <div class="row mt-3">
-                    <div class="col">
-                        <div class="form-group">
-                            <textarea type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="komentar" placeholder="Masukkan Komentar"></textarea>
-                            <!-- <?= form_error('komentar', '<small class="text-danger pl-3">', ' </small>') ?> -->
-                        </div>
-                    </div>
-                    <div class="col-1">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="status" value="Revisi <?= $pengguna['nama'] ?>" hidden>
-                            <!-- <?= form_error('status', '<small class="text-danger pl-3">', ' </small>') ?> -->
-                        </div>
-                    </div>
-                    <div class="col-1">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="acc" value="<?= $pengguna['level_id'] ?>" hidden>
-                            <!-- <?= form_error('acc', '<small class="text-danger pl-3">', ' </small>') ?> -->
-                        </div>
+        <form action="<?= base_url('acc/detail_pengajuan/') ?><?= $id['id'] ?>" method="post">
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="form-group">
+                        <textarea type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            name="komentar" placeholder="Masukkan Komentar"></textarea>
+                        <!-- <?= form_error('komentar', '<small class="text-danger pl-3">', ' </small>') ?> -->
                     </div>
                 </div>
-                <button type=" submit" class="btn btn-danger">Kirim</button>
-            </form>
+                <div class="col-1">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            name="status" value="Revisi <?= $pengguna['nama'] ?>" hidden>
+                        <!-- <?= form_error('status', '<small class="text-danger pl-3">', ' </small>') ?> -->
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            name="acc" value="<?= $pengguna['level_id'] ?>" hidden>
+                        <!-- <?= form_error('acc', '<small class="text-danger pl-3">', ' </small>') ?> -->
+                    </div>
+                </div>
+            </div>
+            <button type=" submit" class="btn btn-danger">Kirim</button>
+        </form>
         <?php } ?>
     </div>
 </div>
