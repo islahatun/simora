@@ -90,4 +90,7 @@ class auth extends CI_Controller
 
         redirect('auth');
     }
+    public function sandi()
+    {
+    }
 }

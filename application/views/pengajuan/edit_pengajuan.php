@@ -113,11 +113,53 @@
                             </div>
                         </div>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-dark mb-2 ">Kirim</button>
+                            <button type="submit" class="btn btn-dark mb-2 ">Perbaiki</button>
                         </div>
                     </form>
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <form action="<?= base_url('pengajuan/tambah_panitia/') ?><?= $rak['id'] ?>" method="post">
+                        <div class="row mt-3">
+                            <div class="col">
+                                <div class="form-group row">
+                                    <label for="inputPassword" class="col-sm-4 col-form-label">Nama </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="nama_panitia">
+                                        <?= form_error('nama_panitia', '<small class="text-danger pl-3">', ' </small>') ?>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="id_rak" value="<?= $rak["id_rak"] ?>" hidden>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="id_pengguna" value="<?= $pengguna["id"] ?>" hidden>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group row">
+                                    <label for="inputPassword" class="col-sm-4 col-form-label">Jabatan</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="inputPassword" name="jabatan">
+                                        <?= form_error('jabatan', '<small class="text-danger pl-3">', ' </small>') ?>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="inputPassword" name="pengajuan" value="proposal" hidden>
+                                        <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-dark mb-2 ">Tambah Kepanitiaan</button>
+                        </div>
+                    </form>
                     <table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr class="text-center">
@@ -136,7 +178,7 @@
                                     <td><?= $p['jabatan'] ?></td>
                                     <td>
                                         <a href="<?= base_url('pengajuan/edit_panitia/') ?><?= $p['id_panitia'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#ubahpanitia<?= $p['id_panitia']; ?>">Ubah</a>
-                                        <a href="<?= base_url('pengajuan/hapus_panitia/') ?><?= $p['id_panitia'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
+                                        <a href="<?= base_url('pengajuan/hapus_panitia/') ?><?= $p['id_panitia'] ?>" value="<?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
                                     </td>
                                 </tr>
                         </tbody>
