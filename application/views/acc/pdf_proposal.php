@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>LAPORAN PERTANGGUNGJAWABAN</title>
+    <title>PROPOSAL KEGIATAN</title>
 </head>
 
 <body>
@@ -18,35 +18,55 @@
 
     </span>
     <span></span>
-    <?php foreach ($pendahuluan_lpj as $pl) : ?>
+    <?php foreach ($pendahuluan as $pl) : ?>
         <div class="ml-5 mr-5">
-
+            <br>
+            <br>
             <h1 class="text-center mt-5">
-                <font size="12 px" face="times">Laporan Pertanggungjawaban <br> <?= $pl['tema_kegiatan'] ?><br> <?= $nama['nama'] ?> <?= date('Y') ?></font>
+                <font size="12 px" face="times">Proposal <br> <?= $pl['tema_kegiatan'] ?><br> <?= $nama['nama'] ?> <?= date('Y') ?></font>
             </h1>
+            <br>
+            <br>
+            <br>
+            <br>
             <br>
             <br>
             <br>
             <center>
                 <img src="<?= base_url('assets/img/profil/') ?><?= $nama['logo']; ?>" width="400" height="400">
             </center>
-
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <br>
             <br>
             <br>
             <font size="12 px" face="times" align="center">
-                <h2><?= $nama['nama'] ?> <?= date('Y') ?></h2>
+                <h1><?= $nama['nama'] ?> </h1>
             </font>
             <font size="12 px" face="times" align="center">
-                <h3>Universitas Banten Jaya</h3>
+                <h1>Universitas Banten Jaya</h1>
             </font>
             <font size="12 px" face="times" align="center">
-                <h3> Warung pojok doni, Jl. Ciwaru Raya No.73, Cipare, Kec. Serang, Kota Serang, Banten 42117</h3>
+                <h1> Warung pojok doni, Jl. Ciwaru Raya No.73, Cipare, Kec. Serang, Kota Serang, Banten 42117</h1>
+            </font>
+            <font size="12 px" face="times" align="center">
+                <h1> <?= date('Y') ?></h1>
             </font>
             <br>
             <br>
-
-
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <table>
                 <tr>
                     <td>
@@ -267,32 +287,6 @@
                 </td>
                 <td>
                     <font size="12 px" face="times">
-                        <h3>Anggaran Kegiatan</h3>
-                    </font>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <font size="12 px" face="times">
-                    </font>
-                </td>
-                <td>
-                    <?php foreach ($pendahuluan as $pl) : ?>
-                        <font size="12 px" face="times">
-                            <h3>Adapun Anggaran Kegiatan ini berasal dari subsidi Kampus dengan besar anggaran Rp. <?= $pl['anggaran'] ?> </h3>
-                        </font>
-                    <?php endforeach; ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <font size="12 px" face="times">
-                        <h3>H.</h3>
-
-                    </font>
-                </td>
-                <td>
-                    <font size="12 px" face="times">
                         <h3>Jadwal Kegiatan</h3>
                     </font>
                 </td>
@@ -335,6 +329,32 @@
                         </tbody>
                     <?php endforeach; ?>
                     </table>
+            <tr>
+                <td>
+                    <font size="12 px" face="times">
+                        <h3>H.</h3>
+
+                    </font>
+                </td>
+                <td>
+                    <font size="12 px" face="times">
+                        <h3>Anggaran Kegiatan</h3>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="12 px" face="times">
+                    </font>
+                </td>
+                <td>
+                    <?php foreach ($pendahuluan as $pl) : ?>
+                        <font size="12 px" face="times">
+                            <h3>Adapun Anggaran Kegiatan ini berasal dari subsidi Kampus dengan besar anggaran Rp. <?= $pl['anggaran'] ?> </h3>
+                        </font>
+                    <?php endforeach; ?>
+                </td>
+            </tr>
             <tr>
                 <td>
                     <font size="12 px" face="times">
@@ -417,6 +437,32 @@
                         </font>
                     </div>
 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="12 px" face="times">
+                        <h3>J.</h3>
+
+                    </font>
+                </td>
+                <td>
+                    <font size="12 px" face="times">
+                        <h3>Penutup</h3>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="12 px" face="times">
+                        <h3></h3>
+
+                    </font>
+                </td>
+                <td>
+                    <font size="12 px" face="times">
+                        <h4>Atas nama keluarga besar Computer Community (CC), kami selaku panitia mengharapkan dukungan moril maupun materil untuk kesuksesan kegiatan Bootcamp ini. Semoga kegiatan ini terselenggara sesuai dengan harapan dan keinginan kita, dan Allah SWT berkenan meridhoi kita, Amin.</h4>
+                    </font>
                 </td>
             </tr>
             </table>

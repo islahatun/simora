@@ -30,26 +30,45 @@
             <br>
             <br>
             <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <center>
                 <img src="<?= base_url('assets/img/profil/') ?><?= $nama['logo']; ?>" width="400" height="400">
             </center>
-
             <br>
             <br>
             <br>
-            <font face="times" align="center">
-                <h2><?= $nama['nama'] ?> <?= date('Y') ?></h2>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <font size="12 px" face="times" align="center">
+                <h1><?= $nama['nama'] ?> </h1>
             </font>
-            <font face="times" align="center">
-                <h3>Universitas Banten Jaya</h3>
+            <font size="12 px" face="times" align="center">
+                <h1>Universitas Banten Jaya</h1>
             </font>
-            <font face="times" align="center">
-                <h3> Warung pojok doni, Jl. Ciwaru Raya No.73, Cipare, Kec. Serang, Kota Serang, Banten 42117</h3>
+            <font size="12 px" face="times" align="center">
+                <h1> Warung pojok doni, Jl. Ciwaru Raya No.73, Cipare, Kec. Serang, Kota Serang, Banten 42117</h1>
+            </font>
+            <font size="12 px" face="times" align="center">
+                <h1> <?= date('Y') ?></h1>
             </font>
             <br>
             <br>
-
-
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <table>
                 <tr>
                     <td>
@@ -270,32 +289,6 @@
                 </td>
                 <td>
                     <font face="times">
-                        <h3>Anggaran Kegiatan</h3>
-                    </font>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <font face="times">
-                    </font>
-                </td>
-                <td>
-                    <?php foreach ($pendahuluan as $pl) : ?>
-                        <font face="times">
-                            <h3>Adapun Anggaran Kegiatan ini berasal dari subsidi Kampus dengan besar anggaran Rp. <?= $pl['anggaran'] ?> </h3>
-                        </font>
-                    <?php endforeach; ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <font face="times">
-                        <h3>H.</h3>
-
-                    </font>
-                </td>
-                <td>
-                    <font face="times">
                         <h3>Jadwal Kegiatan</h3>
                     </font>
                 </td>
@@ -338,6 +331,32 @@
                         </tbody>
                     <?php endforeach; ?>
                     </table>
+            <tr>
+                <td>
+                    <font face="times">
+                        <h3>H.</h3>
+
+                    </font>
+                </td>
+                <td>
+                    <font face="times">
+                        <h3>Anggaran Kegiatan</h3>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <font face="times">
+                    </font>
+                </td>
+                <td>
+                    <?php foreach ($pendahuluan as $pl) : ?>
+                        <font face="times">
+                            <h3>Adapun Anggaran Kegiatan ini berasal dari subsidi Kampus dengan besar anggaran Rp. <?= $pl['anggaran'] ?> </h3>
+                        </font>
+                    <?php endforeach; ?>
+                </td>
+            </tr>
             <tr>
                 <td>
                     <font face="times">
@@ -420,6 +439,32 @@
                         </font>
                     </div>
 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="12 px" face="times">
+                        <h3>J.</h3>
+
+                    </font>
+                </td>
+                <td>
+                    <font size="12 px" face="times">
+                        <h3>Penutup</h3>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="12 px" face="times">
+                        <h3></h3>
+
+                    </font>
+                </td>
+                <td>
+                    <font size="12 px" face="times">
+                        <h4>Atas nama keluarga besar Computer Community (CC), kami selaku panitia berterimaksih kepada teman teman dan pihak yang telah memberikan dukungan moril maupun materil untuk kesuksesan kegiatan IT Explore ini.</h4>
+                    </font>
                 </td>
             </tr>
             </table>

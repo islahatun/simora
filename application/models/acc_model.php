@@ -4,7 +4,7 @@ class acc_model extends CI_Model
 {
     public function accKemahasiswaan()
     {
-        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =1 or acc.acc=2 or acc.acc=3 OR acc.acc=7 and  acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Perbaikan' or acc.status='Acc Biro Akademik'and  acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Perbaikan' or acc.status='Acc Biro Akademik' ORDER BY acc.id desc"; // 3 = berdasarkan level dpm
+        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.acc =1 or acc.acc=2 or acc.acc=3 OR acc.acc=7 and acc.status='Acc BEM' or acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Perbaikan' or acc.status='Acc Biro Akademik'and  acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Perbaikan' or acc.status='Acc Biro Akademik' ORDER BY acc.id desc"; // 3 = berdasarkan level dpm
         return $this->db->query($join)->result_array();
     }
     public function accbiro()
