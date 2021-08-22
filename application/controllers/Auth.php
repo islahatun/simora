@@ -92,5 +92,39 @@ class auth extends CI_Controller
     }
     public function sandi()
     {
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['menu'] = $this->data_model->menu();
+        $data['title'] = "Ubah Sandi";
+        $this->form_validation->set_rules('sandi', 'Password', 'required|trim|min_length[6]|matches[sandi1]', [
+            'matches' => 'Password Tidak Cocok',
+            'min_length' => 'Password Harus minimal 6 Karakter'
+        ]);
+        $this->form_validation->set_rules('sandi1', 'Konfirmasi Password', 'required|trim|matches[sandi]');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar');
+            $this->load->view('template/topbar');
+            $this->load->view('ormawa/dashboard', $data);
+            $this->load->view('template/footer');
+            // echo"sandi tidak tersimpan";
+        } else {
+
+            $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+
+            $id = $pengguna['id'];
+            $sandi = password_hash($this->input->post('sandi'), PASSWORD_DEFAULT);
+            $this->db->set('sandi', $sandi);
+            $this->db->where('id', $id);
+            $this->db->update('pengguna');
+            $this->session->set_flashdata('message', '
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Data Pengguna Berhasi diubah</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>');
+
+            redirect('auth/sandi');
+        }
     }
 }

@@ -47,12 +47,33 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Pilih Logout Jika Kamu Ingin Keluar dari Sistem</div>
+            <div class="modal-body">
+                <form action="<?= base_url('auth/sandi/'); ?><?= $pengguna['id']; ?>" method="post">
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="inputnama" class="col-sm-4 col-form-label">Masukkan Sandi </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputnama" name="sandi">
+                                <?= form_error('sandi', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputnama" class="col-sm-4 col-form-label">Konfirmasi Sandi</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputnama" name="sandi1">
+                                <?= form_error('sandi1', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Logout</a>
+                <button type="submit" class="btn btn-primary" href="<?= base_url('auth/sandi') ?>">Ubah Kata Sandi</button>
             </div>
         </div>
+        </form>
     </div>
 </div>
 
