@@ -611,30 +611,31 @@ class pengajuan extends CI_Controller
         $this->db->delete('p_panitia');
         redirect('pengajuan/edit_pengajuan/' . $id);
     }
-    public function kirim_revisi($id)
+    public function kirim_revisi()
     {
         $data['title'] = "Revisi Pengajuan Kegiatan";
-        $data['rak'] = $this->data_model->getrakIdacc($id);
-        $data['acc'] = $this->acc_model->getidacc($id);
-        $data['pengguna'] = $this->data_model->sessionpengguna();
-        $data['edit'] = $this->data_model->tampil_revisi_kegiatan();
+        // $data['rak'] = $this->data_model->getrakIdacc($id);
+        // $data['acc'] = $this->acc_model->getidacc($id);
+        // $data['pengguna'] = $this->data_model->sessionpengguna();
+        // $data['edit'] = $this->data_model->tampil_revisi_kegiatan();
         $data['menu'] = $this->data_model->menu();
-        $data['pendahuluan'] = $this->data_model->revisi_pendahuluan($id);
-        $data['panitia'] = $this->acc_model->detail_panitia($id);
-        $data['anggaran'] = $this->acc_model->detail_anggaran($id);
-        $data['jadwal'] = $this->acc_model->detail_jadwal($id);
-        $data['lampiran'] = $this->acc_model->detail_lampiran($id);
-        $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
-        $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
-        $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
-        $data['lampiran'] = $this->acc_model->detail_lampiran($id);
-        // $this->form_validation->set_rules('id_rak', 'id_rak', 'trim|required');
-        // $this->form_validation->set_rules('id_pengguna', 'id_pengguna', 'trim|required');
-        $this->form_validation->set_rules('bagian', 'bagian', 'trim|required');
-        $this->form_validation->set_rules('barang', 'barang', 'trim|required');
-        $this->form_validation->set_rules('harga', 'harga', 'trim|required');
-        $this->form_validation->set_rules('quality', 'quality', 'trim|required');
-        // $this->form_validation->set_rules('pengajuan', 'pengajuan', 'trim|required');
+        // $data['pendahuluan'] = $this->data_model->revisi_pendahuluan($id);
+        // $data['panitia'] = $this->acc_model->detail_panitia($id);
+        // $data['anggaran'] = $this->acc_model->detail_anggaran($id);
+        // $data['jadwal'] = $this->acc_model->detail_jadwal($id);
+        // $data['lampiran'] = $this->acc_model->detail_lampiran($id);
+        // $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
+        // $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
+        // $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
+        // $data['lampiran'] = $this->acc_model->detail_lampiran($id);
+        // $id = $this->input->post('id');
+        $this->form_validation->set_rules('id', 'id', 'trim|required');
+        // // $this->form_validation->set_rules('id_pengguna', 'id_pengguna', 'trim|required');
+        // $this->form_validation->set_rules('bagian', 'bagian', 'trim|required');
+        // $this->form_validation->set_rules('barang', 'barang', 'trim|required');
+        // $this->form_validation->set_rules('harga', 'harga', 'trim|required');
+        // $this->form_validation->set_rules('quality', 'quality', 'trim|required');
+        // // $this->form_validation->set_rules('pengajuan', 'pengajuan', 'trim|required');
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar', $data);
@@ -643,7 +644,7 @@ class pengajuan extends CI_Controller
             $this->load->view('template/footer');
         } else {
             $this->data_model->edit_acc();
-            redirect('pengajuan/edit_pendahuluan/' . $id);
+            redirect('pengajuan/proposal/');
         }
     }
 }

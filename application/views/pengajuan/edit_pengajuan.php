@@ -213,13 +213,11 @@
                                     <td><?= $j['mulai']; ?> - <?= $j['selesai']; ?></td>
                                     <td><?= $j['kegiatan']; ?></td>
                                     <td><?= $j['keterangan']; ?></td>
+                                    <td><?= $j['keterangan']; ?></td>
                                 </tr>
                         </tbody>
                     <?php endforeach; ?>
                     </table>
-                    <div class="text-right">
-                        <a href="<?= base_url('pengajuan/proposal3/') ?><?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Kirim</a>
-                    </div>
                 </div>
                 <div class="tab-pane fade" id="pills-anggaran" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <form action="<?= base_url('pengajuan/edit_anggaran/') ?><?= $rak['id'] ?>" method="post">
@@ -320,10 +318,18 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                <div class="tab-pane fade" id="pills-lampiran" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <form action="<?= base_url('pengajuan/kirim_revisi') ?>" method="post">
+                        <input type="text" name="id" value="<?= $acc['id'] ?>" hidden>
+                        <!-- <?= form_error('id', '<small class="text-danger pl-3">', ' </small>') ?> -->
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-dark">Kirim Perbaikan</button>
+                        </div>
+                    </form>
 
                 </div>
+            </div>
+            <div class="tab-pane fade" id="pills-lampiran" role="tabpanel" aria-labelledby="pills-contact-tab">
+
             </div>
     </div>
 </div>
