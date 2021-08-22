@@ -213,7 +213,10 @@
                                     <td><?= $j['mulai']; ?> - <?= $j['selesai']; ?></td>
                                     <td><?= $j['kegiatan']; ?></td>
                                     <td><?= $j['keterangan']; ?></td>
-                                    <td><?= $j['keterangan']; ?></td>
+                                    <td>
+                                        <a href="<?= base_url('pengajuan/ubah_anggaran/') ?><?= $j['id_jadwal'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#ubahjadwal<?= $j['id_jadwal']; ?>">Ubah</a>
+                                        <a href="<?= base_url('pengajuan/hapus_anggaran/') ?><?= $j['id_jadwal'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
+                                    </td>
                                 </tr>
                         </tbody>
                     <?php endforeach; ?>
@@ -335,6 +338,7 @@
 </div>
 
 <!-- End of Main Content -->
+<!-- ubah anggaran -->
 <?php
 $ubah = $this->db->get('p_anggaran')->result_array();
 
@@ -406,6 +410,7 @@ foreach ($ubah as $u) :
     <?php endforeach; ?>
 <?php endforeach; ?>
 
+<!-- ubah panitiia -->
 <?php
 $ubah = $this->db->get('p_panitia')->result_array();
 
@@ -446,6 +451,86 @@ foreach ($ubah as $u) :
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="inputnama" name="jabatan" value="<?= $u['jabatan'] ?>">
                                     <?= form_error('jabatan', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-dark">Ubah</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php endforeach; ?>
+
+<!-- ubah jadwal -->
+<?php
+$ubah = $this->db->get('p_jadwal')->result_array();
+
+foreach ($ubah as $u) :
+?>
+    <?php
+
+    foreach ($jadwal as $a) :
+    ?>
+        <!-- Modal tambah -->
+        <div class="modal fade" id="ubahjadwal<?= $u['id_jadwal']; ?>" tabindex="-1" role="dialog" aria-labelledby="ubahLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ubahLabel">Ubah data Jadwal</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="<?= base_url('pengajuan/ubah_jadwal/'); ?><?= $a['id']; ?>" method="post">
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputnama" name="id_jadwal" value="<?= $u['id_jadwal'] ?>" hidden>
+                                    <?= form_error('id_jadwal', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputnama" class="col-sm-4 col-form-label">Tanggal </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputnama" name="tanggal" value="<?= $u['tanggal'] ?>">
+                                    <?= form_error('tanggal', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputnama" class="col-sm-4 col-form-label">Mulai</label>
+                                <div class="col-sm-8">
+                                    <input type="time" class="form-control" id="inputnama" name="mulai" value="<?= $u['mulai'] ?>">
+                                    <?= form_error('mulai', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputnama" class="col-sm-4 col-form-label">Selesai</label>
+                                <div class="col-sm-8">
+                                    <input type="time" class="form-control" id="inputnama" name="selesai" value="<?= $u['selesai'] ?>">
+                                    <?= form_error('selesai', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputnama" class="col-sm-4 col-form-label">Kegiatan</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputnama" name="kegiatan" value="<?= $u['kegiatan'] ?>">
+                                    <?= form_error('kegiatan', '<small class="text-danger pl-3">', ' </small>') ?>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputnama" class="col-sm-4 col-form-label">Keterangan</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputnama" name="keterangan" value="<?= $u['keterangan'] ?>">
+                                    <?= form_error('keterangan', '<small class="text-danger pl-3">', ' </small>') ?>
 
                                 </div>
                             </div>
