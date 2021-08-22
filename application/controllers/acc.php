@@ -16,6 +16,7 @@ class acc extends CI_Controller
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
         $user =  $this->data_model->sessionpengguna();
+        $data['button'] = $this->acc_model->disable_button_download();
         //menampilkan acc pengajuan berdasarkan level
         switch ($user['level_id']) {
             case 1; //kemahasiswaan

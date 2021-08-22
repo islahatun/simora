@@ -156,4 +156,8 @@ class acc_model extends CI_Model
 
         return $this->db->get_where('acc', ['id_ormawa' => $id])->row_array();
     }
+    public function disable_button_download()
+    {
+        return $this->db->get_where('acc')->result_array();
+    }
 }

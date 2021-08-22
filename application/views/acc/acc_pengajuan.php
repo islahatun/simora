@@ -30,10 +30,16 @@
                                     </td>
                                     <td><?= $a['status']; ?></td>
                                     <td><?= $a['komentar']; ?></td>
-                                    <?php if ($a['komentar'] = "Acc Biro Akademik") { ?>
-                                        <td class="text-center"><a href="<?= base_url(); ?>acc/pdf/<?= $a['id']; ?>" class="badge badge-primary">Download</a>
+                                    <td class="text-center">
+                                        <?php if ($a['status'] == "Acc Biro Akademik") { ?>
+                                            <a href="<?= base_url(); ?>acc/pdf/<?= $a['id']; ?>" class="badge badge-primary">Download</a>
                                         <?php } else { ?>
-                                            <!-- <td class="text-center"><a href="<?= base_url(); ?>acc/pdf/<?= $a['id']; ?>" class="badge badge-primary">Download</a> -->
+
+                                        <?php } ?>
+                                        <?php if ($a['status'] == "Acc Kemahasiswaan" and $a['pengajuan'] == 'RAK') { ?>
+                                            <a href="<?= base_url(); ?>acc/pdf/<?= $a['id']; ?>" class="badge badge-primary">Download</a>
+                                        <?php } else { ?>
+
                                         <?php } ?>
                                 </tr>
                         </tbody>
