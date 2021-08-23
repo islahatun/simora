@@ -3,7 +3,7 @@
 <!-- Page Heading -->
 <div class="card">
     <div class="card-body">
-        <?php if ($edit['pengajuan'] = 'proposal') { ?>
+        <?php if ($edit['pengajuan'] == 'proposal') { ?>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendahuluan</a>
@@ -18,9 +18,23 @@
                     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-anggaran" role="tab" aria-controls="pills-contact" aria-selected="true">Anggaran</a>
                 </li>
             <?php } else { ?>
-                <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-lampiran" role="tab" aria-controls="pills-contact" aria-selected="true">Lampiran</a>
-                </li>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendahuluan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="true">Kepanitiaan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="true">Jadwal Kegiatan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-anggaran" role="tab" aria-controls="pills-contact" aria-selected="true">Anggaran</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-lampiran" role="tab" aria-controls="pills-contact" aria-selected="true">Lampiran</a>
+                    </li>
+                </ul>
             <?php }; ?>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -28,12 +42,12 @@
                     <form action="<?= base_url('pengajuan/edit_pendahuluan/') ?><?= $acc['id'] ?> " method="post">
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="staticEmail" value="Proposal" hidden name="pengajuan">
+                                <input type="text" class="form-control" id="staticEmail" value="<?= $edit['pengajuan'] ?>" name="pengajuan">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="staticEmail" value="<?= $pendahuluan['id_proposal'] ?>" name="id_proposal" hidden>
+                                <input type="text" class="form-control" id="staticEmail" value="<?= $pendahuluan['id_proposal'] ?>" name="id_proposal">
                                 <?= form_error('id_proposal', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                         </div>

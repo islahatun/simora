@@ -408,8 +408,8 @@ class pengajuan extends CI_Controller
         $data['jadwal'] = $this->acc_model->detail_jadwal($id);
         $data['lampiran'] = $this->acc_model->detail_lampiran($id);
         $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
-        $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
-        $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
+        // $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
+        // $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
         $data['lampiran'] = $this->acc_model->detail_lampiran($id);
 
         $this->form_validation->set_rules('id_proposal', 'id proposal', 'required|trim');
@@ -432,7 +432,6 @@ class pengajuan extends CI_Controller
             $this->load->view('template/footer');
         } else {
             $this->data_model->edit_pendahuluan();
-            $this->data_model->edit_acc();
             redirect('pengajuan/edit_pendahuluan/' . $id);
         }
     }
