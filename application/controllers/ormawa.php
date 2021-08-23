@@ -18,7 +18,6 @@ class ormawa extends CI_Controller
         $data['menu'] = $this->data_model->menu();
         $data['berita'] = $this->data_model->tampilberita();
         $data['rak'] = $this->data_model->getallrak();
-        $data['coba'] = "coba";
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/topbar', $data);

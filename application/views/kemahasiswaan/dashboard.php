@@ -32,29 +32,130 @@
         <div class="col-xl-6 col-lg-5">
             <div class="card shadow">
 
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                <div class="card-header py-3 mb-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Presentase Kegiatan</h6>
                 </div>
                 <div class="card-body">
-                    <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="row">
+                        <div class="col-5">
+                            Computer Community
+                        </div>
+                        <div class="col">
+                            : <?php
+                                $date = date('Y');
+                                $hitung = "SELECT id_ormawa FROM acc WHERE id_ormawa=3 and periode=$date and status ='Acc Biro Akademik'";
+                                $h = $this->db->query($hitung)->num_rows();
+                                echo $h;
+                                ?>
+                        </div>
                     </div>
-                    <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="row">
+                        <div class="col-5">
+                            Humanika
+                        </div>
+                        <div class="col">
+                            : <?php
+                                $date = date('Y');
+                                $hitung = "SELECT id_ormawa FROM acc WHERE id_ormawa=8 and periode=$date and status ='Acc Biro Akademik'";
+                                $h = $this->db->query($hitung)->num_rows();
+                                echo $h;
+                                ?>
+                        </div>
                     </div>
-                    <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="row">
+                        <div class="col-5">
+                            HMTL
+                        </div>
+                        <div class="col-5">
+                            : <?php
+                                $date = date('Y');
+                                $hitung = "SELECT id_ormawa FROM acc WHERE id_ormawa=8 and periode=$date and status ='Acc Biro Akademik'";
+                                $h = $this->db->query($hitung)->num_rows();
+                                echo $h;
+                                ?>
+                        </div>
                     </div>
-                    <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="row">
+                        <div class="col-5">
+                            Himasi
+                        </div>
+                        <div class="col-5">
+                            : <?php
+                                $date = date('Y');
+                                $hitung = "SELECT id_ormawa FROM acc WHERE id_ormawa=9 and periode=$date and status ='Acc Biro Akademik'";
+                                $h = $this->db->query($hitung)->num_rows();
+                                echo $h;
+                                ?>
+                        </div>
                     </div>
-                    <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-                    <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="row">
+                        <div class="col-5">
+                            HMCB
+                        </div>
+                        <div class="col-5">
+                            : 50%
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            HMTI
+                        </div>
+                        <div class="col">
+                            : 50%
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            HMTS
+                        </div>
+                        <div class="col">
+                            : 50%
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            ESA
+                        </div>
+                        <div class="col">
+                            : <?php
+                                $date = date('Y');
+                                $hitung = "SELECT id_ormawa FROM acc WHERE id_ormawa=10 and periode=$date and status ='Acc Biro Akademik'";
+                                $h = $this->db->query($hitung)->num_rows();
+                                echo $h;
+                                ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            HIMADIKA
+                        </div>
+                        <div class="col">
+                            : 50%
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            PRAMUKA
+                        </div>
+                        <div class="col">
+                            : 50%
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            KORMA
+                        </div>
+                        <div class="col">
+                            : 50%
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            KOMPAS
+                        </div>
+                        <div class="col">
+                            : 50%
+                        </div>
                     </div>
                 </div>
 
