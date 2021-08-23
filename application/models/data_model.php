@@ -512,7 +512,11 @@ class data_model extends CI_Model
     }
     public function revisi_pendahuluan($id)
     {
-        $proposal = "SELECT * from p_proposal JOIN acc ON p_proposal.id_rak = acc.id_rak JOIN p_rak ON p_rak.id = p_proposal.id_rak WHERE acc.id = $id  ";
+        $r = "SELECT * FROM acc  where `status`='Revisi Kemahasiswaan' or `status`='Revisi Biro Akademik' or `status`='Revisi Ka Prodi' or `status`='Revisi BEM'  ";
+        $n = $this->db->query($r)->row_array();
+        $p = $n['pengajuan'];
+
+        $proposal = "SELECT * from p_proposal JOIN acc ON p_proposal.id_rak = acc.id_rak JOIN p_rak ON p_rak.id = p_proposal.id_rak WHERE acc.id = $id and p_proposal.pengajuan='$p'  ";
         return $this->db->query($proposal)->row_array();
         // var_dump($n);
         // die;

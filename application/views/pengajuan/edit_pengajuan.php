@@ -150,7 +150,7 @@
                                 <div class="form-group row">
 
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="inputPassword" name="pengajuan" value="proposal" hidden>
+                                        <input type="text" class="form-control" id="inputPassword" name="pengajuan" value="<?= $edit['pengajuan'] ?>" hidden>
                                         <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?>
                                     </div>
                                 </div>
@@ -191,6 +191,71 @@
                     </form>
                 </div>
                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+                    <form action="<?= base_url('pengajuan/tambah_jadwal/') ?><?= $rak['id'] ?>" method="post">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tanggal</label>
+                                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="tanggal">
+                                    <?= form_error('tanggal', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Waktu Mulai</label>
+                                    <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mulai">
+                                    <?= form_error('mulai', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Waktu Selesai</label>
+                                    <input type="time" class=" form-control" id="exampleInputPassword1" name="selesai">
+                                    <?= form_error('selesai', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Nama Kegiatan</label>
+                                    <input type="text" class=" form-control" id="exampleInputPassword1" name="kegiatan">
+                                    <?= form_error('kegiatan', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">keterangan</label>
+                                    <input type="text" class=" form-control" id="exampleInputPassword1" name="keterangan">
+                                    <?= form_error('keterangan', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="text" class=" form-control" id="exampleInputPassword1" name="id_pengguna" value="<?= $pengguna['id'] ?>" hidden>
+                                    <?= form_error('id_pengguna', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="text" class=" form-control" id="exampleInputPassword1" name="id_rak" value="<?= $rak['id_rak'] ?>" hidden>
+                                    <?= form_error('id_rak', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="text" class=" form-control" id="exampleInputPassword1" name="pengajuan" value="<?= $edit['pengajuan'] ?>" hidden>
+                                    <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right mb-3">
+                            <button type="submit" class="btn btn-dark">Submit</button>
+                        </div>
+
+                    </form>
+
                     <table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr class="text-center">
@@ -214,8 +279,8 @@
                                     <td><?= $j['kegiatan']; ?></td>
                                     <td><?= $j['keterangan']; ?></td>
                                     <td>
-                                        <a href="<?= base_url('pengajuan/ubah_anggaran/') ?><?= $j['id_jadwal'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#ubahjadwal<?= $j['id_jadwal']; ?>">Ubah</a>
-                                        <a href="<?= base_url('pengajuan/hapus_anggaran/') ?><?= $j['id_jadwal'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
+                                        <a href="<?= base_url('pengajuan/ubah_jadwal/') ?><?= $j['id_jadwal'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#ubahjadwal<?= $j['id_jadwal']; ?>">Ubah</a>
+                                        <a href="<?= base_url('pengajuan/hapus_jadwal/') ?><?= $j['id_jadwal'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
                                     </td>
                                 </tr>
                         </tbody>
@@ -270,7 +335,7 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <input type="text" class=" form-control" value="Proposal" name="pengajuan" id="exampleInputPassword1" hidden>
+                                    <input type="text" class=" form-control" value="<?= $edit['pengajuan'] ?>" name="pengajuan" id="exampleInputPassword1" hidden>
                                     <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?>
                                 </div>
                             </div>

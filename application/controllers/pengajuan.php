@@ -449,9 +449,9 @@ class pengajuan extends CI_Controller
         $data['anggaran'] = $this->acc_model->detail_anggaran($id);
         $data['jadwal'] = $this->acc_model->detail_jadwal($id);
         $data['lampiran'] = $this->acc_model->detail_lampiran($id);
-        $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
-        $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
-        $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
+        // $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
+        // $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
+        // $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
         $data['lampiran'] = $this->acc_model->detail_lampiran($id);
 
         $this->form_validation->set_rules('id_rak', 'id RAK', 'required|trim');
@@ -510,9 +510,9 @@ class pengajuan extends CI_Controller
         $data['anggaran'] = $this->acc_model->detail_anggaran($id);
         $data['jadwal'] = $this->acc_model->detail_jadwal($id);
         $data['lampiran'] = $this->acc_model->detail_lampiran($id);
-        $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
-        $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
-        $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
+        // $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
+        // $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
+        // $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
         $data['lampiran'] = $this->acc_model->detail_lampiran($id);
         // $this->form_validation->set_rules('id_rak', 'id_rak', 'trim|required');
         // $this->form_validation->set_rules('id_pengguna', 'id_pengguna', 'trim|required');
@@ -533,28 +533,7 @@ class pengajuan extends CI_Controller
             redirect('pengajuan/edit_anggaran/' . $id);
         }
     }
-    public function ubah_anggaran($id)
-    {
-        $id_anggaran = $this->input->post('id_anggaran');
-        $bagian =  $this->input->post('bagian');
-        $barang =  $this->input->post('barang');
-        $harga =  $this->input->post('harga');
-        $quality =  $this->input->post('quality');
-        $this->db->set('bagian', $bagian);
-        $this->db->set('barang', $barang);
-        $this->db->set('harga', $harga);
-        $this->db->set('quality', $quality);
-        $this->db->where('id_anggaran', $id_anggaran);
-        $this->db->update('p_anggaran');
-        redirect('pengajuan/edit_anggaran/' . $id);
-    }
-    public function hapus_anggaran($id, $id_anggaran)
-    {
-        $this->db->where('id_anggaran', $id_anggaran);
-        $this->db->delete('p_anggaran');
-        redirect('pengajuan/edit_anggaran/' . $id);
-    }
-    public function tambah_panitia($id)
+    public function tambah_jadwal($id)
     {
         $data['title'] = "Revisi Pengajuan Kegiatan";
         $data['rak'] = $this->data_model->getrakIdacc($id);
@@ -572,6 +551,89 @@ class pengajuan extends CI_Controller
         $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
         $data['lampiran'] = $this->acc_model->detail_lampiran($id);
 
+        $this->form_validation->set_rules('id_pengguna', 'id pengguna', 'trim|required');
+        $this->form_validation->set_rules('id_rak', 'id rak', 'trim|required');
+        $this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
+        $this->form_validation->set_rules('mulai', 'mulai', 'trim|required');
+        $this->form_validation->set_rules('selesai', 'selesai', 'trim|required');
+        $this->form_validation->set_rules('kegiatan', 'kegiatan', 'trim|required');
+        $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
+        $this->form_validation->set_rules('pengajuan', 'pengajuan', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar');
+            $this->load->view('pengajuan/edit_pengajuan', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->data_model->insertjadwal();
+            redirect('pengajuan/tambah_jadwal/' . $id);
+        }
+    }
+    public function ubah_jadwal($id)
+    {
+        $id_jadwal = $this->input->post('id_jadwal');
+        $tanggal =  $this->input->post('tanggal');
+        $mulai =  $this->input->post('mulai');
+        $selesai =  $this->input->post('selesai');
+        $kegiatan =  $this->input->post('kegiatan');
+        $keterangan =  $this->input->post('keterangan');
+
+        $this->db->set('tanggal', $tanggal);
+        $this->db->set('mulai', $mulai);
+        $this->db->set('selesai', $selesai);
+        $this->db->set('kegiatan', $kegiatan);
+        $this->db->set('keterangan', $keterangan);
+        $this->db->where('id_jadwal', $id_jadwal);
+        $this->db->update('p_jadwal');
+        redirect('pengajuan/edit_anggaran/' . $id);
+    }
+    public function hapus_jadwal($id_jadwal)
+    {
+        $this->db->where('id_jadwal', $id_jadwal);
+        $this->db->delete('p_jadwal');
+        redirect('pengajuan/edit_pengajuan/');
+    }
+    public function ubah_anggaran($id)
+    {
+        $id_anggaran = $this->input->post('id_anggaran');
+        $bagian =  $this->input->post('bagian');
+        $barang =  $this->input->post('barang');
+        $harga =  $this->input->post('harga');
+        $quality =  $this->input->post('quality');
+        $this->db->set('bagian', $bagian);
+        $this->db->set('barang', $barang);
+        $this->db->set('harga', $harga);
+        $this->db->set('quality', $quality);
+        $this->db->where('id_anggaran', $id_anggaran);
+        $this->db->update('p_anggaran');
+        redirect('pengajuan/edit_anggaran/' . $id);
+    }
+    public function hapus_anggaran($id_anggaran)
+    {
+        $this->db->where('id_anggaran', $id_anggaran);
+        $this->db->delete('p_anggaran');
+        redirect('pengajuan/edit_anggaran/');
+    }
+    public function tambah_panitia($id)
+    {
+        $data['title'] = "Revisi Pengajuan Kegiatan";
+        $data['rak'] = $this->data_model->getrakIdacc($id);
+        $data['acc'] = $this->acc_model->getidacc($id);
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['edit'] = $this->data_model->tampil_revisi_kegiatan();
+        $data['menu'] = $this->data_model->menu();
+        $data['pendahuluan'] = $this->data_model->revisi_pendahuluan($id);
+        $data['panitia'] = $this->acc_model->detail_panitia($id);
+        $data['anggaran'] = $this->acc_model->detail_anggaran($id);
+        $data['jadwal'] = $this->acc_model->detail_jadwal($id);
+        $data['lampiran'] = $this->acc_model->detail_lampiran($id);
+        // $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
+        // $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
+        // $data['jadwal_lpj'] = $this->acc_model->detail_jadwal_lpj($id);
+        $data['lampiran'] = $this->acc_model->detail_lampiran($id);
+
         $this->form_validation->set_rules('nama_panitia', 'Nama Panitia', 'required|trim');
         $this->form_validation->set_rules('jabatan', 'Jabatan', 'required|trim');
         $this->form_validation->set_rules('pengajuan', 'pengajuan', 'required|trim');
@@ -582,7 +644,7 @@ class pengajuan extends CI_Controller
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar', $data);
             $this->load->view('template/topbar');
-            $this->load->view('pengajuan/tambah_panitia', $data);
+            $this->load->view('pengajuan/edit_pengajuan', $data);
             $this->load->view('template/footer');
         } else {
             $this->data_model->insertPanitia();
@@ -604,9 +666,7 @@ class pengajuan extends CI_Controller
     }
     public function hapus_panitia($id_panitia)
     {
-        $p = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
-        $s = $p['id'];
-        $id = "SELECT id_rak FROM rak where id_ormawa = $s ";
+        $id = $this->input->post('id');
         $this->db->where('id_panitia', $id_panitia);
         $this->db->delete('p_panitia');
         redirect('pengajuan/edit_pengajuan/' . $id);
