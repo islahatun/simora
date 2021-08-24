@@ -36,7 +36,7 @@ class pengajuan extends CI_Controller
         } else {
             $this->data_model->insertRAK();
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Pengguna Berhasi ditambahkan</strong> 
+            <strong>Data RAK Berhasi ditambahkan</strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button></div>');
