@@ -62,7 +62,7 @@
                                     <?= $this->session->flashdata('message'); ?>
                                     <form class="user" action="<?= base_url('auth'); ?>" method="post">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="nama" placeholder="Masukkan Nama Organisasi">
+                                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="nama" placeholder="Masukkan Nama Organisasi" value="<?= set_value('nama') ?>">
                                             <?= form_error('nama', '<small class="text-danger pl-3">', ' </small>') ?>
                                         </div>
                                         <div class="form-group">

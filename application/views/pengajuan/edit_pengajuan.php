@@ -42,12 +42,12 @@
                     <form action="<?= base_url('pengajuan/edit_pendahuluan/') ?><?= $acc['id'] ?> " method="post">
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="staticEmail" value="<?= $edit['pengajuan'] ?>" name="pengajuan">
+                                <input type="text" class="form-control" id="staticEmail" value="<?= $edit['pengajuan'] ?>" name="pengajuan" hidden>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="staticEmail" value="<?= $pendahuluan['id_proposal'] ?>" name="id_proposal">
+                                <input type="text" class="form-control" id="staticEmail" value="<?= $pendahuluan['id_proposal'] ?>" name="id_proposal" hidden>
                                 <?= form_error('id_proposal', '<small class="text-danger pl-3">', ' </small>') ?>
                             </div>
                         </div>
@@ -406,6 +406,61 @@
                         <div class="text-right">
                             <button type="submit" class="btn btn-dark">Kirim Perbaikan</button>
                         </div>
+                    </form>
+
+                </div>
+                <div class="tab-pane fade" id="pills-lampiran" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <?= form_open_multipart('pengajuan/ubah_lampiran/' . $rak['id']); ?>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Lampiran Absen Peserta</label>
+                        <div class="col-sm-3">
+                            <input type="file" class="custom-file-input" name="lampiran1" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Lampiran Absen Panitia</label>
+                        <div class="col-sm-3">
+                            <input type="file" class="custom-file-input" name="lampiran2" id="customFile" multiple>
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Lampiran Dokumentasi Kegitan</label>
+                        <div class="col-sm-3">
+                            <input type="file" class="custom-file-input" name="lampiran3" id="customFile" multiple>
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Lampiran Kwitansi</label>
+                        <div class="col-sm-3">
+                            <input type="file" class="custom-file-input" name="lampiran4" id="customFile" multiple>
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staticEmail" value="lpj" name="pengajuan" hidden>
+                            <!-- <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?> -->
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staticEmail" value="<?= $lampiran['id_rak'] ?>" name="id_rak">
+                            <!-- <?= form_error('id_rak', '<small class="text-danger pl-3">', ' </small>') ?> -->
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staticEmail" value="<?= $lampiran['id'] ?>" name="id">
+                            <!-- <?= form_error('id', '<small class="text-danger pl-3">', ' </small>') ?> -->
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-dark mb-2 ">Kirim</button>
+                    </div>
                     </form>
 
                 </div>

@@ -706,4 +706,35 @@ class pengajuan extends CI_Controller
             redirect('pengajuan/proposal/');
         }
     }
+    public function ubah_lampiran($id)
+    {
+        $data['title'] = "Revisi Pengajuan Kegiatan";
+        $data['rak'] = $this->data_model->getrakIdacc($id);
+        $data['acc'] = $this->acc_model->getidacc($id);
+        $data['pengguna'] = $this->data_model->sessionpengguna();
+        $data['edit'] = $this->data_model->tampil_revisi_kegiatan();
+        $data['menu'] = $this->data_model->menu();
+        $data['pendahuluan'] = $this->data_model->revisi_pendahuluan($id);
+        $data['panitia'] = $this->acc_model->detail_panitia($id);
+        $data['anggaran'] = $this->acc_model->detail_anggaran($id);
+        $data['jadwal'] = $this->acc_model->detail_jadwal($id);
+        $data['lampiran'] = $this->acc_model->detail_lampiran($id);
+
+        $this->form_validation->set_rules('id', 'id', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar', $data);
+            $this->load->view('pengajuan/edit_pengajuan', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->data_model->edit_lampiran1();
+            $this->data_model->lampiran2();
+            $this->data_model->lampiran3();
+            $this->data_model->lampiran4();
+            $this->data_model->edit_acc();
+            redirect('pengajuan/proposal/');
+        }
+    }
 }

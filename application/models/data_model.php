@@ -354,8 +354,8 @@ class data_model extends CI_Model
         $lampiran1 = $_FILES['lampiran1']['name'];
         if ($lampiran1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'pdf';
-            $config['max_size']             = 2048;
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 6144;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran1')) {
                 $error = array('error' => $this->upload->display_errors());
@@ -378,14 +378,36 @@ class data_model extends CI_Model
             }
         }
     }
+    public function edit_lampiran1()
+    {
+        $lampiran1 = $_FILES['lampiran1']['name'];
+        if ($lampiran1) {
+            $config['upload_path']          = './assets/img/lampiran/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 6144;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('lampiran1')) {
+                $error = array('error' => $this->upload->display_errors());
+
+                $this->load->view('upload_form', $error);
+            } else {
+                // $new_lampiran1 = $this->upload->data('file_name');
+                $id = $this->input->post('id_rak');
+                $new_logo2 = $this->upload->data('file_name');
+                $this->db->set('lampiran1', $new_logo2);
+                $this->db->where('id_rak', $id);
+                $this->db->update('p_lampiran');
+            }
+        }
+    }
     public function lampiran2()
     {
         $logo1 = $_FILES['lampiran2']['name'];
 
         if ($logo1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'pdf';
-            $config['max_size']             = 2048;
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 6144;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran2')) {
                 $error = array('error' => $this->upload->display_errors());
@@ -406,8 +428,8 @@ class data_model extends CI_Model
 
         if ($logo1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'pdf';
-            $config['max_size']             = 2048;
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 6144;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran3')) {
                 $error = array('error' => $this->upload->display_errors());
@@ -428,8 +450,8 @@ class data_model extends CI_Model
 
         if ($logo1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'pdf';
-            $config['max_size']             = 2048;
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 6144;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran4')) {
                 $error = array('error' => $this->upload->display_errors());

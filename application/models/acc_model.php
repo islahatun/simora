@@ -147,7 +147,7 @@ class acc_model extends CI_Model
     }
     public function detail_lampiran($id)
     {
-        $proposal = "SELECT * from p_lampiran JOIN acc ON p_lampiran.id_rak = acc.id_rak WHERE acc.id = $id";
+        $proposal = "SELECT *, acc.id from p_lampiran JOIN acc ON p_lampiran.id_rak = acc.id_rak WHERE acc.id = $id";
         return $this->db->query($proposal)->row_array();
     }
     public function tampil_proposal_acc()
