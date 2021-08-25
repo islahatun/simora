@@ -75,7 +75,7 @@ class pengajuan extends CI_Controller
         $data['title'] = "Pengajuan Poposal";
         $data['judul'] = "Proposal";
         $data['coba'] = $this->data_model->getAllpengguna();
-        $data['rak'] = $this->data_model->getallrak();
+        $data['rak'] = $this->data_model->acc_rak();
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
         $pengguna =  $this->data_model->sessionpengguna();

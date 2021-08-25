@@ -56,6 +56,7 @@
                     </tbody>
                     <?php $i++; ?>
                 <?php endforeach; ?>
+
                 </table>
 
                 <hr>

@@ -593,4 +593,15 @@ class data_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('acc');
     }
+    public function acc_rak()
+    {
+        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+
+        $pengguna = $pengguna['id'];
+        $periode = date('Y');
+
+        $rak = "SELECT * FROM `p_rak`join acc on acc.id_ormawa = p_rak.id_pengguna where `p_rak`.`id_pengguna`= $pengguna and p_rak.periode =$periode and acc.status='Acc Kemahasiswaan'";
+
+        return $this->db->query($rak)->result_array();
+    }
 }

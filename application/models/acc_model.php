@@ -23,7 +23,7 @@ class acc_model extends CI_Model
     }
     public function accdpm()
     {
-        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.pengajuan ='RAK' or acc.status='Perbaikan' ORDER BY acc.id desc";
+        $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.pengajuan ='RAK' ORDER BY acc.id desc";
         return $this->db->query($join)->result_array();
     }
     public function accbem()
