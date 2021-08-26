@@ -235,12 +235,9 @@
 <!-- End of Main Content -->
 <?php
 
-$coba = "SELECT id FROM pengguna WHERE pengguna.level_id = 5 or pengguna.level_id = 5 or pengguna.level_id = 7";
-$co = $this->db->query($coba)->row_array();
-$c = $co['id'];
 // var_dump($c);
 // die;
-$query = "SELECT id_pengguna, nama_anggota,npm,jurusan,jabatan FROM anggota_ormawa  where `status`='Aktif' and id_pengguna = $c";
+$query = "SELECT id_pengguna, nama_anggota,npm,jurusan,jabatan FROM anggota_ormawa  where `status`='Aktif'";
 $tampil = $this->db->query($query)->result_array();
 
 // var_dump($tampil);
