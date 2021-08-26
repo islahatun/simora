@@ -209,13 +209,20 @@
         <div class="col-xl-6 col-lg-7">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Anggota Ormawa</h6>
                 </div>
                 <div class="card-body">
                     <div class="text-center">
                     </div>
-                    <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution! constantly updated collection of beautiful svg images that you can use completely free and without attribution! constantly updated collection of beautiful svg images that you can use completely free and without attribution! constantly updated collection of beautiful svg images that you can use completely free and without attribution! </p>
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
+                    <div class="row">
+                        <?php foreach ($ormawa as $o) :
+                        ?>
+                            <div class="col-3 ml-3 mb-3">
+                                <a class="btn btn-dark" href="<?= base_url('kemahasiswaan/' . $o['id']) ?>" data-toggle="modal" data-target="#tampil<?= $o['id'] ?>"><?= $o['nama'] ?></a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
                 </div>
 
             </div>
@@ -226,3 +233,61 @@
 
 </div>
 <!-- End of Main Content -->
+<?php
+
+$coba = "SELECT id FROM pengguna WHERE pengguna.level_id = 5 or pengguna.level_id = 5 or pengguna.level_id = 7";
+$co = $this->db->query($coba)->row_array();
+$c = $co['id'];
+// var_dump($c);
+// die;
+$query = "SELECT id_pengguna, nama_anggota,npm,jurusan,jabatan FROM anggota_ormawa  where `status`='Aktif' and id_pengguna = $c";
+$tampil = $this->db->query($query)->result_array();
+
+// var_dump($tampil);
+// die;
+foreach ($tampil as $o) :
+?>
+    <!-- Modal tambah -->
+    <div class="modal fade" id="tampil<?= $o['id_pengguna']; ?>" tabindex="-1" role="dialog" aria-labelledby="tampilLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tampilLabel">Anggota Organisasi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="container">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr class="text-center">
+                                <th scope="col">#</th>
+                                <th scope="col">NPM</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Jurusan</th>
+                                <th scope="col">Jabatan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1; ?>
+                            <?php
+                            $n = $o['id_pengguna'];
+                            $b = "SELECT nama_anggota,npm,jurusan,jabatan FROM anggota_ormawa Where`status`='Aktif' and id_pengguna =$n";
+                            $anggota = $this->db->query($b)->result_array();
+                            foreach ($anggota as $a) : ?>
+                                <tr>
+                                    <th scope="row" class="text-center"><?= $i; ?></th>
+                                    <td><?= $a['npm']; ?></td>
+                                    <td><?= $a['nama_anggota']; ?></td>
+                                    <td><?= $a['jurusan']; ?></td>
+                                    <td><?= $a['jabatan'] ?></td>
+                                </tr>
+                        </tbody>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>

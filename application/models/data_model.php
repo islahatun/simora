@@ -604,4 +604,9 @@ class data_model extends CI_Model
 
         return $this->db->query($rak)->result_array();
     }
+    public function jumlah()
+    {
+        $q = "SELECT nama,id FROM pengguna WHERE level_id = 4 or level_id =5 or level_id=7";
+        return $this->db->query($q)->result_array();
+    }
 }
