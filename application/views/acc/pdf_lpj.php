@@ -463,7 +463,33 @@
                 </td>
                 <td>
                     <font size="12 px" face="times">
-                        <h4>Atas nama keluarga besar Computer Community (CC), kami selaku panitia berterimaksih kepada teman teman dan pihak yang telah memberikan dukungan moril maupun materil untuk kesuksesan kegiatan IT Explore ini.</h4>
+                        <h4>Atas nama keluarga besar <?= $nama['nama'] ?>, kami selaku panitia berterimaksih kepada teman teman dan pihak yang telah memberikan dukungan moril maupun materil untuk kesuksesan kegiatan ini.</h4>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="12 px" face="times">
+                        <h3></h3>
+
+                    </font>
+                </td>
+                <td>
+                    <font size="12 px" face="times">
+                        <h3>Lampiran Daftar Absen</h3>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="12 px" face="times">
+                        <h3></h3>
+
+                    </font>
+                </td>
+                <td>
+                    <font size="12 px" face="times">
+                        <h4>Atas nama keluarga besar <?= $nama['nama'] ?>, kami selaku panitia berterimaksih kepada teman teman dan pihak yang telah memberikan dukungan moril maupun materil untuk kesuksesan kegiatan ini.</h4>
                     </font>
                 </td>
             </tr>
