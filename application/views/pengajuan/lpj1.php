@@ -8,7 +8,7 @@
         <form action="<?= base_url('pengajuan/lpj1/') ?><?= $rak['id'] ?> " method="post">
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="staticEmail" value="lpj" hidden name="pengajuan">
+                    <input type="text" class="form-control" id="staticEmail" value="LPJ" hidden name="pengajuan">
                 </div>
             </div>
             <div class="form-group row">

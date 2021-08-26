@@ -9,7 +9,7 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-4 col-form-label">Lampiran Absen Peserta</label>
             <div class="col-sm-3">
-                <input type="file" class="custom-file-input" name="lampiran1" id="customFile">
+                <input type="file" class="custom-file-input" name="lampiran1" id="customFile" multiple>
                 <label class="custom-file-label" for="customFile">Choose file</label>
             </div>
         </div>
@@ -23,20 +23,20 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-4 col-form-label">Lampiran Dokumentasi Kegitan</label>
             <div class="col-sm-3">
-                <input type="file" class="custom-file-input" name="lampiran3" id="customFile">
+                <input type="file" class="custom-file-input" name="lampiran3" id="customFile" multiple>
                 <label class="custom-file-label" for="customFile">Choose file</label>
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-4 col-form-label">Lampiran Kwitansi</label>
             <div class="col-sm-3">
-                <input type="file" class="custom-file-input" name="lampiran4" id="customFile">
+                <input type="file" class="custom-file-input" name="lampiran4" id="customFile" multiple>
                 <label class="custom-file-label" for="customFile">Choose file</label>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="staticEmail" value="lpj" name="pengajuan" hidden>
+                <input type="text" class="form-control" id="staticEmail" value="LPJ" name="pengajuan" hidden>
                 <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?>
             </div>
         </div>

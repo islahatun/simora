@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="text-right">
-                <?php if ($button['periode'] == date('Y')) { ?>
+                <?php if ($button['periode'] == date('Y') and $button['pengajuan'] == 'RAK') { ?>
                     <button type="submit" class="btn btn-dark mb-2 " disabled>Tambah Data RAK</button>
                 <?php } else { ?>
                     <button type="submit" class="btn btn-dark mb-2 ">Tambah Data RAK</button>

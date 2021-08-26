@@ -57,7 +57,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <input type="text" class=" form-control" id="exampleInputPassword1" name="pengajuan" value="lpj" hidden>
+                        <input type="text" class=" form-control" id="exampleInputPassword1" name="pengajuan" value="LPJ" hidden>
                         <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?>
                     </div>
                 </div>

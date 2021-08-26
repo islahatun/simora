@@ -75,7 +75,7 @@ class pengajuan extends CI_Controller
         $data['title'] = "Pengajuan Poposal";
         $data['judul'] = "Proposal";
         $data['coba'] = $this->data_model->getAllpengguna();
-        $data['rak'] = $this->data_model->acc_rak();
+        $data['rak'] = $this->data_model->getallrak();
         $data['pengguna'] = $this->data_model->sessionpengguna();
         $data['menu'] = $this->data_model->menu();
         $pengguna =  $this->data_model->sessionpengguna();
@@ -229,7 +229,7 @@ class pengajuan extends CI_Controller
 
             $this->data_model->pengajuan();
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>RAK berhasil Terkirim</strong> 
+            <strong>Proposal Berhasil Diajukan</strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button></div>');

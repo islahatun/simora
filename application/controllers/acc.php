@@ -32,7 +32,7 @@ class acc extends CI_Controller
                 $data['acc'] =  $this->acc_model->acckaprodi();
                 break;
             default:
-                if ($user['level_id'] = 5) { // jika hmj yang mengajukan
+                if ($user['level_id'] == 5) { // jika hmj yang mengajukan
                     $data['acc'] =  $this->acc_model->accbemHMJ();
                 } else { //jika ukm yang mengajukan
                     $data['acc'] =  $this->acc_model->accbem();
@@ -54,10 +54,10 @@ class acc extends CI_Controller
         $data['nama'] = $this->acc_model->tampilnama($id);
         //menampilkan rak berdasarkan id acc
         $data['detail_rak'] = $this->acc_model->getaccbyid($id);
-        $data['pendahuluan'] = $this->acc_model->detail_pendahuluan($id);
+        $data['pendahuluan'] = $this->acc_model->detail_pendahuluan1($id);
         $data['panitia'] = $this->acc_model->detail_panitia($id);
-        $data['anggaran'] = $this->acc_model->detail_anggaran($id);
-        $data['jadwal'] = $this->acc_model->detail_jadwal($id);
+        $data['anggaran'] = $this->acc_model->detail_anggaran1($id);
+        $data['jadwal'] = $this->acc_model->detail_jadwal1($id);
         $data['lampiran'] = $this->acc_model->detail_lampiran($id);
         $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
         $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
@@ -132,10 +132,10 @@ class acc extends CI_Controller
         // menampilkan id acc
         $data['id'] = $this->acc_model->getidacc($id);
         $acc = $this->acc_model->getidacc($id);
-        $data['pendahuluan'] = $this->acc_model->detail_pendahuluan($id);
+        $data['pendahuluan'] = $this->acc_model->detail_pendahuluan_proposal($id);
         $data['panitia'] = $this->acc_model->detail_panitia($id);
-        $data['anggaran'] = $this->acc_model->detail_anggaran($id);
-        $data['jadwal'] = $this->acc_model->detail_jadwal($id);
+        $data['anggaran'] = $this->acc_model->detail_anggaran1($id);
+        $data['jadwal'] = $this->acc_model->detail_jadwal1($id);
         $data['lampiran'] = $this->acc_model->detail_lampiran($id);
         $data['pendahuluan_lpj'] = $this->acc_model->detail_pendahuluan_lpj($id);
         $data['anggaran_lpj'] = $this->acc_model->detail_anggaran_lpj($id);
