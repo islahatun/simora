@@ -16,6 +16,7 @@ class Biro_Akademik extends CI_Controller
         $data['title'] = "Dashboard";
         $data['berita'] = $this->data_model->tampilberita();
         $data['rak'] = $this->data_model->tampil_rak();
+        $data['ormawa'] = $this->data_model->jumlah();
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/topbar');

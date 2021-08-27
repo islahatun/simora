@@ -192,7 +192,7 @@
                                     <td><?= $p['jabatan'] ?></td>
                                     <td>
                                         <a href="<?= base_url('pengajuan/edit_panitia/') ?><?= $p['id_panitia'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#ubahpanitia<?= $p['id_panitia']; ?>">Ubah</a>
-                                        <a href="<?= base_url('pengajuan/hapus_panitia/') ?><?= $p['id_panitia'] ?>" value="<?= $rak['id'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
+                                        <a href="<?= base_url('pengajuan/hapus_panitia/' . $p['id_panitia'] . '/' . $rak['id']) ?>" class="btn btn-dark mb-2 ">Hapus</a>
                                     </td>
                                 </tr>
                         </tbody>
@@ -294,7 +294,7 @@
                                     <td><?= $j['keterangan']; ?></td>
                                     <td>
                                         <a href="<?= base_url('pengajuan/ubah_jadwal/') ?><?= $j['id_jadwal'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#ubahjadwal<?= $j['id_jadwal']; ?>">Ubah</a>
-                                        <a href="<?= base_url('pengajuan/hapus_jadwal/') ?><?= $j['id_jadwal'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
+                                        <a href="<?= base_url('pengajuan/hapus_jadwal/' . $j['id_jadwal'] . '/' . $acc['id']) ?>" class="btn btn-dark mb-2 ">Hapus</a>
                                     </td>
                                 </tr>
                         </tbody>
@@ -384,7 +384,7 @@
                                     <td>Rp.<?= $a['harga']; ?></td>
                                     <td>
                                         <a href="<?= base_url('pengajuan/ubah_anggaran/') ?><?= $a['id_anggaran'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#ubah<?= $a['id_anggaran']; ?>">Ubah</a>
-                                        <a href="<?= base_url('pengajuan/hapus_anggaran/') ?><?= $a['id_anggaran'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
+                                        <a href="<?= base_url('pengajuan/hapus_anggaran/' . $a['id_anggaran']) . '/' . $acc['id'] ?>" class="btn btn-dark mb-2 ">Hapus</a>
                                     </td>
                                     <td>Rp. <?= $h = $a['quality']  * $a['harga']; ?> </td>
                                 </tr>
@@ -414,34 +414,34 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-4 col-form-label">Lampiran Absen Peserta</label>
                         <div class="col-sm-3">
-                            <input type="file" class="custom-file-input" name="lampiran1" id="customFile">
+                            <input type="file" class="custom-file-input" name="lampiran1[]" id="customFile" multiple>
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-4 col-form-label">Lampiran Absen Panitia</label>
                         <div class="col-sm-3">
-                            <input type="file" class="custom-file-input" name="lampiran2" id="customFile" multiple>
+                            <input type="file" class="custom-file-input" name="lampiran2[]" id="customFile" multiple>
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-4 col-form-label">Lampiran Dokumentasi Kegitan</label>
                         <div class="col-sm-3">
-                            <input type="file" class="custom-file-input" name="lampiran3" id="customFile" multiple>
+                            <input type="file" class="custom-file-input" name="lampiran3[]" id="customFile" multiple>
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-4 col-form-label">Lampiran Kwitansi</label>
                         <div class="col-sm-3">
-                            <input type="file" class="custom-file-input" name="lampiran4" id="customFile" multiple>
+                            <input type="file" class="custom-file-input" name="lampiran4[]" id="customFile" multiple>
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="staticEmail" value="lpj" name="pengajuan" hidden>
+                            <input type="text" class="form-control" id="staticEmail" value="LPJ" name="pengajuan" hidden>
                             <!-- <?= form_error('pengajuan', '<small class="text-danger pl-3">', ' </small>') ?> -->
                         </div>
                     </div>

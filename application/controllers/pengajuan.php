@@ -588,11 +588,11 @@ class pengajuan extends CI_Controller
         $this->db->update('p_jadwal');
         redirect('pengajuan/edit_anggaran/' . $id);
     }
-    public function hapus_jadwal($id_jadwal)
+    public function hapus_jadwal($id_jadwal, $id)
     {
         $this->db->where('id_jadwal', $id_jadwal);
         $this->db->delete('p_jadwal');
-        redirect('pengajuan/edit_pengajuan/');
+        redirect('pengajuan/edit_pengajuan/' . $id);
     }
     public function ubah_anggaran($id)
     {
@@ -609,11 +609,11 @@ class pengajuan extends CI_Controller
         $this->db->update('p_anggaran');
         redirect('pengajuan/edit_anggaran/' . $id);
     }
-    public function hapus_anggaran($id_anggaran)
+    public function hapus_anggaran($id_anggaran, $id)
     {
         $this->db->where('id_anggaran', $id_anggaran);
         $this->db->delete('p_anggaran');
-        redirect('pengajuan/edit_anggaran/');
+        redirect('pengajuan/edit_anggaran/' . $id);
     }
     public function tambah_panitia($id)
     {
@@ -663,7 +663,7 @@ class pengajuan extends CI_Controller
         $this->db->update('p_panitia');
         redirect('pengajuan/edit_anggaran/' . $id);
     }
-    public function hapus_panitia($id_panitia)
+    public function hapus_panitia($id_panitia, $id)
     {
         $id = $this->input->post('id');
         $this->db->where('id_panitia', $id_panitia);

@@ -380,7 +380,7 @@ class data_model extends CI_Model
     }
     public function edit_lampiran1()
     {
-        $lampiran1 = $_FILES['lampiran1']['name'];
+        $lampiran1 = $_FILES['lampiran1']['name'][''];
         if ($lampiran1) {
             $config['upload_path']          = './assets/img/lampiran/';
             $config['allowed_types']        = 'gif|jpg|png';
@@ -402,7 +402,7 @@ class data_model extends CI_Model
     }
     public function lampiran2()
     {
-        $logo1 = $_FILES['lampiran2']['name'];
+        $logo1 = $_FILES['lampiran2']['name'][''];
 
         if ($logo1) {
             $config['upload_path']          = './assets/img/lampiran/';
@@ -446,7 +446,7 @@ class data_model extends CI_Model
     }
     public function lampiran4()
     {
-        $logo1 = $_FILES['lampiran4']['name'];
+        $logo1 = $_FILES['lampiran4']['name'][''];
 
         if ($logo1) {
             $config['upload_path']          = './assets/img/lampiran/';
