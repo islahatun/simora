@@ -16,25 +16,46 @@ class acc_model extends CI_Model
     }
     public function acckaprodiTI()
     {
-        $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = 8 WHERE  acc.id_ormawa = 8 AND pengguna.level_id = 5 and acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Acc Biro Akademik'or acc.status='Revisi Kaprodi' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'  or acc.status='Perbaikan'   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+        $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE  acc.id_ormawa = 8   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
         return $this->db->query($join)->result_array();
         // var_dump($n);
         // die;
     }
     public function acckaprodiSI()
     {
-        $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = 9 WHERE  acc.id_ormawa = 10 AND pengguna.level_id = 5 and acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Acc Biro Akademik'or acc.status='Revisi Kaprodi' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'  or acc.status='Perbaikan'   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+        $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa  WHERE acc.id_ormawa = 9   ORDER BY acc.id desc";
         return $this->db->query($join)->result_array();
         // var_dump($n);
         // die;
     }
-    public function acckaprodiESA()
+    public function acckaprodiPBI()
     {
-        $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = 10 WHERE  acc.id_ormawa = 10 AND pengguna.level_id = 5 and acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Acc Biro Akademik'or acc.status='Revisi Kaprodi' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'  or acc.status='Perbaikan'   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+        $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE  acc.id_ormawa = 10    ORDER BY acc.id desc";
         return $this->db->query($join)->result_array();
         // var_dump($n);
         // die;
     }
+    // public function acckaprodiAKUTANSI()
+    // {
+    //     $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = 23 WHERE  acc.id_ormawa = 23 AND pengguna.level_id = 5 and acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Acc Biro Akademik'or acc.status='Revisi Kaprodi' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'  or acc.status='Perbaikan'   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+    //     return $this->db->query($join)->result_array();
+    //     // var_dump($n);
+    //     // die;
+    // }
+    // public function acckaprodiPPKN()
+    // {
+    //     $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = 2 WHERE  acc.id_ormawa = 2 AND pengguna.level_id = 5 and acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Acc Biro Akademik'or acc.status='Revisi Kaprodi' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'  or acc.status='Perbaikan'   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+    //     return $this->db->query($join)->result_array();
+    //     // var_dump($n);
+    //     // die;
+    // }
+    // public function acckaprodiTeknik_I()
+    // {
+    //     $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = 4 WHERE  acc.id_ormawa = 4 AND pengguna.level_id = 5 and acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Acc Biro Akademik'or acc.status='Revisi Kaprodi' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'  or acc.status='Perbaikan'   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+    //     return $this->db->query($join)->result_array();
+    //     // var_dump($n);
+    //     // die;
+    // }
     public function accdpm()
     {
         $join = "SELECT *,pengguna.nama,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE acc.pengajuan ='RAK' ORDER BY acc.id desc";

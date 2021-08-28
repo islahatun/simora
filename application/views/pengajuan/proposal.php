@@ -30,9 +30,9 @@
 
                         <?php $i = 1; ?>
                         <?php $t = 0 ?>
-                        <?php foreach ($rak as $r) : ?>
-                            <? if ($r['status'] == "Acc Kemahasiswaan") {
-                            ?>
+                        <?php foreach ($acc_RAK as $r) : ?>
+                            <?php
+                            if ($r['status'] == "Acc Kemahasiswaan") { ?>
                                 <tr>
                                     <th scope="row" class="text-center"><?= $i; ?></th>
                                     <td><?= $r['jenis_kegiatan']; ?></td>

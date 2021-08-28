@@ -29,7 +29,33 @@ class acc extends CI_Controller
                 $data['acc'] =  $this->acc_model->accdpm();
                 break;
             case 6; //kaprodi
-                $data['acc'] =  $this->acc_model->acckaprodiTI();
+                // $data['acc'] =  $this->acc_model->acckaprodiTI();
+                switch ($user['id']) {
+                    case 17:
+                        $data['acc'] =  $this->acc_model->acckaprodiTI();
+                        break;
+                    case 21:
+                        $data['acc'] =  $this->acc_model->acckaprodiSI();
+                        break;
+                    case 22:
+                        $data['acc'] =  $this->acc_model->acckaprodiPBI();
+                        break;
+                    case 23:
+                        $data['acc'] =  $this->acc_model->acckaprodiAKUTANSI();
+                        break;
+                    case 2:
+                        $data['acc'] =  $this->acc_model->acckaprodiPPKN();
+                        break;
+                    case 4:
+                        $data['acc'] =  $this->acc_model->acckaprodiTeknik_I();
+                        break;
+                    case 6:
+                        $data['acc'] =  $this->acc_model->acckaprodiTeknik_L();
+                        break;
+                    case 6:
+                        $data['acc'] =  $this->acc_model->acckaprodiTeknik_S();
+                        break;
+                }
                 break;
             default:
                 if ($user['level_id'] == 5) { // jika hmj yang mengajukan
@@ -74,30 +100,10 @@ class acc extends CI_Controller
             case 2; //biro akademik
                 $data['acc'] =  $this->acc_model->accbiro();
                 break;
-            case 3; // depm
+            case 3; // dpm
                 $data['acc'] =  $this->acc_model->accdpm();
                 break;
             case 6; //kaprodi
-                switch ($user['id']) {
-                    case 17:
-                        $data['acc'] =  $this->acc_model->acckaprodiTI();
-                        break;
-                    case 21:
-                        $data['acc'] =  $this->acc_model->acckaprodiSI();
-                        break;
-                    case 22:
-                        $data['acc'] =  $this->acc_model->acckaprodiESA();
-                        break;
-                    case 23:
-                        $data['acc'] =  $this->acc_model->acckaprodiTI();
-                        break;
-                    case 24:
-                        $data['acc'] =  $this->acc_model->acckaprodiTI();
-                        break;
-                    default:
-                        # code...
-                        break;
-                }
 
                 break;
             default:
@@ -106,6 +112,33 @@ class acc extends CI_Controller
                 } else { //jika ukm yang mengajukan
                     $data['acc'] =  $this->acc_model->accbem();
                 }
+                break;
+        }
+
+        switch ($user['id']) {
+            case 17:
+                $data['acc'] =  $this->acc_model->acckaprodiTI();
+                break;
+            case 21:
+                $data['acc'] =  $this->acc_model->acckaprodiSI();
+                break;
+            case 22:
+                $data['acc'] =  $this->acc_model->acckaprodiPBI();
+                break;
+            case 23:
+                $data['acc'] =  $this->acc_model->acckaprodiAKUTANSI();
+                break;
+            case 2:
+                $data['acc'] =  $this->acc_model->acckaprodiPPKN();
+                break;
+            case 4:
+                $data['acc'] =  $this->acc_model->acckaprodiTeknik_I();
+                break;
+            case 6:
+                $data['acc'] =  $this->acc_model->acckaprodiTeknik_L();
+                break;
+            case 6:
+                $data['acc'] =  $this->acc_model->acckaprodiTeknik_S();
                 break;
         }
         $this->form_validation->set_rules('acc', 'acc', 'trim|required');
