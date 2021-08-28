@@ -505,7 +505,8 @@ class data_model extends CI_Model
     }
     public function tampil_revisi_kegiatan()
     {
-
+        $pengguna = $this->db->get_where('pengguna', ['nama' => $this->session->userdata('nama')])->row_array();
+        $p = $pengguna['id'];
         $r = "SELECT * FROM acc  where `status`='Revisi Kemahasiswaan' or `status`='Revisi Biro Akademik' or `status`='Revisi Ka Prodi' or `status`='Revisi BEM'  ";
         return $this->db->query($r)->row_array();
 

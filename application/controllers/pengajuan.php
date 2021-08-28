@@ -82,6 +82,7 @@ class pengajuan extends CI_Controller
         $pengguna =  $this->data_model->sessionpengguna();
         $data['acc'] = $this->acc_model->tampil_proposal_acc();
         $r = $this->data_model->tampil_revisi_kegiatan();
+
         if ($r['komentar'] !== 'Ok' and $r['id_ormawa'] == $pengguna['id']) {
             $this->session->set_flashdata('message', '
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -90,10 +91,10 @@ class pengajuan extends CI_Controller
             <span aria-hidden="true">&times;</span>
             </button>
             </div>');
-        } else {
+        } else if ($r['komentar'] == 'Ok' and $r['id_ormawa'] == $pengguna['id']) {
             $this->session->set_flashdata('message', '
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong> ' . $r['status'] . $r['komentar'] . ' <br> <a href="' . base_url('pengajuan/edit_pengajuan/') . $r['id'] . '">klik Untuk memperbaiki</a> <br> </strong> 
+            <strong> ' . $r['status']  . '<br> </strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
