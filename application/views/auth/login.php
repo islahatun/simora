@@ -93,7 +93,7 @@
                     <div class="card" style="width: 25rem;">
                         <img class="card-img-top p-3 " src="<?= base_url('assets/img/artikel/') . $a['foto']; ?>" alt="Card image cap" style="width: 25rem; height: 17rem">
                         <div class="card-body">
-                            <h3 class="card-title"><?= $a['judul']; ?></h3>
+                            <h3 class="card-title text-center"><?= $a['judul']; ?></h3>
                             <h5 class="card-title"><?= $a['author']; ?></h5>
                             <a href="<?= base_url('auth/detail_artikel/') ?><?= $a['id_artikel'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#detail<?= $a['id_artikel'] ?>"> Baca Artikel</a>
                         </div>

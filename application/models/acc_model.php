@@ -126,7 +126,8 @@ class acc_model extends CI_Model
     }
     public function tampilartikel()
     {
-        return $this->db->get_where('artikel', ['status' => 'Acc'])->result_array();
+        $t = "SELECT * FROM artikel WHERE `status`='Acc' ORDER BY id_artikel DESC ";
+        return $this->db->query($t)->result_array();
     }
     public function detail_pendahuluan1($id)
     {

@@ -140,7 +140,7 @@ class ormawa extends CI_Controller
 
             $this->session->set_flashdata('message', '
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Artikel berhasil di Kirim</strong> 
+            <strong>Artikel berhasil di Kirim Silahkan Hubungi Biro Akademik</strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -173,7 +173,7 @@ class ormawa extends CI_Controller
 
             $this->session->set_flashdata('message', '
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Artikel berhasil di Perbaiki</strong> 
+            <strong>Artikel berhasil di Perbaiki Silahkan Hubungi Biro Akademik</strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
