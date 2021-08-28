@@ -354,7 +354,7 @@ class data_model extends CI_Model
         $lampiran1 = $_FILES['lampiran1']['name'];
         if ($lampiran1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|png|pdf';
             $config['max_size']             = 6144;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran1')) {
@@ -383,7 +383,7 @@ class data_model extends CI_Model
         $lampiran1 = $_FILES['lampiran1']['name'][''];
         if ($lampiran1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|png|pdf';
             $config['max_size']             = 6144;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran1')) {
@@ -406,7 +406,7 @@ class data_model extends CI_Model
 
         if ($logo1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|png|pdf';
             $config['max_size']             = 6144;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran2')) {
@@ -428,7 +428,7 @@ class data_model extends CI_Model
 
         if ($logo1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|png|pdf';
             $config['max_size']             = 6144;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran3')) {
@@ -450,7 +450,7 @@ class data_model extends CI_Model
 
         if ($logo1) {
             $config['upload_path']          = './assets/img/lampiran/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|png|pdf';
             $config['max_size']             = 6144;
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('lampiran4')) {
