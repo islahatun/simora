@@ -29,7 +29,7 @@ class acc extends CI_Controller
                 $data['acc'] =  $this->acc_model->accdpm();
                 break;
             case 6; //kaprodi
-                $data['acc'] =  $this->acc_model->acckaprodi();
+                $data['acc'] =  $this->acc_model->acckaprodiTI();
                 break;
             default:
                 if ($user['level_id'] == 5) { // jika hmj yang mengajukan
@@ -78,7 +78,27 @@ class acc extends CI_Controller
                 $data['acc'] =  $this->acc_model->accdpm();
                 break;
             case 6; //kaprodi
-                $data['acc'] =  $this->acc_model->acckaprodi();
+                switch ($user['id']) {
+                    case 17:
+                        $data['acc'] =  $this->acc_model->acckaprodiTI();
+                        break;
+                    case 21:
+                        $data['acc'] =  $this->acc_model->acckaprodiSI();
+                        break;
+                    case 22:
+                        $data['acc'] =  $this->acc_model->acckaprodiESA();
+                        break;
+                    case 23:
+                        $data['acc'] =  $this->acc_model->acckaprodiTI();
+                        break;
+                    case 24:
+                        $data['acc'] =  $this->acc_model->acckaprodiTI();
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+
                 break;
             default:
                 if ($user['level_id'] = 5) { // jika hmj yang mengajukan

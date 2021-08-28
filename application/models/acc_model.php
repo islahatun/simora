@@ -14,9 +14,23 @@ class acc_model extends CI_Model
         // var_dump($n);
         // die;
     }
-    public function acckaprodi()
+    public function acckaprodiTI()
     {
-        $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = acc.id_ormawa WHERE pengguna.level_id = 5 and acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Acc Biro Akademik'or acc.status='Revisi Kaprodi' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj' and acc.acc =1 or acc.acc =2 or acc.acc =6 or acc.acc =7 or acc.status='Perbaikan'  ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+        $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = 8 WHERE  acc.id_ormawa = 8 AND pengguna.level_id = 5 and acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Acc Biro Akademik'or acc.status='Revisi Kaprodi' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'  or acc.status='Perbaikan'   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+        return $this->db->query($join)->result_array();
+        // var_dump($n);
+        // die;
+    }
+    public function acckaprodiSI()
+    {
+        $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = 9 WHERE  acc.id_ormawa = 10 AND pengguna.level_id = 5 and acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Acc Biro Akademik'or acc.status='Revisi Kaprodi' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'  or acc.status='Perbaikan'   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
+        return $this->db->query($join)->result_array();
+        // var_dump($n);
+        // die;
+    }
+    public function acckaprodiESA()
+    {
+        $join = "SELECT *,pengguna.nama,pengguna.level_id,acc.id FROM pengguna JOIN acc ON pengguna.id = 10 WHERE  acc.id_ormawa = 10 AND pengguna.level_id = 5 and acc.status='Acc Kemahasiswaan' or acc.status='Revisi Biro Akademik' or acc.status='Acc Biro Akademik'or acc.status='Revisi Kaprodi' and  acc.pengajuan ='proposal' or acc.pengajuan ='lpj'  or acc.status='Perbaikan'   ORDER BY acc.id desc"; // 1 = berdasarkan level kemahasiswaan
         return $this->db->query($join)->result_array();
         // var_dump($n);
         // die;

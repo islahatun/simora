@@ -16,6 +16,7 @@ class prodi extends CI_Controller
         $data['menu'] = $this->data_model->menu();
         $data['title'] = "Dashboard";
         $data['berita'] = $this->data_model->tampilberita();
+        $data['ormawa'] = $this->data_model->jumlah();
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/topbar');

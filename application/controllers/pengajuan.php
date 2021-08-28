@@ -63,7 +63,7 @@ class pengajuan extends CI_Controller
         } else {
             $this->data_model->pengajuan();
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>RAK berhasil Terkirim</strong> 
+            <strong>RAK berhasil Terkirim Silahkan Hubungi Ketua DPM</strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button></div>');

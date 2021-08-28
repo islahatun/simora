@@ -31,31 +31,35 @@
                         <?php $i = 1; ?>
                         <?php $t = 0 ?>
                         <?php foreach ($rak as $r) : ?>
-
-                            <tr>
-                                <th scope="row" class="text-center"><?= $i; ?></th>
-                                <td><?= $r['jenis_kegiatan']; ?></td>
-                                <td><?= $r['tujuan']; ?></td>
-                                <td><?= $r['sasaran']; ?></td>
-                                <td><?= date('d F Y', strtotime($r['waktu'])); ?></td>
-                                <td><?= $r['anggaran']; ?></td>
-                                <td>
-                                    <!-- kondisi jika melewati waktu pengajuan -->
-                                    <?php
-                                    $waktu = $r['waktu'];
-                                    $batas = date('Y - m - d', strtotime('- 7 days', strtotime($waktu)));
-                                    if (date('Y - m - d') >= $batas) {
-                                    ?>
-                                        <h6 class="text-danger pl-3 ">tidak bisa mengajukan Kegiatan</h6>
-                                    <?php } else { ?>
-                                        <a href="<?= base_url(); ?>pengajuan/proposal1/<?= $r['id'] ?>" class="badge badge-primary">Proposal</a>
-                                        <a href="<?= base_url(); ?>pengajuan/lpj1/<?= $r['id'] ?>" class="badge badge-primary">LPJ</a>
-                                    <?php } ?>
-                                </td>
-                            </tr>
+                            <? if ($r['status'] == "Acc Kemahasiswaan") {
+                            ?>
+                                <tr>
+                                    <th scope="row" class="text-center"><?= $i; ?></th>
+                                    <td><?= $r['jenis_kegiatan']; ?></td>
+                                    <td><?= $r['tujuan']; ?></td>
+                                    <td><?= $r['sasaran']; ?></td>
+                                    <td><?= date('d F Y', strtotime($r['waktu'])); ?></td>
+                                    <td><?= $r['anggaran']; ?></td>
+                                    <td>
+                                        <!-- kondisi jika melewati waktu pengajuan -->
+                                        <?php
+                                        $waktu = $r['waktu'];
+                                        $batas = date('Y - m - d', strtotime('- 7 days', strtotime($waktu)));
+                                        if (date('Y - m - d') >= $batas) {
+                                        ?>
+                                            <h6 class="text-danger pl-3 ">tidak bisa mengajukan Kegiatan</h6>
+                                        <?php } else { ?>
+                                            <a href="<?= base_url(); ?>pengajuan/proposal1/<?= $r['id'] ?>" class="badge badge-primary">Proposal</a>
+                                            <a href="<?= base_url(); ?>pengajuan/lpj1/<?= $r['id'] ?>" class="badge badge-primary">LPJ</a>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+                            <?php } else { ?>
+                            <?php } ?>
                     </tbody>
                     <?php $i++; ?>
                 <?php endforeach; ?>
+
 
                 </table>
 
